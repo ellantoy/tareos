@@ -1,0 +1,21 @@
+<ul class="list-unstyled crm-top-deals mb-0">
+<li>
+    <div class="d-flex align-items-top flex-wrap mb-4">
+      <div class="me-2 lh-1">
+        <span class="avatar avatar-sm avatar-rounded {{bgClass}}">
+          <i [class]="iconClass"></i>
+        </span>
+      </div>
+      <div class="flex-fill">
+        <div class="d-flex justify-content-between mb-1">
+          <span class="d-block mb-2 lh-1">{{ title }}</span>
+          <span>{{ amount }}</span>
+        </div>
+        <div class="progress progress-xs mb-0" role="progressbar" [attr.aria-valuenow]="progress" aria-valuemin="0" aria-valuemax="100">
+          <div class="progress-bar" [ngClass]="progressClass" [style.width.%]="progress"></div>
+        </div>
+      </div>
+    </div>
+  </li>
+  </ul>
+  

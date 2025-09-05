@@ -1,0 +1,29 @@
+
+    <div class="card custom-card overflow-hidden">
+        <div class="card-body">
+            <div class="d-flex justify-content-between">
+                <div>
+                    <div class="flex-fill fs-13 text-muted">{{ cardData.title }}</div>
+                    <div class="fs-22 fw-medium mb-2">{{ cardData.value }}</div>
+                </div>
+                <div class="avatar avatar-md" [ngClass]="cardData.colorClass">
+                    <i [class]="cardData.icon + ' fs-20'"></i>
+                </div>
+            </div>
+            <div class="d-flex align-items-end justify-content-between">
+                <div>
+                    <div class="d-flex align-items-center">
+                        <span class="badge rounded-pill d-flex align-items-center fs-11 me-0 mb-1 text-{{cardData.bgColor}} bg-{{cardData.bgColor}}-transparent"
+                             >
+                            <i class="ri-arrow-left-up-line fs-11"></i> {{ cardData.change }}%
+                        </span>
+                    </div>
+                    <p class="fs-11 text-muted mb-0">This Month</p>
+                </div>
+                <div id="chart">
+                    <spk-apexcharts [chartOptions]="cardData.chartOptions"></spk-apexcharts>
+                </div>
+            </div>
+        </div>
+    </div>
+

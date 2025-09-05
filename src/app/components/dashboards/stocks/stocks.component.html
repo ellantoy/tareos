@@ -1,0 +1,275 @@
+<app-page-header title="Stocks" title1="Dashboards" activeTitle="Stocks"></app-page-header>
+<!-- Start:: row-1 -->
+<div class="row">
+    <div class="col-xl-12">
+        <div class="d-flex align-items-center justify-content-between">
+            <div class="swiper swiper-basic">
+                <div class="swiper-wrapper">
+                    <swiper-container #swiperContainer
+                    class="swiper crypto-swiper swiper-basic swiper-initialized swiper-horizontal swiper-backface-hidden"
+                    space-between="10" slides-per-view="6" slides-per-group="1" autoplay-delay="2000"
+                    autoplay-disable-on-interaction="false">
+                    @for (stock of stocks; track $index) {
+                        <swiper-slide>
+                        <spk-stock-card1
+                          [title]="stock.title"
+                          [icon]="stock.icon"
+                          [value]="stock.value"
+                          [changePercentage]="stock.changePercentage"
+                          [changeValue]="stock.changeValue"
+                          [textColor]="stock.color"
+                          [bgColor]="stock.bgColor">
+                        </spk-stock-card1>
+                        </swiper-slide>
+
+                    }
+                    </swiper-container>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End:: row-1 -->
+
+<!-- Start:: row-3 -->
+<div class="row">
+    <div class="col-xxl-3">
+        <div class="row">
+            @for (stock of Stock1; track $index) {
+                <div class="col-xxl-12 col-lg-4 col-sm-12">
+            <spk-stock-card2
+    [companyName]="stock.companyName"
+    [companyIcon]="stock.companyIcon"
+    [currentValue]="stock.currentValue"
+    [iconBg]="stock.iconBg"
+    [percentageChange]="stock.percentageChange"
+    [chartOptions]="stock.chartOptions"
+    [companySymbol]="stock.companySymbol"
+    [companyFullName]="stock.companyFullName">
+  </spk-stock-card2>
+  </div>
+}
+        </div>
+    </div>
+    <div class="col-xxl-6">
+        <div class="card custom-card">
+            <div class="card-header justify-content-between">
+                <div class="card-title">
+                    Total Investments
+                </div>
+                <spk-dropdowns [Customclass]="'dropdown'" [Icon]="true" [title]="'Sort By'" [IconClass]="'ri-arrow-down-s-line align-middle ms-1 d-inline-block'"
+                                    [class]="'p-2 fs-12 text-muted no-caret border-0'" [Menuclass]="'dropdown-menu'">
+                        <li><a class="dropdown-item" href="javascript:void(0);">This Week</a></li>
+                        <li><a class="dropdown-item" href="javascript:void(0);">Last Week</a></li>
+                        <li><a class="dropdown-item" href="javascript:void(0);">This Month</a></li>
+                </spk-dropdowns>
+            </div>
+            <div class="card-body py-0">
+                <div
+                    class="d-flex alilgn-items-center justify-content-between gap-3 p-3  flex-wrap rounded">
+                    <div class="d-flex flex-wrap flex-fill gap-3">
+                        <div>
+                            <span class="d-block text-primary fw-medium mb-1">Invested Value</span>
+                            <span class="d-block fw-medium">$1,290.94<span
+                                    class="text-success ms-1 fs-12"><i
+                                        class="ti ti-chevron-up d-inline-flex"></i>1.22%</span></span>
+                        </div>
+                        <div>
+                            <span class="d-block text-primary fw-medium mb-1">Total Returns</span>
+                            <span class="d-block fw-medium">$25,458.20<span
+                                    class="text-danger ms-1 fs-12"><i
+                                        class="ti ti-chevron-down d-inline-flex"></i>10.14%</span></span>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-wrap gap-3 text-end">
+                        <div>
+                            <span class="d-block text-primary fw-medium mb-1">Today Change</span>
+                            <span class="d-block fw-medium">$112.09</span>
+                        </div>
+                        <div>
+                            <span class="d-block text-primary fw-medium mb-1">Change In %</span>
+                            <span class="d-block fw-medium">+0.01%<span
+                                    class="text-success ms-1 fs-12"><i
+                                        class="ti ti-chevron-up d-inline-flex"></i>0.21%</span></span>
+                        </div>
+                    </div>
+                </div>
+                <div id="totalInvestmentsStats">
+                    <spk-apexcharts [chartOptions]="chartOptions"></spk-apexcharts>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xxl-3">
+        <div class="card custom-card overflow-hidden">
+            <div class="card-header justify-content-between">
+                <div class="card-title">
+                    Watchlist 
+                </div>
+                <a href="javascript:void(0);" class="fs-12 text-muted"> View All<i class="ti ti-arrow-narrow-right ms-1"></i> </a>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <spk-reusable-tables [columns]="WatchlistHeader" tableClass="table text-nowrap table-striped"  [showCheckbox]="false">
+                          @for (stock of Watchlist; track $index) {
+                        <tr>
+                            <td>
+                              <div class="d-flex align-items-center gap-2">
+                                <span class="avatar avatar-xs">
+                                  <img [src]="stock.logoUrl" alt="{{ stock.name }}" class="invert-1">
+                                </span>
+                                <a href="javascript:void(0);" class="fw-medium">{{ stock.symbol }}</a>
+                              </div>
+                            </td>
+                            <td>
+                              ${{ stock.currentValue }}
+                            </td>
+                            <td>
+                              <span [ngClass]="stock.percentageChange >= 0 ? 'text-success' : 'text-danger'">
+                                {{ stock.percentageChange >= 0 ? '+' : '' }}{{ stock.percentageChange }}%
+                              </span>
+                            </td>
+                          </tr>
+                        }
+                    </spk-reusable-tables>
+                      
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End:: row-3 -->
+
+<div class="row">
+    @for (index of marketIndexes; track $index) {
+        <div class="col">
+    <spk-stock-card3 [marketIndex]="index"></spk-stock-card3>
+    </div>
+    }
+</div>
+
+<!-- Start:: row-4 -->
+<div class="row">
+    <div class="col-xl-3">
+        <div class="card custom-card overflow-hidden">
+            <div class="card-header justify-content-between">
+                <div class="card-title">
+                    Recent Activities
+                </div>
+                <a href="javascript:void(0);" class="fs-12 text-muted py-1 tag-link"> View All<i
+                        class="ti ti-arrow-narrow-right ms-1"></i> </a>
+            </div>
+            <div class="card-body p-0">
+                <ul class="list-group list-group-flush stocks-activity">
+                    @for (stock of Activities; track $index) {
+                    <li class="list-group-item">
+                      <div class="d-flex gap-2 flex-wrap align-items-start justify-content-between mb-3">
+                        <div class="d-flex flex-fill align-items-center">
+                          <div class="me-2">
+                            <span class="avatar avatar-md p-1 avatar-rounded bg-light">
+                              <img [src]="stock.image" alt="" class="{{stock.imageBg}}">
+                            </span>
+                          </div>
+                          <div class="lh-1">
+                            <span class="fw-semibold d-block mb-2 text-default">{{ stock.name }}</span>
+                            <span class="text-muted">{{ stock.companyName }}</span>
+                          </div>
+                        </div>
+                        <div class="fw-medium fs-14 text-end">
+                          <span class="d-block">{{ stock.value > 0 ? '+' : '' }}${{ stock.value }}</span>
+                        </div>
+                      </div>
+                      <div>
+                        <div class="progress progress-xs mt-2 mb-1">
+                          <div class="progress-bar progress-bar-animated progress-bar-striped"
+                               [ngClass]="stock.progressColor"
+                               [style.width]="stock.progress + '%'"></div>
+                        </div>
+                      </div>
+                    </li>
+                }
+                  </ul>
+                  
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-9">
+        <div class="card custom-card overflow-hidden">
+            <div class="card-header justify-content-between">
+                <div class="card-title">
+                    My Stocks
+                </div>
+                <div class="d-flex flex-wrap gap-2">
+                    <div>
+                        <input class="form-control form-control-sm" type="text"
+                            placeholder="Search Here" aria-label=".form-control-sm example">
+                    </div>
+                    <spk-dropdowns [Customclass]="'dropdown'" [Icon]="true" [title]="'Sort By'" [IconClass]="'ri-arrow-down-s-line align-middle ms-1 d-inline-block'"
+                        [class]="'btn btn-primary btn-sm btn-wave waves-effect waves-light no-caret'" [Menuclass]="'dropdown-menu'">
+                            <li><a class="dropdown-item" href="javascript:void(0);">New</a></li>
+                            <li><a class="dropdown-item" href="javascript:void(0);">Popular</a></li>
+                            <li><a class="dropdown-item" href="javascript:void(0);">Relevant</a></li>
+                     </spk-dropdowns>
+                </div>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <spk-reusable-tables [columns]="StocksHeaser"  tableClass="table text-nowrap table-hover"  [showCheckbox]="false">
+                        @for (stock of StocksTable; track $index) {
+                        <tr >
+                          <td>{{ stock.id }}</td>
+                          <td>
+                            <div class="d-flex align-items-start gap-3">
+                              <span class="avatar avatar-sm bg-{{stock.symbolBg}}-transparent"> <i class="{{stock.symbol}} fs-15"></i> </span>
+                              <div class="flex-fill lh-1">
+                                <a href="javascript:void(0);" class="d-block mb-1 fs-14 fw-medium">{{ stock.name }}</a>
+                                <span class="d-block fs-12 text-muted">{{ stock.companyName }}</span>
+                              </div>
+                            </div>
+                          </td>
+                          <td>{{ stock.price }}</td>
+                          <td><span class="text-muted">{{ stock.date }}</span></td>
+                          <td>{{ stock.marketCap }}</td>
+                          <td>
+                            <span class="badge" [ngClass]="stock.changePercentage">{{ stock.change }}</span>
+                          </td>
+                          <td>{{ stock.time }}</td>
+                          <td>
+                            <div class="btn-list">
+                              <a href="javascript:void(0);" class="btn btn-icon btn-sm btn-primary-light" data-bs-toggle="tooltip" ngbTooltip="Edit" aria-label="Edit">
+                                <i class="bi bi-pencil-square"></i>
+                              </a>
+                              <a href="javascript:void(0);" class="btn btn-icon btn-sm btn-secondary-light" data-bs-toggle="tooltip" ngbTooltip="Delete" aria-label="Delete">
+                                <i class="bi bi-trash"></i>
+                              </a>
+                            </div>
+                          </td>
+                        </tr>
+                    }
+                    </spk-reusable-tables>
+                </div>
+            </div>
+            <div class="card-footer border-top-0 mb-2">
+                <div class="d-flex align-items-center">
+                    <div> Showing 6 Entries <i class="bi bi-arrow-right ms-2 fw-semibold"></i> </div>
+                    <div class="ms-auto">
+                        <nav aria-label="Page navigation" class="pagination-style-4">
+                            <ul class="pagination mb-0">
+                                <li class="page-item disabled"> <a class="page-link"
+                                        href="javascript:void(0);"> Prev </a> </li>
+                                <li class="page-item active"><a class="page-link"
+                                        href="javascript:void(0);">1</a></li>
+                                <li class="page-item"><a class="page-link"
+                                        href="javascript:void(0);">2</a></li>
+                                <li class="page-item"> <a class="page-link text-primary"
+                                        href="javascript:void(0);"> next </a> </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End:: row-4 -->

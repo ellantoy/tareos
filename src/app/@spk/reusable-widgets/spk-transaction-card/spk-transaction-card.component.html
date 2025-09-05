@@ -1,0 +1,15 @@
+<div class="p-2 border rounded mb-2 d-flex align-items-center justify-content-between">
+    <div class="d-flex gap-3 align-items-center">
+        <span class="avatar avatar-md flex-shrink-0">
+            <img [src]="avatar" alt="" class="rounded-pill">
+        </span>
+        <div>
+            <p class="mb-0 fw-medium">{{ name }}</p>
+            <span class="text-muted fs-12">{{ message }}</span>
+        </div>
+    </div>
+    <div class="text-end">
+        <p class="mb-0 fs-18 fw-medium text-end">{{ amount }}</p>
+        <span class="text-muted fs-12 text-end">{{ time }}</span>
+    </div>
+</div>

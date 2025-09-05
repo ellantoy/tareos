@@ -1,0 +1,214 @@
+<app-page-header firstTitle="Apps" title="Leads" title1="CRM" activeTitle="Leads" ></app-page-header>
+<!-- Start::row-1 -->
+<div class="row">
+    <div class="col-xl-12">
+        <div class="card custom-card">
+            <div class="card-header d-flex align-items-center justify-content-between flex-wrap gap-3">
+                <div class="card-title">
+                    Leads <span class="badge bg-primary align-middle"> 28</span>
+                </div>
+                <div class="d-flex flex-wrap gap-2">
+                    <a class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#create-contact" (click)="openModal(content)"><i class="ri-add-line me-1 fw-medium align-middle"></i>Create Lead</a>
+                    <button class="btn btn-success-light btn-sm">Export As CSV</button>
+                    <spk-dropdowns [Customclass]="'dropdown'" 
+                    [class]="'btn btn-light btn-sm btn-wave waves-effect waves-light'" [title]="'Sort By'" 
+                     [Menuclass]="'dropdown-menu'">
+                    <li><a class="dropdown-item" ngbDropdownItem href="javascript:void(0);">Newest</a></li>
+                    <li><a class="dropdown-item" ngbDropdownItem href="javascript:void(0);">Date Added</a></li>
+                    <li><a class="dropdown-item" ngbDropdownItem href="javascript:void(0);">A - Z</a></li>
+                </spk-dropdowns>
+                </div>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <spk-reusable-tables  [columns]="leadsColumn" tableClass=" text-nowrap" (toggleSelectAll)="handleToggleSelectAll($event)"
+                    [showCheckbox]="true" checkboxClass="text-center">
+                    
+                    @for (Lead of Leads; track $index) {
+                        <tr class="crm-contact leads-list">
+                            <td class="leads-checkbox">
+                                <input class="form-check-input" type="checkbox" [checked]="allTasksChecked" [(ngModel)]="Lead.checked" id="checkboxNoLabel01" value="" aria-label="...">
+                            </td>
+                            <td>
+                                <div class="d-flex align-items-center gap-2">
+                                    <div class="lh-1">
+                                        <span class="avatar avatar-rounded avatar-sm">
+                                            <img [src]="Lead.img"  alt="">
+                                        </span>
+                                    </div>
+                                    <div>
+                                        <span class="d-block fw-medium">{{Lead.name}} </span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="d-flex align-items-center gap-2">
+                                    <div class="lh-1">
+                                        <span class="avatar avatar-sm p-1 bg-light avatar-rounded">
+                                            <img [src]="Lead.logo" src="./assets/images/company-logos/1.png" alt="">
+                                        </span>
+                                    </div>
+                                    <div> {{Lead.company}}</div>
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    <span class="d-block mb-1"><i class="ri-mail-line me-2 align-middle fs-14 text-muted d-inline-block"></i>{{Lead.Email}}</span>
+                                </div>
+                            </td>
+                            <td>
+                                <span class="badge bg-{{Lead.bg}}-transparent">  {{Lead.Status}}</span>
+                            </td>
+                            <td>
+                                <div>
+                                    <span class="d-block"><i class="ri-phone-line me-2 align-middle fs-14 text-muted"></i>{{Lead.phnNo}}</span>
+                                </div>
+                            </td>
+                            <td>
+                                 {{Lead.Source}}
+                            </td>
+                            <td>
+                                <div class="d-flex align-items-center gap-2">
+                                    <div class="lh-1">
+                                        <span class="avatar avatar-rounded avatar-sm">
+                                            <img [src]="Lead.src1" alt="Avatar">
+                                        </span>
+                                    </div>
+                                    <div>
+                                        <span class="d-block fw-medium">{{Lead.owner}}</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="fw-medium">
+                                {{Lead.contacted}}
+                            </td>
+                            <td>
+                                <div class="btn-list">
+                                    <a class="btn btn-sm btn-primary-light btn-icon"><i class="ri-eye-line"></i></a>
+                                    <button class="btn btn-sm btn-info-light btn-icon"><i class="ri-pencil-line"></i></button>
+                                    <button class="btn btn-sm btn-secondary-light btn-icon contact-delete" (click)="click(Lead.id)"><i class="ri-delete-bin-line"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                    </spk-reusable-tables>
+                   
+                </div>
+            </div>
+            <div class="card-footer border-top-0">
+                <div class="d-flex align-items-center">
+                    <div>
+                        Showing 10 Entries <i class="bi bi-arrow-right ms-2 fw-medium"></i>
+                    </div>
+                    <div class="ms-auto">
+                        <nav aria-label="Page navigation" class="pagination-style-4">
+                            <ul class="pagination mb-0">
+                                <li class="page-item disabled">
+                                    <a class="page-link" href="javascript:void(0);">
+                                        Prev
+                                    </a>
+                                </li>
+                                <li class="page-item active"><a class="page-link" href="javascript:void(0);">1</a></li>
+                                <li class="page-item"><a class="page-link" href="javascript:void(0);">2</a></li>
+                                <li class="page-item">
+                                    <a class="page-link text-primary" href="javascript:void(0);">
+                                        next
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End::row-1 -->
+<!-- Start:: Create Contact -->
+
+        <ng-template #content let-modal>
+   
+            <div class="modal-header">
+                <h6 class="modal-title">Create Lead</h6>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                (click)="modal.dismiss('Cross click')"  aria-label="Close"></button>
+            </div>
+            <div class="modal-body px-4">
+                <div class="row gy-3">
+                    <div class="col-xl-12">
+                        <div class="mb-0 text-center">
+                            <span class="avatar avatar-xxl avatar-rounded">
+                                <img [src]="url1 ? url1 :'./assets/images/faces/9.jpg'" alt="" id="profile-img">
+                                <span class="badge rounded-pill bg-primary avatar-badge">
+                                    <input type="file" name="photo" class="position-absolute w-100 h-100 op-0" id="profile-change" (change)="handleFileInput($event)">
+                                    <i class="fe fe-camera"></i>
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-xl-12">
+                        <label for="contact-name" class="form-label">Contact Name</label>
+                        <input type="text" class="form-control" id="contact-name" placeholder="Contact Name">
+                    </div>
+                    <div class="col-xl-12">
+                        <label for="contact-mail" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="contact-mail" placeholder="Enter Email">
+                    </div>
+                    <div class="col-xl-12">
+                        <label for="contact-phone" class="form-label">Phone No</label>
+                        <input type="tel" class="form-control" id="contact-phone" placeholder="Enter Phone Number">
+                    </div>
+                    <div class="col-xl-12">
+                        <label for="company-name" class="form-label">Company Name</label>
+                        <input type="text" class="form-control" id="company-name" placeholder="Company Name">
+                    </div>
+                    <div class="col-xl-12 custom-select">
+                        <label class="form-label">Lead Status</label>
+                        <spk-ng-select 
+                        [options]="Leadsstatus"
+                        [selectClass]="'border rounded'"
+                        [clearable]="true"
+                        [multi]="true"
+                        [searchable]="true"
+                        [placeholder]="'Select Status'"
+                        [additionalProperties]="{}"
+                        (change)="handleSelectChange($event)">
+                        </spk-ng-select>
+                    </div>
+                    <div class="col-xl-12 custom-select">
+                        <label class="form-label">Lead Source</label>
+                        <spk-ng-select 
+                        [options]="Leadssource"
+                        [selectClass]="'border rounded'"
+                        [clearable]="true"
+                        [multi]="true"
+                        [searchable]="true"
+                        [placeholder]="'Social Media'"
+                        [additionalProperties]="{}"
+                        (change)="handleSelectChange($event)">
+                        </spk-ng-select>
+                    
+                    </div>
+                    <div class="col-xl-12 custom-select">
+                        <label class="form-label">Tags</label>
+                        <spk-ng-select 
+                        [options]="Tags"
+                        [selectClass]="'border rounded multiple-tags'"
+                        [clearable]="true"
+                        [multiple]="true"
+                        [searchable]="true"
+                        [placeholder]="'Select'"
+                        [additionalProperties]="{}"
+                        (change)="handleSelectChange($event)">
+                        </spk-ng-select>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light"
+                    data-bs-dismiss="modal" (click)="modal.close('Cancel click')">Cancel</button>
+                <button type="button" class="btn btn-primary">Create Contact</button>
+            </div>
+       
+    </ng-template>
+<!-- End:: Create Contact -->

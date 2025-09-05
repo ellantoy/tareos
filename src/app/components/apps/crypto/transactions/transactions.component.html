@@ -1,0 +1,76 @@
+<app-page-header firstTitle="Apps" title="Transactions" title1="Crypto" activeTitle="Transactions" ></app-page-header>
+   <!-- Start::row-1 -->
+   <div class="row">
+    <div class="col-xl-12">
+        <div class="card custom-card">
+            <div class="card-header justify-content-between">
+                <div class="card-title">
+                    Transaction History
+                </div>
+                <div class="d-flex flex-wrap gap-2">
+                    <div>
+                        <input class="form-control form-control-sm" type="text" placeholder="Search Here" aria-label=".form-control-sm example">
+                    </div>   
+                    <spk-dropdowns [Customclass]="'dropdown'" [title]="'Sort By'" [class]="'btn btn-primary btn-sm btn-wave waves-effect waves-light no-caret'" [Icon]="true" [IconClass]="'ri-arrow-down-s-line align-middle ms-1'" 
+                    [Menuclass]="'dropdown-menu'"  >
+                    <li><a class="dropdown-item" ngbDropdownItem href="javascript:void(0);">This Week</a></li>
+                    <li><a class="dropdown-item" ngbDropdownItem href="javascript:void(0);">This Month</a></li>
+                    <li><a class="dropdown-item" ngbDropdownItem href="javascript:void(0);">This Year</a></li>
+                </spk-dropdowns>
+                    <div>
+                        <button class="btn btn-secondary btn-sm btn-wave">View All</button>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <spk-reusable-tables  [columns]="transactionColumn" tableClass=" text-nowrap"
+                    [showCheckbox]="false"> 
+                    @for(crypto of cryptos;track $index){
+
+                        <tr class="transaction-list">
+                            <td>
+                                <div class="d-flex align-items-center gap-2">
+                                    <span class="avatar avatar-xs avatar-rounded">
+                                        <img [src]="crypto.src" alt="">
+                                    </span>
+                                    <div class="fw-medium">{{crypto.name}} </div>
+                                </div>
+                            </td>
+                            <td>{{crypto.date}}</td>
+                            <td> {{crypto.txn}}</td>
+                            <td class="text-{{crypto.bg1}} fw-medium">{{crypto.type}}</td>
+                            <td>{{crypto.amount}}</td>
+                            <td> <span class="badge bg-{{crypto.bg}}-transparent">{{crypto.status}}</span></td>
+                            <td class="text-muted">{{crypto.recipoent}}</td>
+                            <td>
+                                <button class="btn btn-info-light btn-icon btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" ngbTooltip="download"><i class="ri-download-2-line"></i></button>
+                                <button (click)="click(crypto.id)" class="btn btn-danger-light btn-icon ms-1 btn-sm transactions-delete"><i class="ri-delete-bin-5-line"></i></button>
+                            </td>
+                        </tr>
+                    }
+                    </spk-reusable-tables>
+                 
+                </div>
+            </div>  
+            <div class="card-footer border-top-0">
+                <nav aria-label="Page navigation">
+                    <ul class="pagination mb-0 float-end">
+                        <li class="page-item disabled">
+                            <a class="page-link">Previous</a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="javascript:void(0);">1</a></li>
+                        <li class="page-item active" aria-current="page">
+                            <a class="page-link" href="javascript:void(0);">2</a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="javascript:void(0);">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="javascript:void(0);">Next</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End::row-1 -->

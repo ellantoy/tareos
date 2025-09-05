@@ -1,0 +1,105 @@
+<app-page-header firstTitle="Apps" title="Orders" title1="Ecommerce" activeTitle="Orders"></app-page-header>
+<!-- Start::row-1 -->
+<div class="card custom-card">
+    <div class="card-header justify-content-between">
+        <div class="card-title">
+            All Orders List
+        </div>
+        <div class="d-flex gap-3 align-items-center flex-wrap">
+            <div class="btn-group" ngbDropdown> <button ngbDropdownToggle class="btn btn-outline-light border dropdown-toggle" type="button"
+                    data-bs-toggle="dropdown" aria-expanded="false"> <i class="ti ti-sort-descending-2 me-1"></i> Sort
+                    By </button>
+                <ul class="dropdown-menu" ngbDropdownMenu>
+                    <li><a class="dropdown-item" ngbDropdownItem href="javascript:void(0)">Created Date</a></li>
+                    <li><a class="dropdown-item" ngbDropdownItem href="javascript:void(0)">Status</a></li>
+                    <li><a class="dropdown-item" ngbDropdownItem href="javascript:void(0)">Orders</a></li>
+                    <li><a class="dropdown-item" ngbDropdownItem href="javascript:void(0)">Product Name</a></li>
+                    <li><a class="dropdown-item" ngbDropdownItem href="javascript:void(0)">Newest</a></li>
+                    <li><a class="dropdown-item" ngbDropdownItem href="javascript:void(0)">Oldest</a></li>
+                </ul>
+            </div>
+            <div class="custom-form-group flex-grow-1">
+                <input type="text" class="form-control pe-1" placeholder="Search Orders.." aria-label="Recipient's username"
+                    aria-describedby="button-addon2">
+                <a href="javascript:void(0);" class="text-muted custom-form-btn"><i class="ti ti-search"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="card-body p-0">
+        <div class="table-responsive">
+            <spk-reusable-tables [columns]="ordersColumn" tableClass=" table-hover text-nowrap"
+                [showCheckbox]="false">
+                @for(order of orders;track $index)
+                {
+                <tr class="order-list">
+                    <td>{{order.id}}</td>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <span class="avatar avatar-sm avatar-square bg-gray-300"><img [src]="order.img"
+                                    class="w-100 h-100" alt="..."></span>
+                            <div class="ms-2">
+                                <p class="fw-medium mb-0 d-flex align-items-center"><a
+                                        routerLink="/apps/ecommerce/order-details">{{order.name}}</a></p>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <span class="avatar avatar-sm me-2 avatar-rounded">
+                                <img [src]="order.src1" alt="">
+                            </span>{{order.customer}}
+                        </div>
+                    </td>
+                    <td>{{order.contact}}</td>
+                    <td>
+                        {{order.date}}
+                    </td>
+                    <td><span class="badge bg-{{order.bg}}-transparent">{{order.status}}</span></td>
+                    <td>{{order.payment}}</td>
+                    <td class="fw-semibold">{{order.price}}</td>
+                    <td>
+                        <a routerLink="/apps/ecommerce/order-details"
+                            class="btn btn-icon btn-sm btn-primary-light btn-wave waves-effect waves-light me-1">
+                            <i class="ri-eye-line"></i>
+                        </a>
+                        <a href="javascript:void(0);"
+                            class="btn btn-icon btn-sm btn-info-light btn-wave waves-effect waves-light me-1">
+                            <i class="ri-download-line"></i>
+                        </a>
+                        <a href="javascript:void(0);" (click)="remove(order.contact)"
+                            class="order-delete-btn btn btn-icon btn-sm btn-danger-light btn-wave waves-effect waves-light me-1">
+                            <i class="ri-delete-bin-line"></i>
+                        </a>
+                    </td>
+                </tr>
+                }
+            </spk-reusable-tables>
+        </div>
+    </div>
+    <div class="card-footer border-top-0">
+        <div class="d-flex align-items-center flex-wrap overflow-auto">
+            <div class="mb-2 mb-sm-0">
+                Showing <b>1</b> to <b>10</b> entries <i class="bi bi-arrow-right ms-2 fw-semibold"></i>
+            </div>
+            <div class="ms-auto">
+                <ul class="pagination mb-0 overflow-auto">
+                    <li class="page-item disabled">
+                        <a class="page-link">Previous</a>
+                    </li>
+                    <li class="page-item active" aria-current="page"><a class="page-link"
+                            href="javascript:void(0)">1</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="javascript:void(0)">2</a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="javascript:void(0)">3</a></li>
+                    <li class="page-item"><a class="page-link" href="javascript:void(0)">4</a></li>
+                    <li class="page-item"><a class="page-link" href="javascript:void(0)">5</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="javascript:void(0)">Next</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End::row-1 -->

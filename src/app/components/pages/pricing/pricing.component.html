@@ -1,0 +1,456 @@
+<app-page-header title="pricing" title1="Pages" activeTitle="Pricing "></app-page-header>
+
+                    <!-- Start:: row-1 -->
+                    <div class="row justify-content-center">
+                        <div class="col-xl-9" id="convertable-pricing">
+                            <div class="p-3 pt-0">
+                                <div class="text-center">
+                                    <h3>Pricing</h3>
+                                    <h5 class="d-block">Plans that flex with your needs.</h5>
+                                    <p class="text-muted mb-4">Stay agile with plans that seamlessly adjust to your changing requirements, ensuring you always have the flexibility you need.</p>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-center mb-4">
+                                <div class="switcher-box">
+                                    <span class="pricing-time-span">Monthly</span>
+                                    <div class="switcher-pricing text-center">
+                                      <input type="checkbox" class="pricing-toggle" [(ngModel)]="isYearly" (change)="onToggle()">
+                                    </div>
+                                    <span class="pricing-time-span">Annually</span>
+                                </div>
+                            </div>
+                            <div class="tab-content show" id="monthly1" [ngClass]="{'show': !isYearly}">
+                                <div class="row d-flex align-items-center justify-content-center mb-5">
+                                    @for(pricing of pricings;track $index){
+
+                                        <div class="col-lg-8 col-xl-4 col-xxl-4 col-md-8 col-sm-12">
+                                            <app-spk-pricing-reusable-card
+                                            [title]="pricing.title"
+                                            [mainClass]="pricing.mainClass"
+                                            [arrowClass]="pricing.arrowClass"
+                                            [buttonClass]="pricing.buttonClass"
+                                            [bodyClass]="pricing.bodyClass"
+                                            [priceClass]="pricing.priceClass"
+                                            [borderClass]="pricing.borderClass"
+                                            [footerClass]="pricing.footerClass"
+                                            [price]="pricing.price"
+                                            [pricingPlan]="pricing.pricingPlan"
+                                            [description]="pricing.description"
+                                            [features]="pricing.features"
+                                            [textColor]="pricing.textColor"
+                                            [isPopular]="pricing.popular">
+                                        </app-spk-pricing-reusable-card>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                            <div class="tab-content" id="yearly1" [ngClass]="{'show': isYearly}">
+                                <div class="row d-flex align-items-center justify-content-center mb-5">
+                                    @for(pricing of yearlyPricings;track $index){
+
+                                        <div class="col-lg-8 col-xl-4 col-xxl-4 col-md-8 col-sm-12">
+                                            <app-spk-pricing-reusable-card
+                                            [title]="pricing.title"
+                                            [mainClass]="pricing.mainClass"
+                                            [arrowClass]="pricing.arrowClass"
+                                            [buttonClass]="pricing.buttonClass"
+                                            [bodyClass]="pricing.bodyClass"
+                                            [borderClass]="pricing.borderClass"
+                                            [pricingPlan]="pricing.pricingPlan"
+                                            [footerClass]="pricing.footerClass"
+                                            [price]="pricing.price"
+                                            [description]="pricing.description"
+                                            [features]="pricing.features"
+                                            [textColor]="pricing.textColor"
+                                            [isPopular]="pricing.popular">
+                                        </app-spk-pricing-reusable-card>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End:: row-1 -->
+
+                    <!-- Start:: row-2 -->
+                    <div class="row justify-content-center custom-tabs">
+                        <div class="col-xl-9">
+                            <div class="text-center mb-5 mt-4">
+                                <div class="tab-style-1 border p-1 bg-white shadow-sm rounded-pill d-inline-block">
+                                    <ul ngbNav #nav="ngbNav" class="nav nav-pills">
+                                        <li [ngbNavItem]="1" class="nav-item">
+                                            <button ngbNavLink type="button" class="nav-link rounded-pill fw-medium" data-bs-toggle="pill" data-bs-target="#pills-monthly">Monthly</button>
+                                            <ng-template ngbNavContent>
+                                                <div class="show p-0 border-0" id="pills-monthly">
+                                                    <div class="row align-items-center">
+                                                        <div class="col-lg-4">
+                                                            <div class="card reveal">
+                                                                <div class="card-body main-card-body">
+                                                                    <div class="pricing-icon">
+                                                                        <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" viewBox="0 0 24 24" fill="currentColor">
+                                                                            <path opacity=".5" d="M21.951 9.67a1 1 0 0 0-.807-.68l-5.699-.828-2.548-5.164A.978.978 0 0 0 12 2.486v16.28l5.097 2.679a1 1 0 0 0 1.451-1.054l-.973-5.676 4.123-4.02a1 1 0 0 0 .253-1.025z"/>
+                                                                            <path d="M11.103 2.998 8.555 8.162l-5.699.828a1 1 0 0 0-.554 1.706l4.123 4.019-.973 5.676a1 1 0 0 0 1.45 1.054L12 18.765V2.503c-.356.001-.703.167-.897.495z"/>
+                                                                        </svg>
+                                                                    </div>
+                                                                    <h4 class="mb-3">Advance</h4>
+                                                                    <p class="mb-4">Lorem invidunt ea clita consetetur ea rebum sit accusam ipsum,.</p>
+                                                                    <h6 class="mb-4 fs-3">$96.9<span class="fs-14 text-muted op-7">&nbsp; / month</span></h6>
+                                                                    <ul class="list-unstyled fs-14  mb-4">
+                                                                        <li class="list-item mb-3">
+                                                                            <div class="d-flex align-items-center-start">
+                                                                                <span class="me-2 text-primary"><i class="fe fe-check-circle"></i></span>
+                                                                                <span class="flex-grow-1">Web Design</span>
+                                                                            </div>
+                                                                        </li>
+                                                                        <li class="list-item mb-3">
+                                                                            <div class="d-flex align-items-center-start">
+                                                                                <span class="me-2 text-primary"><i class="fe fe-check-circle"></i></span>
+                                                                                <span class="flex-grow-1">Data Security and Backups</span>
+                                                                            </div>
+                                                                        </li>
+                                                                        <li class="list-item mb-3">
+                                                                            <div class="d-flex align-items-center-start">
+                                                                                <span class="me-2 text-primary"><i class="fe fe-check-circle"></i></span>
+                                                                                <span class="flex-grow-1">3 Users</span>
+                                                                            </div>
+                                                                        </li>
+                                                                        <li class="list-item mb-3">
+                                                                            <div class="d-flex align-items-center-start">
+                                                                                <span class="me-2 text-primary"><i class="fe fe-check-circle"></i></span>
+                                                                                <span class="flex-grow-1">2 Websites</span>
+                                                                            </div>
+                                                                        </li>
+                                                                        <li class="list-item mb-3">
+                                                                            <div class="d-flex align-items-center-start">
+                                                                                <span class="me-2 text-primary"><i class="fe fe-check-circle"></i></span>
+                                                                                <span class="flex-grow-1">24/7 priority support</span>
+                                                                            </div>
+                                                                        </li>
+                                                                        <li class="list-item">
+                                                                            <div class="d-flex align-items-center-start">
+                                                                                <span class="me-2 text-primary"><i class="fe fe-check-circle"></i></span>
+                                                                                <span class="flex-grow-1">Customization <a aria-label="anchor" href="javascript:void(0);" data-bs-toggle="tooltip" ngbTooltip="customized solutions tailored to your specific requirements." class="ms-1 op-4 all-ease-03 text-primary"><i class="bi bi-info-circle-fill fs-14"></i></a></span>
+                                                                            </div>
+                                                                        </li>
+                                                                    </ul>
+                                                                    <div class="d-grid">
+                                                                        <a href="javascript:void(0);" class="btn btn-lg btn-primary-light">Buy Now</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4">
+                                                            <div class="card pricing-card03 reveal">
+                                                                <div class="card-body main-card-body">
+                                                                    <div class="pricing-icon bg-primary text-fixed-white">
+                                                                        <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" viewBox="0 0 24 24" fill="currentColor">
+                                                                            <path d="M12,14.19531c-0.17551-0.00004-0.34793-0.04618-0.5-0.13379l-9-5.19726C2.02161,8.58794,1.85779,7.97612,2.13411,7.49773C2.22187,7.34579,2.34806,7.2196,2.5,7.13184l9-5.19336c0.30964-0.17774,0.69036-0.17774,1,0l9,5.19336c0.4784,0.27632,0.64221,0.88814,0.36589,1.36653C21.77813,8.65031,21.65194,8.7765,21.5,8.86426l-9,5.19726C12.34793,14.14913,12.17551,14.19527,12,14.19531z"/>
+                                                                            <path opacity=".7" d="M21.5,11.13184l-1.96411-1.13337L12.5,14.06152c-0.30947,0.17839-0.69053,0.17839-1,0L4.46411,9.99847L2.5,11.13184c-0.47839,0.27632-0.64221,0.88814-0.36589,1.36653C2.22187,12.65031,2.34806,12.7765,2.5,12.86426l9,5.19726c0.30947,0.17838,0.69053,0.17838,1,0l9-5.19726c0.4784-0.27632,0.64221-0.88814,0.36589-1.36653C21.77813,11.34579,21.65194,11.2196,21.5,11.13184z"/>
+                                                                            <path opacity=".5" d="M21.5,15.13184l-1.96411-1.13337L12.5,18.06152c-0.30947,0.17838-0.69053,0.17838-1,0l-7.03589-4.06305L2.5,15.13184c-0.47839,0.27632-0.64221,0.88814-0.36589,1.36653C2.22187,16.65031,2.34806,16.7765,2.5,16.86426l9,5.19726c0.30947,0.17838,0.69053,0.17838,1,0l9-5.19726c0.4784-0.27632,0.64221-0.88814,0.36589-1.36653C21.77813,15.34579,21.65194,15.2196,21.5,15.13184z"/>
+                                                                        </svg>
+                                                                    </div>
+                                                                    <h4 class="mb-3">Essential</h4>
+                                                                    <p class="mb-4 op-7">Lorem invidunt ea clita consetetur ea rebum sit accusam ipsum,.</p>
+                                                                    <h1 class="mb-4">$79.9<span class="fs-14 text-muted">&nbsp; / month</span></h1>
+                                                                    <ul class="list-unstyled fs-14  mb-4">
+                                                                        <li class="list-item mb-3">
+                                                                            <div class="d-flex align-items-center-start">
+                                                                                <span class="me-2"><i class="fe fe-check-circle text-primary"></i></span>
+                                                                                <span class="flex-grow-1">Web Design</span>
+                                                                            </div>
+                                                                        </li>
+                                                                        <li class="list-item mb-3">
+                                                                            <div class="d-flex align-items-center-start">
+                                                                                <span class="me-2"><i class="fe fe-check-circle text-primary"></i></span>
+                                                                                <span class="flex-grow-1">Data Security and Backups</span>
+                                                                            </div>
+                                                                        </li>
+                                                                        <li class="list-item mb-3">
+                                                                            <div class="d-flex align-items-center-start">
+                                                                                <span class="me-2"><i class="fe fe-check-circle text-primary"></i></span>
+                                                                                <span class="flex-grow-1">Business Sevices</span>
+                                                                            </div>
+                                                                        </li>
+                                                                        <li class="list-item mb-3">
+                                                                            <div class="d-flex align-items-center-start">
+                                                                                <span class="me-2"><i class="fe fe-check-circle text-primary"></i></span>
+                                                                                <span class="flex-grow-1">2 Users</span>
+                                                                            </div>
+                                                                        </li>
+                                                                        <li class="list-item mb-3">
+                                                                            <div class="d-flex align-items-center-start">
+                                                                                <span class="me-2"><i class="fe fe-check-circle text-primary"></i></span>
+                                                                                <span class="flex-grow-1">1 Websites</span>
+                                                                            </div>
+                                                                        </li>
+                                                                        <li class="list-item mb-3">
+                                                                            <div class="d-flex align-items-center-start">
+                                                                                <span class="me-2"><i class="fe fe-check-circle text-primary"></i></span>
+                                                                                <span class="flex-grow-1">24/7 priority support</span>
+                                                                            </div>
+                                                                        </li>
+                                                                        <li class="list-item">
+                                                                            <div class="d-flex align-items-center-start">
+                                                                                <span class="me-2"><i class="fe fe-check-circle text-primary"></i></span>
+                                                                                <span class="flex-grow-1">Customization <a aria-label="anchor" href="javascript:void(0);" data-bs-toggle="tooltip" ngbTooltip="customized solutions tailored to your specific requirements." class="ms-1 op-7 all-ease-03 text-fixed-white"><i class="bi bi-info-circle-fill fs-14"></i></a></span>
+                                                                            </div>
+                                                                        </li>
+                                                                    </ul>
+                                                                    <div class="d-grid">
+                                                                        <a href="javascript:void(0);" class="btn btn-lg btn-primary">Buy Now</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4">
+                                                            <div class="card reveal">
+                                                                <div class="card-body main-card-body">
+                                                                    <div class="pricing-icon">
+                                                                        <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" viewBox="0 0 24 24" fill="currentColor">
+                                                                            <path  opacity=".5" d="M19 6H5a3 3 0 0 0-3 3v2.72L8.837 14h6.326L22 11.72V9a3 3 0 0 0-3-3z"/>
+                                                                            <path d="M10 6V5h4v1h2V5a2.002 2.002 0 0 0-2-2h-4a2.002 2.002 0 0 0-2 2v1h2zm-1.163 8L2 11.72V18a3.003 3.003 0 0 0 3 3h14a3.003 3.003 0 0 0 3-3v-6.28L15.163 14H8.837z"/>
+                                                                        </svg>
+                                                                    </div>
+                                                                    <h4 class="mb-3">Pro</h4>
+                                                                    <p class="mb-4">Lorem invidunt ea clita consetetur ea rebum sit accusam ipsum,.</p>
+                                                                    <h6 class="mb-4 fs-3">$125.5<span class="fs-14 text-muted op-7">&nbsp; / month</span></h6>
+                                                                    <ul class="list-unstyled fs-14  mb-4">
+                                                                        <li class="list-item mb-3">
+                                                                            <div class="d-flex align-items-center-start">
+                                                                                <span class="me-2 text-primary"><i class="fe fe-check-circle"></i></span>
+                                                                                <span class="flex-grow-1">Web Design</span>
+                                                                            </div>
+                                                                        </li>
+                                                                        <li class="list-item mb-3">
+                                                                            <div class="d-flex align-items-center-start">
+                                                                                <span class="me-2 text-primary"><i class="fe fe-check-circle"></i></span>
+                                                                                <span class="flex-grow-1">Data Security and Backups</span>
+                                                                            </div>
+                                                                        </li>
+                                                                        <li class="list-item mb-3">
+                                                                            <div class="d-flex align-items-center-start">
+                                                                                <span class="me-2 text-primary"><i class="fe fe-check-circle"></i></span>
+                                                                                <span class="flex-grow-1">Unlimited Users</span>
+                                                                            </div>
+                                                                        </li>
+                                                                        <li class="list-item mb-3">
+                                                                            <div class="d-flex align-items-center-start">
+                                                                                <span class="me-2 text-primary"><i class="fe fe-check-circle"></i></span>
+                                                                                <span class="flex-grow-1">Unlimited Websites</span>
+                                                                            </div>
+                                                                        </li>
+                                                                        <li class="list-item mb-3">
+                                                                            <div class="d-flex align-items-center-start">
+                                                                                <span class="me-2 text-primary"><i class="fe fe-check-circle"></i></span>
+                                                                                <span class="flex-grow-1">24/7 priority support</span>
+                                                                            </div>
+                                                                        </li>
+                                                                        <li class="list-item">
+                                                                            <div class="d-flex align-items-center-start">
+                                                                                <span class="me-2 text-primary"><i class="fe fe-check-circle"></i></span>
+                                                                                <span class="flex-grow-1">Customization <a aria-label="anchor" href="javascript:void(0);" data-bs-toggle="tooltip" ngbTooltip="customized solutions tailored to your specific requirements." class="ms-1 op-4 all-ease-03 text-primary"><i class="bi bi-info-circle-fill fs-14"></i></a></span>
+                                                                            </div>
+                                                                        </li>
+                                                                    </ul>
+                                                                    <div class="d-grid">
+                                                                        <a href="javascript:void(0);" class="btn btn-lg btn-primary-light">Buy Now</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </ng-template>
+                                        </li>
+                                        <li [ngbNavItem]="2" class="nav-item">
+                                            <button ngbNavLink type="button" class="nav-link rounded-pill fw-medium" data-bs-toggle="pill" data-bs-target="#pills-yearly">Annually <span class="badge bg-info ms-1 rounded-pill">Save 10%</span></button>
+                                            <ng-template ngbNavContent>
+                                                <div class="p-0 border-0" id="pills-yearly">
+                                                    <div class="row align-items-center">
+                                                        <div class="col-lg-4">
+                                                            <div class="card reveal">
+                                                                <div class="card-body main-card-body">
+                                                                    <div class="pricing-icon">
+                                                                        <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" viewBox="0 0 24 24" fill="currentColor">
+                                                                            <path opacity=".5" d="M21.951 9.67a1 1 0 0 0-.807-.68l-5.699-.828-2.548-5.164A.978.978 0 0 0 12 2.486v16.28l5.097 2.679a1 1 0 0 0 1.451-1.054l-.973-5.676 4.123-4.02a1 1 0 0 0 .253-1.025z"/>
+                                                                            <path d="M11.103 2.998 8.555 8.162l-5.699.828a1 1 0 0 0-.554 1.706l4.123 4.019-.973 5.676a1 1 0 0 0 1.45 1.054L12 18.765V2.503c-.356.001-.703.167-.897.495z"/>
+                                                                        </svg>
+                                                                    </div>
+                                                                    <h4 class="mb-3">Advance</h4>
+                                                                    <p class="mb-4">Lorem invidunt ea clita consetetur ea rebum sit accusam ipsum,.</p>
+                                                                    <h6 class="mb-4 fs-3">$196.9<span class="fs-14 text-muted op-7">&nbsp; / year</span></h6>
+                                                                    <ul class="list-unstyled fs-14  mb-4">
+                                                                        <li class="list-item mb-3">
+                                                                            <div class="d-flex align-items-center-start">
+                                                                                <span class="me-2 text-primary"><i class="fe fe-check-circle"></i></span>
+                                                                                <span class="flex-grow-1">Web Design</span>
+                                                                            </div>
+                                                                        </li>
+                                                                        <li class="list-item mb-3">
+                                                                            <div class="d-flex align-items-center-start">
+                                                                                <span class="me-2 text-primary"><i class="fe fe-check-circle"></i></span>
+                                                                                <span class="flex-grow-1">Data Security and Backups</span>
+                                                                            </div>
+                                                                        </li>
+                                                                        <li class="list-item mb-3">
+                                                                            <div class="d-flex align-items-center-start">
+                                                                                <span class="me-2 text-primary"><i class="fe fe-check-circle"></i></span>
+                                                                                <span class="flex-grow-1">2 Users</span>
+                                                                            </div>
+                                                                        </li>
+                                                                        <li class="list-item mb-3">
+                                                                            <div class="d-flex align-items-center-start">
+                                                                                <span class="me-2 text-primary"><i class="fe fe-check-circle"></i></span>
+                                                                                <span class="flex-grow-1">Unlimited Websites</span>
+                                                                            </div>
+                                                                        </li>
+                                                                        <li class="list-item mb-3">
+                                                                            <div class="d-flex align-items-center-start">
+                                                                                <span class="me-2 text-primary"><i class="fe fe-check-circle"></i></span>
+                                                                                <span class="flex-grow-1">24/7 priority support</span>
+                                                                            </div>
+                                                                        </li>
+                                                                        <li class="list-item">
+                                                                            <div class="d-flex align-items-center-start">
+                                                                                <span class="me-2 text-primary"><i class="fe fe-check-circle"></i></span>
+                                                                                <span class="flex-grow-1">Customization <a aria-label="anchor" href="javascript:void(0);" data-bs-toggle="tooltip" ngbTooltip="customized solutions tailored to your specific requirements." class="ms-1 op-4 all-ease-03 text-primary"><i class="bi bi-info-circle-fill fs-14"></i></a></span>
+                                                                            </div>
+                                                                        </li>
+                                                                    </ul>
+                                                                    <div class="d-grid">
+                                                                        <a href="javascript:void(0);" class="btn btn-lg btn-primary-light">Buy Now</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4">
+                                                            <div class="card pricing-card03 reveal">
+                                                                <div class="card-body main-card-body">
+                                                                    <div class="pricing-icon bg-primary text-fixed-white">
+                                                                        <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" viewBox="0 0 24 24" fill="currentColor">
+                                                                            <path d="M12,14.19531c-0.17551-0.00004-0.34793-0.04618-0.5-0.13379l-9-5.19726C2.02161,8.58794,1.85779,7.97612,2.13411,7.49773C2.22187,7.34579,2.34806,7.2196,2.5,7.13184l9-5.19336c0.30964-0.17774,0.69036-0.17774,1,0l9,5.19336c0.4784,0.27632,0.64221,0.88814,0.36589,1.36653C21.77813,8.65031,21.65194,8.7765,21.5,8.86426l-9,5.19726C12.34793,14.14913,12.17551,14.19527,12,14.19531z"/>
+                                                                            <path opacity=".7" d="M21.5,11.13184l-1.96411-1.13337L12.5,14.06152c-0.30947,0.17839-0.69053,0.17839-1,0L4.46411,9.99847L2.5,11.13184c-0.47839,0.27632-0.64221,0.88814-0.36589,1.36653C2.22187,12.65031,2.34806,12.7765,2.5,12.86426l9,5.19726c0.30947,0.17838,0.69053,0.17838,1,0l9-5.19726c0.4784-0.27632,0.64221-0.88814,0.36589-1.36653C21.77813,11.34579,21.65194,11.2196,21.5,11.13184z"/>
+                                                                            <path opacity=".5" d="M21.5,15.13184l-1.96411-1.13337L12.5,18.06152c-0.30947,0.17838-0.69053,0.17838-1,0l-7.03589-4.06305L2.5,15.13184c-0.47839,0.27632-0.64221,0.88814-0.36589,1.36653C2.22187,16.65031,2.34806,16.7765,2.5,16.86426l9,5.19726c0.30947,0.17838,0.69053,0.17838,1,0l9-5.19726c0.4784-0.27632,0.64221-0.88814,0.36589-1.36653C21.77813,15.34579,21.65194,15.2196,21.5,15.13184z"/>
+                                                                        </svg>
+                                                                    </div>
+                                                                    <h4 class="mb-3">Essential</h4>
+                                                                    <p class="mb-4 op-7">Lorem invidunt ea clita consetetur ea rebum sit accusam ipsum,.</p>
+                                                                    <h1 class="mb-4">$179.9<span class="fs-14 text-muted">&nbsp; / year</span></h1>
+                                                                    <ul class="list-unstyled fs-14  mb-4">
+                                                                        <li class="list-item mb-3">
+                                                                            <div class="d-flex align-items-center-start">
+                                                                                <span class="me-2"><i class="fe fe-check-circle text-primary"></i></span>
+                                                                                <span class="flex-grow-1">Web Design</span>
+                                                                            </div>
+                                                                        </li>
+                                                                        <li class="list-item mb-3">
+                                                                            <div class="d-flex align-items-center-start">
+                                                                                <span class="me-2"><i class="fe fe-check-circle text-primary"></i></span>
+                                                                                <span class="flex-grow-1">Data Security and Backups</span>
+                                                                            </div>
+                                                                        </li>
+                                                                        <li class="list-item mb-3">
+                                                                            <div class="d-flex align-items-center-start">
+                                                                                <span class="me-2"><i class="fe fe-check-circle text-primary"></i></span>
+                                                                                <span class="flex-grow-1">Business Sevices</span>
+                                                                            </div>
+                                                                        </li>
+                                                                        <li class="list-item mb-3">
+                                                                            <div class="d-flex align-items-center-start">
+                                                                                <span class="me-2"><i class="fe fe-check-circle text-primary"></i></span>
+                                                                                <span class="flex-grow-1">Unlimited Users</span>
+                                                                            </div>
+                                                                        </li>
+                                                                        <li class="list-item mb-3">
+                                                                            <div class="d-flex align-items-center-start">
+                                                                                <span class="me-2"><i class="fe fe-check-circle text-primary"></i></span>
+                                                                                <span class="flex-grow-1">2 Websites</span>
+                                                                            </div>
+                                                                        </li>
+                                                                        <li class="list-item mb-3">
+                                                                            <div class="d-flex align-items-center-start">
+                                                                                <span class="me-2"><i class="fe fe-check-circle text-primary"></i></span>
+                                                                                <span class="flex-grow-1">24/7 priority support</span>
+                                                                            </div>
+                                                                        </li>
+                                                                        <li class="list-item">
+                                                                            <div class="d-flex align-items-center-start">
+                                                                                <span class="me-2"><i class="fe fe-check-circle text-primary"></i></span>
+                                                                                <span class="flex-grow-1">Customization <a aria-label="anchor" href="javascript:void(0);" data-bs-toggle="tooltip" ngbTooltip="customized solutions tailored to your specific requirements." class="ms-1 op-7 all-ease-03 text-fixed-white"><i class="bi bi-info-circle-fill fs-14"></i></a></span>
+                                                                            </div>
+                                                                        </li>
+                                                                    </ul>
+                                                                    <div class="d-grid">
+                                                                        <a href="javascript:void(0);" class="btn btn-lg btn-primary">Buy Now</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4">
+                                                            <div class="card reveal">
+                                                                <div class="card-body main-card-body">
+                                                                    <div class="pricing-icon">
+                                                                        <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" viewBox="0 0 24 24" fill="currentColor">
+                                                                            <path  opacity=".5" d="M19 6H5a3 3 0 0 0-3 3v2.72L8.837 14h6.326L22 11.72V9a3 3 0 0 0-3-3z"/>
+                                                                            <path d="M10 6V5h4v1h2V5a2.002 2.002 0 0 0-2-2h-4a2.002 2.002 0 0 0-2 2v1h2zm-1.163 8L2 11.72V18a3.003 3.003 0 0 0 3 3h14a3.003 3.003 0 0 0 3-3v-6.28L15.163 14H8.837z"/>
+                                                                        </svg>
+                                                                    </div>
+                                                                    <h4 class="mb-3">Pro</h4>
+                                                                    <p class="mb-4">Lorem invidunt ea clita consetetur ea rebum sit accusam ipsum,.</p>
+                                                                    <h6 class="mb-4 fs-3">$1125.5<span class="fs-14 text-muted op-7">&nbsp; / year</span></h6>
+                                                                    <ul class="list-unstyled fs-14  mb-4">
+                                                                        <li class="list-item mb-3">
+                                                                            <div class="d-flex align-items-center-start">
+                                                                                <span class="me-2 text-primary"><i class="fe fe-check-circle"></i></span>
+                                                                                <span class="flex-grow-1">Web Design</span>
+                                                                            </div>
+                                                                        </li>
+                                                                        <li class="list-item mb-3">
+                                                                            <div class="d-flex align-items-center-start">
+                                                                                <span class="me-2 text-primary"><i class="fe fe-check-circle"></i></span>
+                                                                                <span class="flex-grow-1">Data Security and Backups</span>
+                                                                            </div>
+                                                                        </li>
+                                                                        <li class="list-item mb-3">
+                                                                            <div class="d-flex align-items-center-start">
+                                                                                <span class="me-2 text-primary"><i class="fe fe-check-circle"></i></span>
+                                                                                <span class="flex-grow-1">2 Users</span>
+                                                                            </div>
+                                                                        </li>
+                                                                        <li class="list-item mb-3">
+                                                                            <div class="d-flex align-items-center-start">
+                                                                                <span class="me-2 text-primary"><i class="fe fe-check-circle"></i></span>
+                                                                                <span class="flex-grow-1">2 Websites</span>
+                                                                            </div>
+                                                                        </li>
+                                                                        <li class="list-item mb-3">
+                                                                            <div class="d-flex align-items-center-start">
+                                                                                <span class="me-2 text-primary"><i class="fe fe-check-circle"></i></span>
+                                                                                <span class="flex-grow-1">24/7 priority support</span>
+                                                                            </div>
+                                                                        </li>
+                                                                        <li class="list-item">
+                                                                            <div class="d-flex align-items-center-start">
+                                                                                <span class="me-2 text-primary"><i class="fe fe-check-circle"></i></span>
+                                                                                <span class="flex-grow-1">Customization <a aria-label="anchor" href="javascript:void(0);" data-bs-toggle="tooltip" ngbTooltip="customized solutions tailored to your specific requirements." class="ms-1 op-4 all-ease-03 text-primary"><i class="bi bi-info-circle-fill fs-14"></i></a></span>
+                                                                            </div>
+                                                                        </li>
+                                                                    </ul>
+                                                                    <div class="d-grid">
+                                                                        <a href="javascript:void(0);" class="btn btn-lg btn-primary-light">Buy Now</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </ng-template>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="tab-content" [ngbNavOutlet]="nav">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End:: row-2 -->

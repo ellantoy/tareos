@@ -1,0 +1,449 @@
+<app-page-header title="Crypto" title1="Dashboards" activeTitle="Crypto"></app-page-header>
+<div class="row">
+    <div class="col-xl-12">
+        <div class="card custom-card">
+            <div class="card-body">
+                <div class="d-flex align-items-center justify-content-between">
+                    <div class="swiper swiper-basic">
+                        <div class="swiper-wrapper">
+                            <swiper-container #swiperContainer
+                            class="swiper crypto-swiper swiper-basic swiper-initialized swiper-horizontal swiper-backface-hidden"
+                            space-between="10" slides-per-view="6" slides-per-group="1" autoplay-delay="2000"
+                            autoplay-disable-on-interaction="false">
+                            @for (crypto of cryptoData; track $index) {
+                                <swiper-slide>
+                            <spk-crypto-card1
+                            [logoUrl]="crypto.logoUrl"
+                            [cryptoName]="crypto.name"
+                            [price]="crypto.price"
+                            [percentageChange]="crypto.percentageChange"
+                            [isPositive]="crypto.isPositive">
+                          </spk-crypto-card1>
+                          </swiper-slide>
+                        }
+                        </swiper-container>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Start::row-1 -->
+<div class="row">
+    @for (crypto of cryptoData1; track $index) {
+        <div class="col-xxl-3 col-xl-6 col-lg-6 col-md-6">
+    <spk-crypto-card2
+      [logoUrl]="crypto.logoUrl"
+      [cryptoName]="crypto.name"
+      [cryptoSymbol]="crypto.symbol"
+      [priceChange]="crypto.priceChange"
+      [textColor]="crypto.textColor"
+      [value]="crypto.value"
+      [usdPrice]="crypto.usdPrice"
+      [chartOptions]="crypto.chartOptions">
+    </spk-crypto-card2>
+    </div>
+}
+  </div>
+<!-- End::row-1 -->
+
+<!-- Start:: row-2 -->
+<div class="row">
+    <div class="col-xl-4">
+        <div class="card custom-card">
+            <div class="card-header align-items-center justify-content-between">
+                <div>
+                    <div class="mb-1">Wallet Value</div>
+                    <div class="fs-12 text-muted">
+                        <span class="fs-10 badge bg-success-transparent text-success p-1"><i class="ri-arrow-up-s-line align-middle me-1"></i>12.2%</span> Increased
+                    </div>
+                </div>
+                <div class="text-end">
+                    <div class="fs-20 fw-semibold">$132,12933.000</div>
+                    <small class="text-muted fw-semibold">12 BTC</small>
+                </div>
+            </div>
+            <div class="card-body">
+                <ul ngbNav #nav="ngbNav" class="nav nav-tabs tab-style-1 d-sm-flex d-block nav-justified" role="tablist">
+                    <li [ngbNavItem]="1" class="nav-item me-sm-2 me-0">
+                        <a ngbNavLink class="nav-link" data-bs-toggle="tab" data-bs-target="#buy-crypto"
+                            aria-current="page">Buy</a>
+                            <ng-template ngbNavContent>
+                                <div class="border-0 p-0" id="buy-crypto" role="tabpanel"
+                                aria-labelledby="buy-crypto">
+                                <div class="input-group mb-3 d-flex flex-nowrap">
+                                    <input type="text" class="form-control form-control-sm crypto-buy-sell-input" aria-label="crypto buy select" placeholder="Select Currency">
+                                    <spk-ng-select [options]="Crypto" [id]="'choices-single-default'" [selectClass]="''"
+                                    [clearable]="true" [multi]="true" [searchable]="true" [placeholder]="'BTC'"
+                                    [additionalProperties]="{}" (change)="handleSelectChange($event)">
+                                </spk-ng-select>
+                                </div>
+                                <div class="input-group mb-3 d-flex flex-nowrap">
+                                    <input type="text" class="form-control form-control-sm crypto-buy-sell-input" aria-label="crypto buy select" placeholder="36,335.00">
+                                   <spk-ng-select [options]="Crypto1" [id]="'choices-single-default'" [selectClass]="''"
+                            [clearable]="true" [multi]="true" [searchable]="true" [placeholder]="'USD'"
+                            [additionalProperties]="{}" (change)="handleSelectChange($event)">
+                        </spk-ng-select>
+                                </div>
+                                <div>
+                                    <div class="fs-14 py-2"><span class="fw-semibold text-dark">Price:</span><span class="text-muted ms-2 fs-14 d-inline-block">6.003435</span><span class="text-dark fw-semibold float-end">BTC</span></div>
+                                    <div class="fs-14 py-2"><span class="fw-semibold text-dark">Amount:</span><span class="text-muted ms-2 fs-14 d-inline-block">2,34,4543.00</span><span class="text-dark fw-semibold float-end">LTC</span></div>
+                                    <div class="fw-semibold fs-14 py-2">Total: <span class="fs-14 d-inline-block">22.00 BTC</span></div>
+                                    <div class="fs-12 text-success">Additional Charges: 0.32%(0.0001231 BTC)</div>
+                                    <label class="fw-semibold fs-12 mt-4 mb-2">SELECT PAYMENT METHOD :</label>
+                                    <div class="row g-2">
+                                        <div class="col-xl-6">
+                                            <div class="p-2 border rounded">
+                                                <div class="form-check mb-0">
+                                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
+                                                    <label class="form-check-label fs-12" for="flexRadioDefault1">
+                                                        Credit / Debit Cards
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6">
+                                            <div class="p-2 border rounded">
+                                                <div class="form-check mb-0">
+                                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                                                    <label class="form-check-label fs-12" for="flexRadioDefault2">
+                                                        Paypal
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-grid mt-4 pt-1">
+                                    <button type="button" class="btn btn-primary btn-wave">BUY</button>
+                                </div>
+                            </div>
+                            </ng-template>
+                    </li>
+                    <li [ngbNavItem]="2" class="nav-item">
+                        <a ngbNavLink class="nav-link" data-bs-toggle="tab" data-bs-target="#sell-crypto"
+                            >Sell</a>
+                            <ng-template ngbNavContent>
+                                <div class="border-0 p-0" id="sell-crypto" role="tabpanel"
+                                aria-labelledby="sell-crypto">
+                                <div class="input-group mb-3 d-flex flex-nowrap">
+                                    <input type="text" class="form-control form-control-sm crypto-buy-sell-input" aria-label="crypto buy select" placeholder="Select Currency">
+                                    <spk-ng-select [options]="Crypto" [id]="'choices-single-default'" [selectClass]="''"
+                            [clearable]="true" [multi]="true" [searchable]="true" [placeholder]="'BTC'"
+                            [additionalProperties]="{}" (change)="handleSelectChange($event)">
+                        </spk-ng-select>
+                                </div>
+                                <div class="input-group mb-3 d-flex flex-nowrap">
+                                    <input type="text" class="form-control form-control-sm crypto-buy-sell-input" aria-label="crypto buy select" placeholder="36,335.00">
+                                    <spk-ng-select [options]="Crypto1" [id]="'choices-single-default'" [selectClass]="''"
+                                    [clearable]="true" [multi]="true" [searchable]="true" [placeholder]="'USD'"
+                                    [additionalProperties]="{}" (change)="handleSelectChange($event)">
+                                </spk-ng-select>
+                                </div>
+                                <div>
+                                    <div class="fs-14 py-2"><span class="fw-semibold text-dark">Price:</span><span class="text-muted ms-2 fs-14 d-inline-block">6.003435</span><span class="text-dark fw-semibold float-end">BTC</span></div>
+                                    <div class="fs-14 py-2"><span class="fw-semibold text-dark">Amount:</span><span class="text-muted ms-2 fs-14 d-inline-block">2,34,4543.00</span><span class="text-dark fw-semibold float-end">LTC</span></div>
+                                    <div class="fw-semibold fs-14 py-2">Total: <span class="fs-14 d-inline-block">22.00 BTC</span></div>
+                                    <div class="fs-12 text-success">Additional Charges: 0.32%(0.0001231 BTC)</div>
+                                    <label class="fw-semibold fs-12 mt-4 mb-2">SELECT PAYMENT METHOD :</label>
+                                    <div class="row g-2">
+                                        <div class="col-xl-6">
+                                            <div class="p-2 border rounded">
+                                                <div class="form-check mb-0">
+                                                    <input class="form-check-input" type="radio" name="sellcrypto" id="sellcrypto1">
+                                                    <label class="form-check-label fs-12" for="sellcrypto1">
+                                                        Credit / Debit Cards
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6">
+                                            <div class="p-2 border rounded">
+                                                <div class="form-check mb-0">
+                                                    <input class="form-check-input" type="radio" name="sellcrypto" id="sellcrypto2" checked>
+                                                    <label class="form-check-label fs-12" for="sellcrypto2">
+                                                        Paypal
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-grid mt-4 pt-1">
+                                    <button type="button" class="btn btn-danger btn-wave">SELL</button>
+                                </div>
+                            </div>
+                            </ng-template>
+                    </li>
+                </ul>
+                <div class="tab-content" id="pricing" [ngbNavOutlet]="nav">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-8">
+        <div class="card custom-card">
+            <div class="card-header justify-content-between">
+                <div class="card-title flex-fill">
+                    Coin Statistics
+                </div>
+                <div class="btn-group" role="group" aria-label="Basic example"> 
+                    <button type="button" class="btn btn-primary btn-sm btn-wave">1D</button>
+                    <button type="button" class="btn btn-primary-light btn-sm btn-wave">1W</button> 
+                    <button type="button" class="btn btn-primary-light btn-sm btn-wave">1M</button> 
+                    <button type="button" class="btn btn-primary-light btn-sm btn-wave">1Y</button> 
+                </div>
+                <div ngbDropdown class="btn-group ms-2">
+                    <button ngbDropdownToggle type="button" class="btn btn-outline-light border btn-sm dropdown-toggle"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        <span class="avatar avatar-xs avatar-rounded me-2 align-middle"><img src="./assets/images/crypto-currencies/crypto-icons/bitcoin-btc-logo.svg" alt=""></span>Bitcoin
+                    </button>
+                    <ul ngbDropdownMenu class="dropdown-menu">
+                        <li><a class="dropdown-item" href="javascript:void(0);"><span class="avatar avatar-xs avatar-rounded me-2 align-middle"><img src="./assets/images/crypto-currencies/crypto-icons/ethereum-eth-logo.svg" alt=""></span>Etherium</a></li>
+                        <li><a class="dropdown-item" href="javascript:void(0);"><span class="avatar avatar-xs avatar-rounded me-2 align-middle"><img src="./assets/images/crypto-currencies/crypto-icons/tether-usdt-logo.svg" alt=""></span>Tether</a></li>
+                        <li><a class="dropdown-item" href="javascript:void(0);"><span class="avatar avatar-xs avatar-rounded me-2 align-middle"><img src="./assets/images/crypto-currencies/crypto-icons/xrp-xrp-logo.svg" class="invert-1" alt=""></span>XRP</a></li>
+                        <li><a class="dropdown-item" href="javascript:void(0);"><span class="avatar avatar-xs avatar-rounded me-2 align-middle"><img src="./assets/images/crypto-currencies/crypto-icons/tron-trx-logo.svg" alt=""></span>TRON</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="p-3 mb-3 d-flex align-items-center gap-4 border border-dashed rounded flex-wrap">
+                    <div class="d-flex align-items-center gap-2 flex-wrap">
+                        <span class="avatar avatar-sm">
+                            <img src="./assets/images/crypto-currencies/crypto-icons/bitcoin-btc-logo.svg" alt="">
+                        </span>
+                        <div><span class="fw-medium">Bitcoin</span> - <span class="text-muted">BTC</span></div>
+                    </div>
+                    <h6 class="fw-medium mb-0">$42,761.32 USD<span class="text-success mx-2">0.14%</span>(24H)</h6>
+                    <div class="d-flex gap-4 align-items-center flex-wrap">
+                        <div>Open - <span class="text-success fw-medium">6612.98</span></div>
+                        <div>High - <span class="text-success fw-medium">6625.97</span></div>
+                        <div>Low - <span class="text-danger fw-medium">6612.34</span></div>
+                        <div>Close - <span class="text-success fw-medium">6623.45</span></div>
+                    </div>
+                </div>
+                <div id="coin-statistics">
+                    <spk-apexcharts [chartOptions]="chartOptions5"></spk-apexcharts>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End:: row-2 -->
+
+<!-- Start:: row-3 -->
+<div class="row">
+    <div class="col-xl-4">
+        <div class="card custom-card overflow-hidden">
+            <div class="card-header justify-content-between">
+                <div class="card-title">
+                    Recent Trades
+                </div>
+                <div>
+                    <button type="button" class="btn btn-primary-light btn-sm">View All</button>
+                </div>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <spk-reusable-tables  tableClass="table card-table table-vcenter text-nowrap mb-0"  [showCheckbox]="false">
+                            @for (transaction of transactions; track $index) {
+                            <tr>
+                              <td>
+                                <div class="d-flex align-items-center">
+                                  <div class="lh-1">
+                                    <span class="avatar avatar-sm avatar-rounded">
+                                      <img [src]="transaction.avatarUrl" alt="">
+                                    </span>
+                                  </div>
+                                  <div class="ms-2">
+                                    <span class="fw-medium d-block">{{ transaction.name }}</span>
+                                    <span class="mb-0 fs-12 text-muted">{{ transaction.crypto }}</span>
+                                  </div>
+                                </div>
+                              </td>
+                              <td>
+                                <span class="text-muted">{{ transaction.date }}</span>
+                              </td>
+                              <td>
+                                <div class="align-items-center text-end">
+                                  <span class="fs-12 text-muted mb-1">{{ transaction.status }} Time</span>
+                                  <p class="mb-0">{{ transaction.time }} -
+                                    <span class="fs-11 fw-medium" [ngClass]="transaction.statusClass">{{ transaction.status }}</span>
+                                  </p>
+                                </div>
+                              </td>
+                            </tr>
+                        }
+                    </spk-reusable-tables>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-4">
+        <div class="card custom-card overflow-hidden">
+            <div class="card-header justify-content-between">
+                <div class="card-title">
+                    My Balance
+                </div>
+                <a href="javascript:void(0);" class="fs-12 text-muted"> View All<i class="ti ti-arrow-narrow-right ms-1"></i> </a>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <spk-reusable-tables  tableClass="table text-nowrap"  [showCheckbox]="false">
+                            <tr *ngFor="let crypto of BalanceData">
+                              <td>
+                                <div class="d-flex align-items-start gap-2">
+                                  <span class="avatar avatar-md avatar-rounded">
+                                    <img [src]="crypto.image" alt="{{ crypto.name }}">
+                                  </span>
+                                  <div>
+                                    <a href="javascript:void(0);" class="fw-medium">{{ crypto.name }}</a>
+                                    <span class="text-muted d-block fs-12">{{ crypto.symbol }}</span>
+                                  </div>
+                                </div>
+                              </td>
+                              <td>
+                                {{ crypto.amount }}
+                              </td>
+                              <td>
+                                <span class="fw-medium fs-14">{{ crypto.price }}</span>
+                              </td>
+                              <td>
+                                <span [ngClass]="crypto.priceChangeClass">{{ crypto.change }}</span>
+                              </td>
+                            </tr>
+                         </spk-reusable-tables>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-4">
+        <div class="card custom-card overflow-hidden">
+            <div class="card-header">
+                <div class="card-title">
+                    Investments
+                </div>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <spk-reusable-tables  tableClass="table text-nowrap"  [showCheckbox]="false">
+                            @for (transaction of InvestmentsData; track $index) {
+                            <tr>
+                              <td>
+                                <div class="d-flex align-items-center">
+                                  <div class="fs-20 me-3 lh-1">
+                                    <span class="avatar avatar-md bg-{{transaction.iconBgClass}}-transparent svg-{{transaction.iconBgClass}} " [ngClass]="transaction.iconClass">
+                                        <span [innerHTML]="getSanitizedSVG(transaction.icon)"></span>
+                                    </span>
+                                  </div>
+                                  <div>
+                                    <h6 class="mb-0 fs-12">{{ transaction.pair }}</h6>
+                                    <span class="text-{{transaction.badgeCalss}} fs-11"><i class="fa fa-caret-up me-1"></i>{{ transaction.change }}%</span>
+                                  </div>
+                                </div>
+                              </td>
+                              <td>
+                                <h6 class="mb-0">{{ transaction.amount }}</h6>
+                                <small class="fs-11 text-muted">{{ transaction.amountInUSD }} USD</small>
+                              </td>
+                              <td>
+                                <div class="mb-0 d-flex align-items-center gap-1 lh-1">
+                                  <span class="text-danger fw-medium fs-12">{{ transaction.fromCurrency }}</span>
+                                  <span class="rtl-rotate"> 
+                                    <i class="bi bi-arrow-right-short text-muted fs-16"></i>
+                                  </span> 
+                                  <span class="fw-medium fs-12 text-success">{{ transaction.toCurrency }}</span>
+                                </div>
+                                <small class="fs-11 text-muted">{{ transaction.exchangeRate }}</small>
+                              </td>
+                              <td>
+                                <span class="badge bg-{{transaction.statusClass}}-transparent">{{ transaction.status }}</span>
+                              </td>
+                            </tr>
+                        }
+                    </spk-reusable-tables>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End:: row-3 -->
+
+<!-- Start:: row-4 -->
+<div class="row">
+    <div class="col-xl-12">
+        <div class="card custom-card">
+            <div class="card-header justify-content-between">
+                <div class="card-title">Crypto Currency Prices</div>
+                <div class="btn-group" role="group" aria-label="Basic example"> 
+                    <button type="button" class="btn btn-primary btn-sm btn-wave waves-effect waves-light">1D</button> 
+                    <button type="button" class="btn btn-primary-light btn-sm btn-wave waves-effect waves-light">1W</button> 
+                    <button type="button" class="btn btn-primary-light btn-sm btn-wave waves-effect waves-light">1M</button> 
+                    <button type="button" class="btn btn-primary-light btn-sm btn-wave waves-effect waves-light">1Y</button>
+                </div>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <spk-reusable-tables [columns]="CurrencyPricesHeader"  tableClass="table table-hover text-nowrap nft-table"  [showCheckbox]="false">
+                            @for (crypto of cryptos; track $index) {
+                            <tr>
+                              <td class="text-center">
+                                <span class="fs-15 text-muted"><i class="ri-star-line"></i></span>
+                              </td>
+                              <td>{{ crypto.rank }}</td>
+                              <td>
+                                <div class="d-flex align-items-center gap-2">
+                                  <div class="lh-1">
+                                    <span class="avatar avatar-sm">
+                                      <img [src]="crypto.icon" alt="{{ crypto.name }}">
+                                    </span>
+                                  </div>
+                                  <div class="fs-14">{{ crypto.name }}</div>
+                                </div>
+                              </td>
+                              <td>{{ crypto.price }}</td>
+                              <td><span class="text-success">{{ crypto.change24h }}</span></td>
+                              <td><span class="text-success">{{ crypto.change7d }}</span></td>
+                              <td>{{ crypto.supply }}</td>
+                              <td>{{ crypto.marketCap }}</td>
+                              <td>{{ crypto.volume }}</td>
+                              <td>
+                                <div id="{{ crypto.name | lowercase }}-change">
+                                    <spk-apexcharts [chartOptions]="crypto.chartOptions"></spk-apexcharts>
+                                </div>
+                              </td>
+                            </tr>
+                           }
+                    </spk-reusable-tables>
+                </div>
+            </div>
+            <div class="card-footer border-top-0">
+                <div class="d-flex align-items-center">
+                    <div>
+                        Showing 6 Entries <i class="bi bi-arrow-right ms-2"></i>
+                    </div>
+                    <div class="ms-auto">
+                        <nav aria-label="Page navigation" class="pagination-style-4">
+                            <ul class="pagination mb-0">
+                                <li class="page-item disabled">
+                                    <a class="page-link" href="javascript:void(0);">
+                                        Prev
+                                    </a>
+                                </li>
+                                <li class="page-item active"><a class="page-link" href="javascript:void(0);">1</a></li>
+                                <li class="page-item"><a class="page-link" href="javascript:void(0);">2</a></li>
+                                <li class="page-item">
+                                    <a class="page-link text-primary" href="javascript:void(0);">
+                                        next
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End:: row-4 -->

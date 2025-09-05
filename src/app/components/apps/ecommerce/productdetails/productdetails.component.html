@@ -1,0 +1,582 @@
+<app-page-header firstTitle="Apps" title="Product-Details" title1="Ecommerce" activeTitle="Product-Details" ></app-page-header>
+      <!-- Start:: Row-1 -->
+      <div class="row">
+        <div class="col-xxl-4">
+            <div class="card custom-card">
+                <div class="card-body p-0">
+                    <spk-gallery [mainClass]="'card-body'" [badge]="'Featured'"  [imageData1]="imageData">
+                        @for (image of imageData; track $index) {
+                    <div class="row ad-gallery">
+                        <div class="col-xl-3">
+                            <a  class="glightbox card" data-gallery="gallery1" data-title="Light Blue" data-type="image" data-draggable="true">
+                                <img  [src]="image.previewUrl" alt="image" >
+                            </a>
+                        </div>
+                        <div class="col-xl-3">
+                            <a class="glightbox card" data-gallery="gallery1" data-title="Light Green" data-type="image" data-draggable="true">
+                                <img  [src]="image.previewUrl1" alt="image" >
+                            </a>
+                        </div>
+                        <div class="col-xl-3">
+                            <a class="glightbox card" data-gallery="gallery1" data-title="Light Purple" data-type="image" data-draggable="true">
+                                <img  [src]="image.previewUrl2" alt="image" >
+                            </a>
+                        </div>
+                    </div>
+                }
+                </spk-gallery>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-xxl-8">
+            <div class="card custom-card">
+                <div class="card-body p-4">
+                    <div>
+                        <p class="fs-22 fw-medium mb-0">Womens Leather Jacket With Pockets</p>
+                        <p class="fs-14 mb-3">
+                            <i class="ri-star-s-fill text-warning align-middle"></i>
+                            <i class="ri-star-s-fill text-warning align-middle"></i>
+                            <i class="ri-star-s-fill text-warning align-middle"></i>
+                            <i class="ri-star-s-fill text-warning align-middle"></i>
+                            <i class="ri-star-half-s-fill text-warning align-middle"></i>
+                            <span class="fw-medium ms-1">4.6<a class="text-primary ms-2"
+                                    href="javascript:void(0);">(1.8k Reviews)</a></span>
+                        </p>
+                        <div class="row mb-3 justify-content-between">
+                            <div class="col-xxl-4 col-xl-12 d-flex align-items-center gap-3">
+                                <p class="mb-1"><span class="h3 fw-medium"><sup
+                                            class="fs-14">$</sup>1,299<sup
+                                            class="fs-14">.00</sup></span></p>
+                                <p class="mb-0 text-muted fs-12">M.R.P-<s>$1,499.00</s></p>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <p class="fs-16 fw-medium mb-1">Description :</p>
+                            <p class="text-muted mb-0">
+                                Elevate your style with this women's leather jacket, designed for both comfort and sophistication. Crafted from high-quality leather, it offers durability and a sleek, timeless look. Featuring functional pockets, this jacket is perfect for keeping your essentials close while making a bold fashion statement.
+                            </p>
+                        </div>
+                        <div class="mb-2">
+                            <div class="row">
+                                <div class="col-xxl-7 col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                                    <p class="fs-15 fw-medium mb-2">Select Color :</p>
+                                    <p class="mb-0 d-flex">
+                                    <p class="mb-0 d-flex">
+                                        <a class="color-3 product-sizes" href="javascript:void(0)">
+                                            Orange
+                                        </a>
+                                        <a class="color-1 product-sizes selected" href="javascript:void(0)">
+                                            Green
+                                        </a>
+                                        <a class="color-2 product-sizes" href="javascript:void(0)">
+                                            Blue
+                                        </a>
+                                        <a class="color-3 product-sizes" href="javascript:void(0)">
+                                            Purple
+                                        </a>
+                                    </p>
+                                </div>
+                                <div
+                                    class="col-xxl-5 col-xl-6 col-lg-6 col-md-6 col-sm-12 mt-md-0 mt-3">
+                                    <p class="fs-15 fw-medium mb-2">Select Size :</p>
+                                    <p class="mb-0 d-flex">
+                                        <a class="color-1 product-sizes" href="javascript:void(0)">
+                                            XS
+                                        </a>
+                                        <a class="color-2 product-sizes selected"
+                                            href="javascript:void(0)">
+                                            S
+                                        </a>
+                                        <a class="color-3 product-sizes" href="javascript:void(0)">
+                                            M
+                                        </a>
+                                        <a class="color-3 product-sizes" href="javascript:void(0)">
+                                            L
+                                        </a>
+                                        <a class="color-3 product-sizes" href="javascript:void(0)">
+                                            XL
+                                        </a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex gap-2 flex-wrap mb-4"> <a [routerLink]="['/apps/ecommerce/wishlist']"
+                                class="btn btn-primary-ghost"><i
+                                    class="ri-heart-2-line me-2"></i>Add To Favourites</a>
+                            <div class="fs-14"> <a href="javascript:void(0);"
+                                    class="btn btn-danger-ghost"><i
+                                        class="ri-share-forward-line me-2"></i>Compare Product</a>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center flex-wrap gap-2">
+                            <p class="fs-15 mb-0 me-4 fw-medium">Share :</p>
+                            <div class="btn-list mb-0">
+                                <button
+                                    class="btn btn-sm btn-icon btn-primary-light btn-wave waves-effect waves-light mb-md-0">
+                                    <i class="ri-whatsapp-line"></i>
+                                </button>
+                                <button
+                                    class="btn btn-sm btn-icon btn-success-light btn-wave waves-effect waves-light mb-md-0">
+                                    <i class="ri-instagram-line"></i>
+                                </button>
+                                <button
+                                    class="btn btn-sm btn-icon btn-info-light btn-wave waves-effect waves-light mb-md-0">
+                                    <i class="ri-twitter-x-line"></i>
+                                </button>
+                                <button
+                                    class="btn btn-sm btn-icon btn-secondary-light btn-wave waves-effect waves-light mb-md-0">
+                                    <i class="ri-youtube-line"></i>
+                                </button>
+                                <button
+                                    class="btn btn-sm btn-icon btn-warning-light btn-wave waves-effect waves-light mb-md-0">
+                                    <i class="ri-facebook-line"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xxl-8">
+            <div class="card custom-card product-details-tab">
+                <div class="card-header">
+                    <ul ngbNav #nav="ngbNav" [activeId]="2" class="nav nav-tabs tab-style-7 scaleX profile-settings-tab gap-2" id="myTab4" role="tablist">
+                        <li  [ngbNavItem]="1" class="nav-item" role="presentation">
+                            <button ngbNavLink class="nav-link border border-dashed rounded-bottom-0 px-4" id="product-details" data-bs-toggle="tab" data-bs-target="#product-details-pane" type="button" role="tab" aria-controls="product-details-pane" aria-selected="true">Product Details</button>
+                            <ng-template ngbNavContent>
+                                <div class="p-0 border-0" id="product-details-pane" role="tabpanel" aria-labelledby="product-details" tabindex="0">
+                                    <div class="table-responsive">
+                                        <table class="table text-nowrap table-bordered">
+                                            <tbody>
+                                                <tr>
+                                                    <th scope="row" class="fw-medium">
+                                                        Brand
+                                                    </th>
+                                                    <td>TechPro</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row" class="fw-medium">
+                                                        Model Name
+                                                    </th>
+                                                    <td>
+                                                        X15 Elite - 2024 Edition
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row" class="fw-medium">
+                                                        Display
+                                                    </th>
+                                                    <td>
+                                                        15.6" 4K UHD Touchscreen
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row" class="fw-medium">
+                                                        Processor
+                                                    </th>
+                                                    <td>
+                                                        Intel Core i7
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row" class="fw-medium">
+                                                        Operating System
+                                                    </th>
+                                                    <td>
+                                                        Windows 10 Home
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </ng-template>
+                        </li>
+                        <li  [ngbNavItem]="2" class="nav-item" role="presentation">
+                            <button ngbNavLink class="nav-link border border-dashed px-4" id="key-features-tab" data-bs-toggle="tab" data-bs-target="#key-features-tab-pane" type="button" role="tab" aria-controls="key-features-tab-pane" aria-selected="false" tabindex="-1">Key Features</button>
+                            <ng-template ngbNavContent>
+                                <div class="show p-0 border-0" id="key-features-tab-pane" role="tabpanel" aria-labelledby="key-features-tab" tabindex="1">
+                                    <ul class="mb-0 ps-0 list-unstyled">
+                                        <li class="mb-3"><span class="fw-medium">Display:</span> Stunning 4K UHD resolution with touchscreen capability for immersive visuals and easy navigation.</li>
+                                        <li class="mb-3"><span class="fw-medium">Processor:</span> High-performance Intel Core i7 processor for seamless multitasking and powerful computing.</li>
+                                        <li class="mb-3"><span class="fw-medium">Memory:</span> 16GB DDR4 RAM ensures smooth performance even with multiple applications running simultaneously.</li>
+                                        <li class="mb-3"><span class="fw-medium">Storage:</span> Ample 1TB SSD storage for fast boot-up times, quick file access, and plenty of space for your files and applications.</li>
+                                        <li class="mb-3"><span class="fw-medium">Graphics:</span> NVIDIA GeForce GTX 1650 Ti graphics card delivers smooth gaming performance and supports creative applications.</li>
+                                        <li class="mb-0"><span class="fw-medium">Operating System:</span> Pre-installed with Windows 10 Home for a familiar and user-friendly computing experience.</li>
+                                    </ul>
+                                </div>
+                            </ng-template>
+                        </li>
+                        <li  [ngbNavItem]="3" class="nav-item" role="presentation">
+                            <button ngbNavLink class="nav-link border border-dashed px-4" id="add-features-tab" data-bs-toggle="tab" data-bs-target="#add-features-tab-pane" type="button" role="tab" aria-controls="add-features-tab-pane" aria-selected="false" tabindex="-1">Additional Features</button>
+                            <ng-template ngbNavContent>
+                                <div class="p-0 border-0" id="add-features-tab-pane" role="tabpanel" aria-labelledby="add-features-tab" tabindex="2">
+                                    <ul class="mb-0 ps-0 list-unstyled">
+                                        <li class="mb-3"><span class="fw-medium">Connectivity:</span> Wi-Fi, Bluetooth, USB ports, HDMI output, and more for easy connectivity to peripherals and accessories.</li>
+                                        <li class="mb-3"><span class="fw-medium">Design:</span> Sleek and stylish design with premium materials for durability and aesthetics.</li>
+                                        <li class="mb-3"><span class="fw-medium">Battery Life:</span> Long-lasting battery to keep you productive on the go.</li>
+                                        <li class="mb-3"><span class="fw-medium">Audio:</span> High-quality audio for immersive entertainment and clear communication.</li>
+                                        <li class="mb-3"><span class="fw-medium">Security:</span> Built-in security features to protect your data and privacy.</li>
+                                        <li class=""><span class="fw-medium">Warranty:</span> Backed by TechPro's warranty for peace of mind.</li>
+                                    </ul>
+                                </div>
+                            </ng-template>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-body tab-content" [ngbNavOutlet]="nav">
+                </div>
+            </div>
+            <div class="card custom-card">
+                <div class="card-header">
+                    <div class="card-title">
+                        Reviews &amp; Ratings
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-xxl-4 col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                            <div class="d-flex align-items-top mb-3">
+                                <div class="me-2 lh-1">
+                                    <i class="ri-star-fill fs-25 text-warning"></i>
+                                </div>
+                                <div class="lh-1">
+                                    <p class="mb-1 fw-medium">4.2 out of 5</p>
+                                    <p class="mb-0 text-muted fs-11">Based on (23,435) ratings</p>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="fs-12 me-2 fw-medium">5 <i
+                                        class="ri-star-fill fs-10"></i>
+                                </div>
+                                <div class="progress progress-xs flex-fill">
+                                    <div class="progress-bar bg-success" role="progressbar"
+                                        style="width: 55%" aria-valuenow="55" aria-valuemin="0"
+                                        aria-valuemax="100">
+                                    </div>
+                                </div>
+                                <div class="text-muted ms-2 fs-12">(10,893)</div>
+                            </div>
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="fs-12 me-2 fw-medium">4 <i
+                                        class="ri-star-fill fs-10"></i>
+                                </div>
+                                <div class="progress progress-xs flex-fill">
+                                    <div class="progress-bar bg-success" role="progressbar"
+                                        style="width: 22%" aria-valuenow="22" aria-valuemin="0"
+                                        aria-valuemax="100">
+                                    </div>
+                                </div>
+                                <div class="text-muted ms-2 fs-12">(6,534)</div>
+                            </div>
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="fs-12 me-2 fw-medium">3 <i
+                                        class="ri-star-fill fs-10"></i>
+                                </div>
+                                <div class="progress progress-xs flex-fill">
+                                    <div class="progress-bar bg-success" role="progressbar"
+                                        style="width: 8%" aria-valuenow="8" aria-valuemin="0"
+                                        aria-valuemax="100">
+                                    </div>
+                                </div>
+                                <div class="text-muted ms-2 fs-12">(4,342)</div>
+                            </div>
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="fs-12 me-2 fw-medium">2 <i
+                                        class="ri-star-fill fs-10"></i>
+                                </div>
+                                <div class="progress progress-xs flex-fill">
+                                    <div class="progress-bar bg-warning" role="progressbar"
+                                        style="width: 9%" aria-valuenow="9" aria-valuemin="0"
+                                        aria-valuemax="100">
+                                    </div>
+                                </div>
+                                <div class="text-muted ms-2 fs-12">(1,432)</div>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <div class="fs-12 me-2 fw-medium">1 <i
+                                        class="ri-star-fill fs-10"></i>
+                                </div>
+                                <div class="progress progress-xs flex-fill">
+                                    <div class="progress-bar bg-danger" role="progressbar"
+                                        style="width: 6%" aria-valuenow="6" aria-valuemin="0"
+                                        aria-valuemax="100">
+                                    </div>
+                                </div>
+                                <div class="text-muted ms-2 fs-12">(1,453)</div>
+                            </div>
+                        </div>
+                        <div
+                            class="col-xxl-8 col-xl-12 col-lg-12 col-md-12 col-sm-12 mt-xxl-0 mt-3">
+                            <div class="swiper swiper-reviews">
+                                <div class="swiper-wrapper">
+                                    <swiper-container 
+                                    #swiperContainer
+                                    class="swiper mySwiper" 
+                                    space-between="30"
+                                    slides-per-view="1"
+                                    slides-per-group="1"
+                                    autoplay-delay="2000"  autoplay-disable-on-interaction="false"
+                                  >
+                                      <swiper-slide >
+                                        <div class="card custom-card mb-0">
+                                            <div class="card-body py-0">
+                                                <div class="d-sm-flex d-block align-items-top mb-3">
+                                                    <div class="d-flex flex-fill">
+                                                        <div class="me-2">
+                                                            <span
+                                                                class="avatar avatar-sm avatar-rounded">
+                                                                <img src="./assets/images/faces/15.jpg"
+                                                                    alt="">
+                                                            </span>
+                                                        </div>
+                                                        <div class="lh-1 me-2">
+                                                            <p class="mb-1 fw-medium fs-14">
+                                                                Simon Cowall</p>
+                                                            <div class="mb-1">
+                                                                <i
+                                                                    class="ri-star-s-fill text-warning align-middle fs-12"></i>
+                                                                <i
+                                                                    class="ri-star-s-fill text-warning align-middle fs-12"></i>
+                                                                <i
+                                                                    class="ri-star-s-fill text-warning align-middle fs-12"></i>
+                                                                <i
+                                                                    class="ri-star-s-fill text-warning align-middle fs-12"></i>
+                                                                <i
+                                                                    class="ri-star-s-line text-warning align-middle fs-12"></i>
+                                                            </div>
+                                                            <div class="fs-11 text-muted">
+                                                                Reviewed on 24 nov,2024
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="ps-sm-0 mt-sm-0 mt-3 ps-sm-0 ps-2">
+                                                        <span class="badge bg-success">Verified
+                                                            Purchase</span>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <p class="fw-medium mb-1 ps-2">Absolute Game-Changer! 👍</p>
+                                                    <p class="mb-0 fs-12 text-muted ps-2">
+                                                        unmatched stability, and the AeroVent
+                                                        Breathability kept my feet cool even during
+                                                        intense workouts. A must-have for anyone
+                                                        serious
+                                                        about comfort. </p>
+                                                </div>
+                                                <div class="product-images">
+                                                    <div class="row">
+                                                        <div class="col-xl-6">
+                                                            <div
+                                                                class="products-review-images d-flex">
+                                                                <a href="javascript:void(0);">
+                                                                    <img src="./assets/images/ecommerce/png/2.png"
+                                                                        alt="">
+                                                                </a>
+                                                                <a href="javascript:void(0);">
+                                                                    <img src="./assets/images/ecommerce/png/4.png"
+                                                                        alt="">
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                        <div
+                                                            class="col-xl-6 d-flex align-items-end justify-content-sm-end mt-sm-0 mt-2">
+                                                            <button
+                                                                class="btn btn-sm btn-light me-2">Report
+                                                                abuse</button>
+                                                            <button
+                                                                class="btn btn-sm btn-icon btn-primary-light me-2">
+                                                                <i class="ri-thumb-up-line"></i>
+                                                            </button>
+                                                            <button
+                                                                class="btn btn-sm btn-icon btn-primary-light">
+                                                                <i class="ri-thumb-down-line"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                      </swiper-slide>
+                                      <swiper-slide >
+                                        <div class="card custom-card mb-0">
+                                            <div class="card-body py-0">
+                                                <div class="d-sm-flex d-block align-items-top mb-3">
+                                                    <div class="d-flex flex-fill">
+                                                        <div class="me-2">
+                                                            <span
+                                                                class="avatar avatar-sm avatar-rounded">
+                                                                <img src="./assets/images/faces/1.jpg"
+                                                                    alt="">
+                                                            </span>
+                                                        </div>
+                                                        <div class="lh-1 me-2">
+                                                            <p class="mb-1 fw-medium fs-14">
+                                                                Meisha Kerr</p>
+                                                            <div class="mb-1">
+                                                                <i
+                                                                    class="ri-star-s-fill text-warning align-middle fs-12"></i>
+                                                                <i
+                                                                    class="ri-star-s-fill text-warning align-middle fs-12"></i>
+                                                                <i
+                                                                    class="ri-star-s-fill text-warning align-middle fs-12"></i>
+                                                                <i
+                                                                    class="ri-star-s-fill text-warning align-middle fs-12"></i>
+                                                                <i
+                                                                    class="ri-star-s-line text-warning align-middle fs-12"></i>
+                                                            </div>
+                                                            <div class="fs-11 text-muted">
+                                                                Reviewed on 31 Nov,2024
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="ps-sm-0 mt-sm-0 mt-3 ps-sm-0 ps-2">
+                                                        <span class="badge bg-success">Verified
+                                                            Purchase</span>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <p class="fw-medium mb-1 ps-2">Out of this World Comfort 👟</p>
+                                                    <p class="mb-0 fs-12 text-muted ps-2">The ShockShield
+                                                        technology is a game-changer for my daily
+                                                        runs.
+                                                        The FlexiFit Customization is a nice touch,
+                                                        ensuring a snug fit. Plus, the Galactic Blue
+                                                        Nebula color is an attention-grabber. </p>
+                                                </div>
+                                                <div class="product-images">
+                                                    <div class="row">
+                                                        <div class="col-xl-6">
+                                                            <div
+                                                                class="products-review-images d-flex">
+                                                                <a href="javascript:void(0);">
+                                                                    <img src="./assets/images/ecommerce/png/4.png"
+                                                                        alt="">
+                                                                </a>
+                                                                <a href="javascript:void(0);">
+                                                                    <img src="./assets/images/ecommerce/png/1.png"
+                                                                        alt="">
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                        <div
+                                                            class="col-xl-6 d-flex align-items-end justify-content-sm-end mt-sm-0 mt-2">
+                                                            <button
+                                                                class="btn btn-sm btn-light me-2">Report
+                                                                abuse</button>
+                                                            <button
+                                                                class="btn btn-sm btn-icon btn-primary-light me-2">
+                                                                <i class="ri-thumb-up-line"></i>
+                                                            </button>
+                                                            <button
+                                                                class="btn btn-sm btn-icon btn-primary-light">
+                                                                <i class="ri-thumb-down-line"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </swiper-slide>
+                                    </swiper-container>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xxl-4">
+            <div class="card custom-card">
+                <div class="card-header">
+                    <div class="card-title">Set Order</div>
+                </div>
+                <div class="card-body px-0 pt-0">
+                    <div class="table-responsive">
+                        <table class="table text-nowrap table-borderless mb-3">
+                            <tbody>
+                                <tr>
+                                    <td class="pb-0"><span class="text-muted">Item :</span></td>
+                                    <td class="pb-0"> <span class="avatar avatar-md"> <img
+                                                src="./assets/images/ecommerce/png/1.png" class=""
+                                                alt="Product-image"> </span> </td>
+                                </tr>
+                                <tr>
+                                    <td class=""><span class="text-muted">Brand :</span></td>
+                                    <td class="text-start "> <span class="">SnuggleKnits</span> </td>
+                                </tr>
+                                <tr>
+                                    <td class=""><span class="text-muted">Color :</span></td>
+                                    <td class="text-start "> <span class="">Baby Pink</span> </td>
+                                </tr>
+                                <tr>
+                                    <td class=""><span class="text-muted">Modal Name :</span></td>
+                                    <td class="text-start "> <span class="">Baby Pink</span> </td>
+                                </tr>
+                                <tr>
+                                    <td class=""><span class="text-muted">Style :</span></td>
+                                    <td class="text-start "> <span class="">Plain Neck Sweater</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class=""><span class="text-muted">Size :</span></td>
+                                    <td class="text-start "> <span class="">Medium</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class=""><span class="text-muted">Quantity :</span></td>
+                                    <td class="text-start ">
+                                        <div class="input-group rounded w-50 flex-nowrap order-qnt">
+                                            <button (click)="decrease()"
+                                                class="btn btn-icon btn-primary input-group-text product-quantity-minus border-end-0"><i
+                                                    class="ri-subtract-line"></i></button> 
+                                           <input [value]="product" type="text" class="form-control form-control-sm text-center"
+                                                aria-label="quantity" id="product-quantity" value="2">
+                                            <button (click)="increase()"
+                                                class="btn btn-icon btn-primary input-group-text product-quantity-plus border-start-0"><i
+                                                    class="ri-add-line"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class=""><span class="text-muted">Total :</span></td>
+                                    <td class="text-start "> <span class="">$2000</span> </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div> 
+                    <div class="text-primary px-3 fs-13 fw-medium my-3">Expected Delivery By
+                        Feb 25 ,2025
+                    </div>
+                    <div class="d-grid mt-3 px-3"> <a routerLink="/apps/ecommerce/cart"
+                            class="btn btn-primary m-1">Add
+                            To Cart</a> <a routerLink="/apps/ecommerce/checkout"
+                            class="btn btn-outline-primary m-1">Buy
+                            Now</a> </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End:: Row-1 -->
+
+    <!-- Start:: Row-2 -->
+    <h5 class="mb-3">Related Products</h5>
+    <swiper-container 
+    #swiperContainer1
+    loop="true"
+    class="swiper mySwiper" 
+    space-between="30"
+    slides-per-view="5"
+    slides-per-group="1"
+    autoplay-delay="2000" navigation="true" pagination="false" autoplay-disable-on-interaction="false"
+  >
+@for(product of products;track $index){
+
+  <swiper-slide >
+    <app-spk-products-reusable-card [product]="product">
+    </app-spk-products-reusable-card>
+    </swiper-slide>
+}
+        </swiper-container>
+    <!-- End:: Row-2 -->

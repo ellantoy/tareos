@@ -1,0 +1,341 @@
+<app-page-header title="Medical" title1="Dashboards" activeTitle="Medical"></app-page-header>
+
+  <!-- Start:: row-1 -->
+  <div class="row">
+    @for (stat of statsData; track $index) {
+        <div class="col-xxl-3">
+    <spk-medical 
+    [iconBgColor]="stat.iconBgColor" 
+    [iconSvg]="stat.iconSvg" 
+    [roundBgClass]="stat.roundBgClass" 
+    [title]="stat.title"
+    [value]="stat.value"
+    [change]="stat.change"
+    [changePercentage]="stat.changePercentage"
+    [label]="stat.label">
+  </spk-medical>
+  </div>
+}
+</div>
+<!-- End:: row-1 -->
+
+<!-- Start:: row-2 -->
+<div class="row">
+    <div class="col-xxl-6">
+        <div class="card custom-card">
+            <div class="card-header justify-content-between gap-1">
+                <div class="card-title">
+                    Patients Statistics
+                </div>
+                <spk-dropdowns [Customclass]="'dropdown'" [Icon]="true" [title]="'Sort By'" [IconClass]="'ri-arrow-down-s-line align-middle ms-1 d-inline-block'"
+                [class]="'py-0 px-2 fs-12 text-muted no-caret border-0'" [Menuclass]="'dropdown-menu'">
+                        <li><a class="dropdown-item" href="javascript:void(0);">This Week</a></li>
+                        <li><a class="dropdown-item" href="javascript:void(0);">Last Week</a></li> 
+                        <li><a class="dropdown-item" href="javascript:void(0);">This Month</a></li> 
+                </spk-dropdowns>
+            </div>
+            <div class="card-body">
+                <div id="total-patients">
+                    <spk-apexcharts [chartOptions]="chartOptions"></spk-apexcharts>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xxl-3">
+        <div class="card custom-card overflow-hidden">
+            <div class="card-header justify-content-between">
+                <div class="card-title">
+                    Appointments History
+                </div>
+                <a href="javascript:void(0);" class="fs-12 text-muted"> View All<i class="ti ti-arrow-narrow-right ms-1"></i> </a>
+            </div>
+            <div class="card-body p-0">
+                <!-- appointments.component.html -->
+<ul class="list-group list-group-flush">
+    @for (appointment of appointments; track $index) {
+    <li class="list-group-item">
+      <a href="javascript:void(0);" class="stretched-link"></a>
+      <div class="d-flex align-items-center gap-2 flex-wrap">
+        <div class="lh-1">
+          <span class="avatar avatar-md" [ngClass]="appointment.bgClass">
+            <i [class]="appointment.iconClass + ' fs-5 ti'"></i>
+          </span>
+        </div>
+        <div class="flex-fill">
+          <span class="fw-medium">{{ appointment.title }}</span>
+          <span class="fs-12 text-muted d-block mt-1">
+            <span class="fw-medium">{{ appointment.id }}</span> - {{ appointment.date }}, {{ appointment.time }}
+          </span>
+        </div>
+        <span [ngClass]="{
+          'text-primary': appointment.status === 'Completed',
+          'text-secondary': appointment.status === 'Rescheduled',
+          'text-success': appointment.status === 'Scheduled',
+          'text-orange': appointment.status === 'Cancelled'
+        }">
+          {{ appointment.status }}
+        </span>
+      </div>
+    </li>
+}
+  </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-xxl-3">
+        <div class="card custom-card overflow-hidden">
+            <div class="card-header justify-content-between gap-1">
+                <div class="card-title">
+                    Patients Overview
+                </div>
+                <spk-dropdowns [Customclass]="'dropdown'" [Icon]="true" [title]="'Sort By'" [IconClass]="'ri-arrow-down-s-line align-middle ms-1 d-inline-block'"
+                [class]="'px-2 py-0 fs-12 text-muted no-caret border-0'" [Menuclass]="'dropdown-menu'">
+                        <li><a class="dropdown-item" href="javascript:void(0);">This Week</a></li>
+                        <li><a class="dropdown-item" href="javascript:void(0);">Last Week</a></li> 
+                        <li><a class="dropdown-item" href="javascript:void(0);">This Month</a></li> 
+                </spk-dropdowns>
+            </div>
+            <div class="card-body p-0">
+                <div id="patients-overview">
+                    <spk-apexcharts [chartOptions]="chartOptions1"></spk-apexcharts>
+                </div>
+                <div class="border-top"> 
+                    <ul class="list-group list-group-flush top-categories"> 
+                        <li class="list-group-item"> 
+                            <div class="d-flex align-items-center justify-content-between"> 
+                                <div class="lh-1"> 
+                                    <div class="fw-medium mb-1">Male</div> 
+                                    <div>
+                                        <span class="text-muted fs-13">Increased by <span class="text-success fw-medium ms-1 d-inline-flex align-items-center">0.64%<i class="ti ti-trending-up ms-1"></i></span></span>
+                                    </div> 
+                                </div> 
+                                <div class="lh-1 text-end"> 
+                                    <span class="d-block fw-medium h6 mb-0">1,200</span> 
+                                </div> 
+                            </div> 
+                        </li> 
+                        <li class="list-group-item"> 
+                            <div class="d-flex align-items-center justify-content-between"> 
+                                <div class="lh-1"> 
+                                    <div class="fw-medium mb-1">Female</div> <div><span class="text-muted fs-13">Decreased by <span class="text-danger fw-medium ms-1 d-inline-flex align-items-center">2.75%<i class="ti ti-trending-down ms-1"></i></span></span>
+                                    </div> 
+                                </div> 
+                                <div class="lh-1 text-end"> 
+                                    <span class="d-block fw-medium h6 mb-0">750</span> 
+                                </div> 
+                            </div> 
+                        </li> 
+                    </ul> 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End:: row-2 -->
+
+<!-- Start:: row-3 -->
+<div class="row">
+    <div class="col-xxl-3 col-xl-6">
+        <div class="card custom-card">
+            <div class="card-header">
+                <div class="card-title">
+                    Available Doctors
+                </div>
+            </div>
+            <div class="card-body">
+                <!-- doctors-list.component.html -->
+<ul class="list-unstyled doctors-list">
+    @for (doctor of doctors; track $index) {
+    <li>
+      <div class="d-flex align-items-center gap-2 flex-wrap">
+        <div class="lh-1">
+          <span class="avatar avatar-sm avatar-rounded">
+            <img [src]="doctor.imageUrl" alt="{{ doctor.name }}">
+          </span>
+        </div>
+        <div class="flex-fill">
+          <span class="d-block fw-medium lh-1">
+            {{ doctor.name }}
+          </span>
+          <span class="text-muted fs-12">{{ doctor.specialization }}</span>
+        </div>
+        <div>
+          <span [ngClass]="{
+            'badge bg-success-transparent rounded-pill': doctor.availability === 'Available',
+            'badge bg-danger-transparent rounded-pill': doctor.availability === 'Not Available',
+            'badge rounded-pill': true
+          }">
+            <i class="ri-circle-fill me-1 fs-7"></i>{{ doctor.availability }}
+          </span>
+        </div>
+      </div>
+    </li>
+}
+  </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-xxl-3 col-xl-6">
+        <div class="card custom-card">
+            <div class="card-header">
+                <div class="card-title">
+                    Available Treatments
+                </div>
+            </div>
+            <div class="card-body">
+               <!-- available-treatments.component.html -->
+<ul class="list-unstyled available-treatments-list">
+    @for (treatment of treatments; track $index) {
+    <li>
+      <div class="d-flex align-items-center gap-2 flex-wrap">
+        <div class="lh-1">
+          <span [ngClass]="['avatar', 'avatar-sm', 'avatar-rounded', treatment.bgColor]">
+            <i [class]="treatment.iconClass + ' fs-18 ti'"></i>
+          </span>
+        </div>
+        <div class="flex-fill">
+          <span class="d-block fw-medium lh-1 mb-1">{{ treatment.name }}</span>
+          <span class="text-muted fs-12">{{ treatment.doctorsCount }} Doctors</span>
+        </div>
+        <div class="text-end ms-auto">
+          <span class="fw-medium">{{ treatment.timings }}</span>
+          <span class="fs-12 text-muted d-block">Timings</span>
+        </div>
+      </div>
+    </li>
+}
+  </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-xxl-6">
+        <div class="card custom-card overflow-hidden">
+            <div class="card-header justify-content-between">
+                <div class="card-title">
+                   Latest Appointments
+                </div>
+                <a href="javascript:void(0);" class="fs-12 text-muted tag-link"> View All<i class="ti ti-arrow-narrow-right ms-1"></i> </a>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                   <!-- appointment-list.component.html -->
+                   <spk-reusable-tables [columns]="AppointmentsHeader" tableClass="table text-nowrap table-hover"  [showCheckbox]="false">
+      @for (appointment of appointmentstable; track $index) {
+                    <tr>
+        <td>
+          <div class="d-flex align-items-center gap-2">
+            <div class="lh-1">
+              <span class="avatar avatar-sm me-2" [ngClass]="appointment.statusClass">
+                <i class="ti ti-{{appointment.iconName}} fs-5"></i>
+              </span>
+            </div>
+            <div class="flex-fill">
+              <a href="javascript:void(0);" class="fw-medium">{{ appointment.treatmentName }}</a>
+            </div>
+          </div>
+        </td>
+        <td>{{ appointment.treatmentCode }}</td>
+        <td>{{ appointment.appointmentDate }}</td>
+        <td>
+          <span [ngClass]="['badge', appointment.statusClass]">{{ appointment.status }}</span>
+        </td>
+        <td class="text-end">
+          <div class="d-flex gap-2">
+            <a href="javascript:void(0);" class="btn btn-primary-light btn-sm" data-bs-toggle="tooltip" ngbTooltip="Accept">
+              <i class="ti ti-check"></i>
+            </a>
+            <a href="javascript:void(0);" class="btn btn-secondary-light btn-sm" data-bs-toggle="tooltip" ngbTooltip="Reject">
+              <i class="ti ti-x"></i>
+            </a>
+          </div>
+        </td>
+      </tr>
+    }
+                   </spk-reusable-tables>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End:: row-3 -->
+
+<!-- Start:: row-4 -->
+<div class="row">
+    <div class="col-xl-12">
+        <div class="card custom-card">
+            <div class="card-header justify-content-between">
+                <div class="card-title">
+                    Patients List
+                </div>
+                <div class="d-flex flex-wrap gap-2"> 
+                    <div> 
+                        <input class="form-control form-control-sm" type="text" placeholder="Search Here" aria-label=".form-control-sm example"> 
+                    </div> 
+                    <spk-dropdowns [Customclass]="'dropdown'" [Icon]="true" [title]="'Sort By'" [IconClass]="'ri-arrow-down-s-line align-middle ms-1 d-inline-block'"
+                                    [class]="'btn btn-primary btn-sm btn-wave waves-effect waves-light no-caret'" [Menuclass]="'dropdown-menu'">
+                            <li><a class="dropdown-item" href="javascript:void(0);">New</a></li> 
+                            <li><a class="dropdown-item" href="javascript:void(0);">Popular</a></li> 
+                            <li><a class="dropdown-item" href="javascript:void(0);">Relevant</a></li> 
+                    </spk-dropdowns>
+                </div>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                   <!-- patient-list.component.html -->
+                   <spk-reusable-tables [columns]="PatientsHeader" tableClass="table text-nowrap"  [showCheckbox]="true">
+      @for (patient of patients; track $index) {
+                    <tr>
+        <td>
+          <input class="form-check-input" type="checkbox" id="checkbox{{ patient.id }}" [checked]="allTasksChecked" [(ngModel)]="patient.checked" value="" aria-label="..."  >
+        </td>
+        <td>{{ patient.id }}</td>
+        <td>
+          <div class="d-flex gap-2">
+            <span class="avatar avatar-xs avatar-rounded"><img [src]="patient.avatar" alt="..."></span>
+            <div>
+              <span class="fw-medium mb-0 d-flex align-items-center">{{ patient.patientName }}</span>
+            </div>
+          </div>
+        </td>
+        <td>{{ patient.gender }}</td>
+        <td>{{ patient.contact }}</td>
+        <td>{{ patient.appointmentDate }}</td>
+        <td>
+          <span class="badge" [ngClass]="patient.conditionClass">{{ patient.condition }}</span>
+        </td>
+        <td>{{ patient.lastVisit }}</td>
+        <td>
+          <div class="btn-list">
+            <button class="btn btn-sm btn-icon btn-primary-light btn-wave">
+              <i class="ri-eye-line"></i>
+            </button>
+            <button class="btn btn-sm btn-icon btn-secondary-light btn-wave">
+              <i class="ri-edit-line"></i>
+            </button>
+          </div>
+        </td>
+      </tr>
+    }
+                   </spk-reusable-tables>
+  
+                </div>
+            </div>
+            <div class="card-footer border-top-0"> 
+                <div class="d-flex align-items-center"> 
+                    <div> Showing 6 Entries <i class="bi bi-arrow-right ms-2 fw-medium"></i> </div>
+                    <div class="ms-auto"> 
+                    <nav aria-label="Page navigation" class="pagination-style-4"> 
+                        <ul class="pagination mb-0"> 
+                            <li class="page-item disabled"> <a class="page-link" href="javascript:void(0);"> Prev </a> </li>
+                                <li class="page-item active"><a class="page-link" href="javascript:void(0);">1</a></li> 
+                                <li class="page-item"><a class="page-link" href="javascript:void(0);">2</a></li> 
+                                <li class="page-item"> <a class="page-link text-primary" href="javascript:void(0);"> next </a> </li> 
+                            </ul> 
+                        </nav> 
+                    </div> 
+                </div> 
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End:: row-4 -->

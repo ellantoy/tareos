@@ -1,0 +1,59 @@
+<app-page-header title="Breakpoints" title1="Utilities" activeTitle="Breakpoints" ></app-page-header>
+<!-- Start:: row-1 -->
+<div class="row">
+    <div class="col-xl-12">
+        <div class="card custom-card">
+            <div class="card-header">
+                <div class="card-title">
+                    Available breakpoints
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <spk-reusable-tables  [columns]="breakpointColumn" tableClass=" table-bordered table-hover table-nowrap mb-0"
+                    [showCheckbox]="false" >
+                    @for(breakpoint of breakpoints;track $index){
+
+                        <tr>
+                            <td>{{ breakpoint.name }}</td>
+                            <td>{{ breakpoint.infix1 }}<code>{{ breakpoint.infix }}</code></td>
+                            <td>{{ breakpoint.dimensions }}</td>
+                          </tr>
+                      
+                    }
+                    </spk-reusable-tables>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-12">
+        <div class="card custom-card">
+            <div class="card-header">
+                <div class="card-title">
+                    Containers
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <spk-reusable-tables  [columns]="containerColumn" tableClass=" table-bordered table-hover table-nowrap mb-0"
+                    [showCheckbox]="false" >
+                    @for(container of containers;track $index){
+
+                        <tr>
+                            <td><code>{{ container.class }}</code></td>
+                            <td><span class="text-muted">{{ container.extraSmall }}</span></td>
+                            <td><span class="text-muted">{{ container.small1 }}</span>{{ container.small }}</td>
+                            <td><span class="text-muted">{{ container.medium1 }}</span>{{ container.medium }}</td>
+                            <td><span class="text-muted">{{ container.large1 }}</span>{{ container.large }}</td>
+                            <td><span class="text-muted">{{ container.xLarge1 }}</span>{{ container.xLarge }}</td>
+                            <td><span class="text-muted">{{ container.xxLarge1 }}</span>{{ container.xxLarge }}</td>
+                          </tr>
+                    }
+                    </spk-reusable-tables>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+</div>
+<!-- End:: row-1 -->

@@ -1,0 +1,344 @@
+<app-page-header title="CRM" title1="Dashboards" activeTitle="CRM" ></app-page-header>
+ <!-- Start::row-1 -->
+ <div class="row">
+    @for (card of crmCards; track $index) {
+    <div class="col-sm col-xl">
+      <spk-crm-dashboard
+      [title]="card.title"
+      [value]="card.value"
+      [percentageChange]="card.percentageChange"
+      [isIncrease]="card.isIncrease"
+      [chartOptions]="card.chartOptions"
+      [icon]="card.icon"
+      [iconColor]="card.iconColor"
+      [BgColor]="card.BgColor"
+      ></spk-crm-dashboard>
+    </div>
+    }
+  </div>
+  
+<!-- End::row-1 -->
+
+<!-- Start::row-2 -->
+<div class="row">
+    <div class="col-md-12 col-xxl-6">
+        <div class="card custom-card">
+            <div class="card-header justify-content-between">
+                <div class="card-title">Revenue Analytics</div>
+                <div class="d-flex gap-2">
+                    <div class="btn btn-sm btn-outline-light">Today</div>
+                    <div class="btn btn-sm btn-outline-light">Weakly</div>
+                    <div class="btn btn-sm btn-light">Yearly</div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div id="crm-revenue-analytics">
+                    <spk-apexcharts [chartOptions]="chartOptions"></spk-apexcharts>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12 col-xxl-3">
+        <div class="card custom-card">
+            <div class="card-header  justify-content-between">
+                <div class="card-title">
+                    Top Leads
+                </div>
+                <spk-dropdowns [Customclass]="'dropdown'" [Icon]="true" [IconClass]="'fe fe-more-vertical'"
+                [class]="'btn btn-icon btn-sm btn-light no-caret'" [Menuclass]="'dropdown-menu-end'">
+                        <li><a class="dropdown-item" href="javascript:void(0);">Week</a></li>
+                        <li><a class="dropdown-item" href="javascript:void(0);">Month</a></li>
+                        <li><a class="dropdown-item" href="javascript:void(0);">Year</a></li>
+                </spk-dropdowns>
+            </div>
+            <div class="card-body">
+                <ul class="list-unstyled crm-top-deals mb-0">
+                    @for (deal of deals; track $index) {
+                    <li>
+                      <div class="d-flex align-items-top flex-wrap">
+                        <div class="me-2">
+                            @if (deal.avatar) {
+                          <span class="avatar avatar-sm avatar-rounded">
+                            <img [src]="deal.avatar" alt="">
+                          </span>
+                        }
+                        @if (!deal.avatar) {
+                          <span class="avatar avatar-sm avatar-rounded bg-{{deal.avatarBg}}-transparent fw-medium">
+                            {{deal.initials}}
+                          </span>
+                        }
+                        </div>
+                        <div class="flex-fill">
+                          <p class="fw-medium mb-0">{{ deal.name }}</p>
+                          <span class="text-muted fs-12">{{ deal.email }}</span>
+                        </div>
+                        <div class="fw-medium fs-15">${{ deal.amount | number }}</div>
+                      </div>
+                    </li>
+                }
+                  </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12 col-xxl-3">
+        <div class="card custom-card overflow-hidden">
+            <div class="card-header justify-content-between">
+                <div class="card-title">
+                    Leads Overview
+                </div>
+                <spk-dropdowns [Customclass]="'dropdown'" [Icon]="true" [title]="'Yearly'" [IconClass]="'ti ti-chevron-down ms-1'"
+                [class]="'btn btn-light border btn-full btn-sm no-caret'" [Menuclass]="'dropdown-menu'">
+                        <li><a class="dropdown-item" href="javascript:void(0);">Yearly</a></li>
+                        <li><a class="dropdown-item" href="javascript:void(0);">Weekly</a></li>
+                        <li><a class="dropdown-item" href="javascript:void(0);">Monthly</a></li>
+                </spk-dropdowns>
+            </div>
+            <div class="card-body px-0 pb-0">
+                <div id="leads-overview">
+                    <spk-apexcharts [chartOptions]="chartOptions6"></spk-apexcharts>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End::row-2 -->
+
+<!-- Start::row-3 -->
+<div class="row">
+    <div class="col-xxl-4">
+        <div class="card custom-card">
+            <div class="card-header justify-content-between">
+                <div class="card-title">
+                    Tasks List
+                </div>
+                <div>
+                    <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav nav-tabs justify-content-end nav-tabs-header card-headertabs" role="tablist">
+                        <li [ngbNavItem]="1" class="nav-item" role="presentation">
+                            <a ngbNavLink class="nav-link" data-bs-toggle="tab" role="tab" aria-current="page" aria-selected="true">Today</a>
+                            <ng-template ngbNavContent>
+                                <div class="border-0 show" id="today" role="tabpanel">
+                                    <ul class="list-unstyled task-list-tab mb-0">
+                                        @for (task of tasks1; track $index) {
+                                        <li>
+                                          <div class="todolist d-flex">
+                                            <div class="mb-3 form-check me-2">
+                                              <input type="checkbox" class="form-check-input" [checked]="task.completed">
+                                            </div>
+                                            <div class="flex-fill w-100">
+                                              <div class="d-flex align-items-start justify-content-between gap-1">
+                                                <div>
+                                                  <span class="d-block fw-medium">
+                                                    {{ task.name }}
+                                                    <i class="ri-hourglass-line bg-primary-transparent p-1 align-middle fs-10 lh-1 rounded-circle" 
+                                                      *ngIf="task.status === 'Progress'" data-bs-toggle="tooltip" ngbTooltip="Progress"></i>
+                                                    <i class="ri-check-fill bg-success-transparent p-1 align-middle fs-10 lh-1 rounded-circle" 
+                                                      *ngIf="task.status === 'Completed'" data-bs-toggle="tooltip" ngbTooltip="Completed"></i>
+                                                    <i class="ri-error-warning-line bg-success-transparent p-1 align-middle fs-11 lh-1 rounded-circle" 
+                                                      *ngIf="task.status === 'Pending'" data-bs-toggle="tooltip" ngbTooltip="Pending"></i>
+                                                  </span>
+                                                  <p class="text-muted mb-0 fs-12">{{ task.description }}</p>
+                                                </div>
+                                                <div class="btn-list flex-shrink-0">
+                                                  <a href="javascript:void(0);" class="btn btn-sm btn-primary-light btn-icon" data-bs-toggle="tooltip" ngbTooltip="Edit" aria-label="Edit">
+                                                    <i class="ti ti-edit"></i>
+                                                  </a>
+                                                  <a href="javascript:void(0);" class="btn btn-sm btn-danger-light btn-icon" data-bs-toggle="tooltip" ngbTooltip="Delete" aria-label="Delete">
+                                                    <i class="ti ti-trash"></i>
+                                                  </a>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </li>
+                                    }
+                                      </ul>
+                                      
+                                </div>
+                            </ng-template>
+                        </li>
+                        <li [ngbNavItem]="2" class="nav-item" role="presentation">
+                            <a ngbNavLink class="nav-link" data-bs-toggle="tab" role="tab" aria-current="page" aria-selected="false" tabindex="-1">Upcoming</a>
+                            <ng-template ngbNavContent>
+                                <div class="border-0" id="Upcoming" role="tabpanel">
+                                    <ul class="list-unstyled task-list-tab mb-0">
+                                        @for (task of tasks2; track $index) {
+                                        <li>
+                                          <div class="todolist d-flex">
+                                            <div class="mb-3 form-check me-2">
+                                              <input type="checkbox" class="form-check-input">
+                                            </div>
+                                            <div class="flex-fill w-100">
+                                              <div class="d-flex align-items-start justify-content-between gap-1">
+                                                <div>
+                                                  <span class="d-block fw-medium">{{ task.name }}
+                                                    <i class="ri-time-line {{ task.statusClass }} p-1 align-middle fs-10 lh-1 rounded-circle" data-bs-toggle="tooltip" title=""></i>
+                                                  </span>
+                                                  <p class="text-muted mb-0 fs-12">{{ task.description }}</p>
+                                                </div>
+                                                <div class="btn-list flex-shrink-0">
+                                                  <a href="javascript:void(0);" class="btn btn-sm btn-primary-light btn-icon" data-bs-toggle="tooltip" title="" data-bs-original-title="Edit" aria-label="Edit">
+                                                    <i class="ti ti-edit"></i>
+                                                  </a>
+                                                  <a href="javascript:void(0);" class="btn btn-sm btn-danger-light btn-icon" data-bs-toggle="tooltip" title="" data-bs-original-title="Delete" aria-label="Delete">
+                                                    <i class="ti ti-trash"></i>
+                                                  </a>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </li>
+                                    }
+                                      </ul>
+                                      
+                                </div>
+                            </ng-template>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card-body todo-tab p-3">
+                <div class="tab-content" id="pricing" [ngbNavOutlet]="nav">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12 col-xxl-5">
+        <div class="card custom-card overflow-hidden">
+            <div class="card-header justify-content-between">
+                <div class="card-title">
+                    TOP DEALS
+                </div>
+                <a href="javascript:void(0);" class="fs-12 text-muted"> View All<i class="ti ti-arrow-narrow-right ms-1"></i> </a>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <spk-reusable-tables [columns]="dealsheader" tableClass="table" [showCheckbox]="false">
+                            @for (deal of Topdeals; track $index) {
+                            <tr>
+                              <td>
+                                <div class="d-flex align-items-center">
+                                  <div class="me-2">
+                                    <span class="avatar-sm avatar" [ngClass]="deal.avatarClass"><i class="{{ deal.icon }}"></i>{{deal.iconName}}</span>
+                                  </div>
+                                  <a href="javascript:void(0);" class="fw-medium">{{ deal.name }}</a>
+                                </div>
+                              </td>
+                              <td>{{ deal.value }}</td>
+                              <td class="text-center">{{ deal.probability }}%</td>
+                              <td><span class="badge" [ngClass]="deal.statusClass">{{ deal.status }}</span></td>
+                            </tr>
+                        }
+                    </spk-reusable-tables>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xxl-3">
+        
+        <div class="card custom-card">
+            <div class="card-header justify-content-between">
+                <div class="card-title">Profit By Sale</div>
+                <spk-dropdowns [Customclass]="'dropdown'" [Icon]="true" [title]="'Sort By'" [IconClass]="'ti ti-chevron-down ms-1'"
+                [class]="'btn btn-sm btn-light text-muted dropdown-toggle no-caret'" [Menuclass]="'dropdown-menu'">
+                        <li><a class="dropdown-item" href="javascript:void(0);">This Week</a></li>
+                         <li><a class="dropdown-item" href="javascript:void(0);">Last Week</a></li> 
+                         <li><a class="dropdown-item" href="javascript:void(0);">This Month</a></li> 
+                </spk-dropdowns>
+            </div>
+            <div class="card-body">
+                <ul class="list-unstyled profit-by-sale-list">
+                    @for (item of profitItems; track $index) {
+                    <li>
+                      <div class="d-flex justify-content-between align-items-top">
+                        <div class="d-flex">
+                          <span class="avatar avatar-rounded avatar-md" [ngClass]="item.avatarClass"><i class="bx" [ngClass]="item.iconClass"></i></span>
+                          <div class="d-flex flex-column ms-2">
+                            <p class="fw-medium mb-0">{{ item.title }}</p>
+                            <p class="fs-12 text-muted mb-0">{{ item.increaseText }}</p>
+                          </div>
+                        </div>
+                        <h6 class="fw-medium mb-0">{{ item.amount }}</h6>
+                      </div>
+                      <div class="progress progress-xs mt-2 mb-0" role="progressbar" aria-label="Basic example" [attr.aria-valuenow]="item.progress" aria-valuemin="0" aria-valuemax="100">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated" [ngClass]="item.progressBarClass" [style.width.%]="item.progress"></div>
+                      </div>
+                    </li>
+                }
+                  </ul>
+            </div>
+        </div>  
+    </div>
+</div>
+<!-- End::row-3 -->
+
+<!-- Start::row-4 -->
+<div class="row">
+    <div class="col-xl-12">
+        <div class="card custom-card overflow-hidden">
+            <div class="card-header justify-content-between">
+                <div class="card-title">
+                    Deals Statistics
+                </div>
+                <div class="d-flex flex-wrap gap-2"> 
+                    <div> 
+                        <input class="form-control form-control-sm" type="text" placeholder="Search Here" aria-label=".form-control-sm example"> 
+                    </div> 
+                    <spk-dropdowns [Customclass]="'dropdown'" [Icon]="true" [title]="'Sort By'" [IconClass]="'ri-arrow-down-s-line align-middle ms-1 d-inline-block'"
+                    [class]="'btn btn-primary btn-sm btn-wave waves-effect waves-light no-caret'" [Menuclass]="'dropdown-menu'">
+                            <li><a class="dropdown-item" href="javascript:void(0);">New</a></li> 
+                            <li><a class="dropdown-item" href="javascript:void(0);">Popular</a></li> 
+                            <li><a class="dropdown-item" href="javascript:void(0);">Relevant</a></li> 
+                    </spk-dropdowns>
+                </div>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <spk-reusable-tables [columns]="Tableheader" tableClass="table text-nowrap"  [showCheckbox]="false">
+                            @for (item of tableData; track $index) {
+                            <tr>
+                              <td class="text-center">{{ item.id }}</td>
+                              <td><span class="fw-medium">{{ item.company }}</span></td>
+                              <td>
+                                <div class="d-flex align-items-center">
+                                  <div class="me-2 lh-1">
+                                    <span class="avatar avatar-xs">
+                                      <img [src]="item.avatar" alt="Avatar">
+                                    </span>
+                                  </div>
+                                  <div class="fs-14">{{ item.name }}</div>
+                                </div>
+                              </td>
+                              <td>{{ item.email }}</td>
+                              <td><span class="fw-medium fs-14">${{ item.amount }}</span></td>
+                              <td><span class="badge" [ngClass]="{'bg-primary-transparent': item.country === 'Germany', 'bg-secondary-transparent': item.country === 'Canada', 'bg-success-transparent': item.country === 'Singapore', 'bg-orange-transparent': item.country === 'USA', 'bg-info-transparent': item.country === 'Europe', 'bg-danger-transparent': item.country === 'Canada'}">{{ item.country }}</span></td>
+                              <td><span>{{ item.days }} Days</span></td>
+                              <td>
+                                <div class="hstack gap-2 fs-1">
+                                  <a href="javascript:void(0);" class="btn btn-icon btn-sm btn-success-light btn-wave waves-effect waves-light"><i class="ri-download-2-line"></i></a>
+                                  <a href="javascript:void(0);" class="btn btn-icon btn-sm btn-secondary-light btn-wave waves-effect waves-light"><i class="ri-edit-line"></i></a>
+                                </div>
+                              </td>
+                            </tr>
+                        }
+                    </spk-reusable-tables>
+                </div>
+            </div>
+            <div class="card-footer border-top-0"> 
+                <div class="d-flex align-items-center"> 
+                    <div> Showing 6 Entries <i class="bi bi-arrow-right ms-2 fw-medium"></i> </div>
+                    <div class="ms-auto"> 
+                    <nav aria-label="Page navigation" class="pagination-style-4"> 
+                        <ul class="pagination mb-0"> 
+                            <li class="page-item disabled"> <a class="page-link" href="javascript:void(0);"> Prev </a> </li>
+                                <li class="page-item active"><a class="page-link" href="javascript:void(0);">1</a></li> 
+                                <li class="page-item"><a class="page-link" href="javascript:void(0);">2</a></li> 
+                                <li class="page-item"> <a class="page-link text-primary" href="javascript:void(0);"> next </a> </li> 
+                            </ul> 
+                        </nav> 
+                    </div> 
+                </div> 
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End::row-4 -->

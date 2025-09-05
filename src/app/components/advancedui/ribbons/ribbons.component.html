@@ -1,0 +1,335 @@
+<app-page-header title="Ribbons" title1="Advanced Ui" activeTitle="Ribbons" ></app-page-header>
+
+  <!-- Start::row-1 -->
+  <div class="row">
+    <div class="col-xl-12">
+        <div class="card custom-card">
+            <div class="card-header">
+                <div class="card-title">
+                    RIBBON STYLE 1
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row gy-3">
+                    <div class="col-xl-6">
+                        <app-ribbon-cards 
+                        [mainClass]="'mb-0 ribbon-card shadow-none border'"
+                         [bodyClass]="'p-4'"
+                         [ribbonClass]="'ribbon ribbon-primary ribbon-top-left'"
+                         [title]="'ribbon'"
+                         [textAlignment]="'mb-2 text-end'"
+                         [topTitle]="'Top Left Ribbon'"
+                         [description]="'Join us in congratulating [Employee Name] for their outstanding contributions and dedication. Their hard work and commitment have truly set a standard for excellence. Let\'s celebrate their achievements together!'"
+                             >
+                         <span>ribbon</span>
+                        </app-ribbon-cards>
+                   
+                    </div>
+                    <div class="col-xl-6">
+                        <app-ribbon-cards 
+                        [mainClass]="'mb-0 ribbon-card shadow-none border'"
+                         [bodyClass]="'p-4'"
+                         [ribbonClass]="'ribbon ribbon-secondary ribbon-top-right'"
+                         [textAlignment]="'mb-2 text-start'"
+                         [description]="'Join us in congratulating [Employee Name] for their outstanding contributions and dedication. Their hard work and commitment have truly set a standard for excellence. Let\'s celebrate their achievements together!'"
+                         [topTitle]="'Top Right Ribbon'">
+                         <span>ribbon</span>
+                        </app-ribbon-cards>
+                      
+                    </div>
+                    <div class="col-xl-6">
+                        <app-ribbon-cards 
+                        [mainClass]="'mb-0 ribbon-card shadow-none border'"
+                         [bodyClass]="'p-4'"
+                         [ribbonClass]="'ribbon ribbon-success ribbon-bottom-left'"
+                         [textAlignment]="'mt-2 text-end'"
+                         [description]="'Join us in congratulating [Employee Name] for their outstanding contributions and dedication. Their hard work and commitment have truly set a standard for excellence. Let\'s celebrate their achievements together!'"
+                         [bottomTitle]="'Bottom Left Ribbon'">
+                         <span>ribbon</span>
+                        </app-ribbon-cards>
+                 
+                    </div>
+                    <div class="col-xl-6">
+                        <app-ribbon-cards 
+                        [mainClass]="'mb-0 ribbon-card shadow-none border'"
+                         [bodyClass]="'p-4'"
+                         [ribbonClass]="'ribbon ribbon-orange ribbon-bottom-right'"
+                         [textAlignment]="'mt-2 text-start'"
+                         [description]="'Join us in congratulating [Employee Name] for their outstanding contributions and dedication. Their hard work and commitment have truly set a standard for excellence. Let\'s celebrate their achievements together!'"
+                         [bottomTitle]="'Bottom Right Ribbon'">
+                         <span>ribbon</span>
+                        </app-ribbon-cards>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End::row-1 -->
+
+<!-- Start:: row-2 -->
+<div class="row">
+    <div class="col-xl-12">
+        <div class="card custom-card">
+            <div class="card-header">
+                <div class="card-title">
+                    RIBBON STYLE 2
+                </div>
+            </div>
+            <div class="card-body p-4">
+                <div class="row gy-3">
+                    <div class="col-xl-6">
+                        <app-ribbon-cards 
+                        [mainClass]="'mb-0 ribbon-card shadow-none border'"
+                         [bodyClass]="'p-4'"
+                         [ribbonClass]="'ribbon-2 ribbon-primary ribbon-left'"
+                         [descriptionClass]="'pt-4'"
+                         [textAlignment]="'mt-2 text-end'"
+                         [description]="'Join us in congratulating [Employee Name] for their outstanding contributions and dedication. Their hard work and commitment have truly set a standard for excellence. Lets celebrate their achievements together!'"
+                         [bottomTitle]="'Left Ribbon'">
+                         <span>Congratulations</span>
+                        </app-ribbon-cards>
+                        
+                    </div>
+                    <div class="col-xl-6">
+                        <app-ribbon-cards 
+                        [mainClass]="'mb-0 shadow-none border'"
+                         [bodyClass]="'p-4'"
+                         [ribbonClass]="'ribbon-2 ribbon-success ribbon-right'"
+                         [descriptionClass]="'pt-4'"
+                         [textAlignment]="'mt-2 text-start'"
+                         [description]="'Join us in congratulating [Employee Name] for their outstanding contributions and dedication. Their hard work and commitment have truly set a standard for excellence. Lets celebrate their achievements together!'"
+                         [bottomTitle]="'Right Ribbon'">
+                         <span>Congratulations</span>
+                        </app-ribbon-cards>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End:: row-2 -->
+
+<!-- Start:: row-3 -->
+<div class="row">
+    <div class="col-xl-12">
+        <div class="card custom-card">
+            <div class="card-header">
+                <div class="card-title">
+                    RIBBON STYLE 3
+                </div>
+            </div>
+            <div class="card-body p-4">
+                <div class="row gy-3">
+                    <div class="col-xl-3">
+                        <app-ribbon-cards 
+                        [mainClass]="'mb-0 shadow-none border'"
+                         [bodyClass]="'p-4'"
+                         [ribbonClass]="'ribbon-3 top-left ribbon-success'"
+                         [descriptionClass]="''"
+                         [textAlignment]="'mb-2 text-end'"
+                         [description]="'Join us in congratulating [Employee Name] for their outstanding contributions and dedication. Their hard work and commitment have truly set a standard for excellence. Lets celebrate their achievements together!'"
+                         [topTitle]="'Top Left Ribbon'">
+                         <span><i class="fe fe-zap"></i></span>
+                        </app-ribbon-cards>
+                     
+                    </div>
+                    <div class="col-xl-3">
+                        <app-ribbon-cards 
+                        [mainClass]="'mb-0 shadow-none border'"
+                         [bodyClass]="'p-4'"
+                         [ribbonClass]="'ribbon-3 top-right ribbon-secondary'"
+                         [descriptionClass]="''"
+                         [textAlignment]="'mb-2 text-start'"
+                         [topTitle]="'Top Right Ribbon'"
+                         [description]="'Join us in congratulating [Employee Name] for their outstanding contributions and dedication. Their hard work and commitment have truly set a standard for excellence. Lets celebrate their achievements together!'"
+                         >
+                         <span><i class="fe fe-zap"></i></span>
+                        </app-ribbon-cards>
+                  
+                    </div>
+                    <div class="col-xl-3">
+                        <app-ribbon-cards 
+                        [mainClass]="'mb-0 shadow-none border'"
+                         [bodyClass]="'p-4'"
+                         [ribbonClass]="'ribbon-3 top-left ribbon-info'"
+                         [descriptionClass]="''"
+                         [description]="'Join us in congratulating [Employee Name] for their outstanding contributions and dedication. Their hard work and commitment have truly set a standard for excellence. Lets celebrate their achievements together!'"
+                         [textAlignment]="'mb-2 text-end'"
+                         [topTitle]="'Top Left Ribbon'">
+                         <span><i class="fe fe-zap"></i></span>
+                        </app-ribbon-cards>
+                 
+                    </div>
+                    <div class="col-xl-3"> 
+                         <app-ribbon-cards 
+                        [mainClass]="'mb-0 shadow-none border'"
+                         [bodyClass]="'p-4'"
+                         [ribbonClass]="'ribbon-3 top-right ribbon-warning'"
+                         [descriptionClass]="''"
+                         [description]="'Join us in congratulating [Employee Name] for their outstanding contributions and dedication. Their hard work and commitment have truly set a standard for excellence. Lets celebrate their achievements together!'"
+                         [textAlignment]="'mb-2 text-start'"
+                         [topTitle]="'Top Right Ribbon'">
+                         <span><i class="fe fe-zap"></i></span>
+                        </app-ribbon-cards>
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End:: row-3 -->
+
+<!-- Start:: row-4 -->
+<div class="row">
+    <div class="col-xl-12">
+        <div class="card custom-card">
+            <div class="card-header">
+                <div class="card-title">RIBBON STYLE 4</div>
+            </div>
+            <div class="card-body">
+                <div class="row gy-3">
+                    <div class="col-xl-6">
+                        <app-ribbon-cards 
+                        [mainClass]="'mb-0 shadow-none border'"
+                         [bodyClass]="'p-4'"
+                         [ribbonClass]="'ribbon-4 top-left ribbon-primary'"
+                         [descriptionClass]="''"
+                         [description]="'Join us in congratulating [Employee Name] for their outstanding contributions and dedication. Their hard work and commitment have truly set a standard for excellence. Lets celebrate their achievements together!'"
+                         [textAlignment]="'mb-2 text-end'"
+                         [topTitle]="'Top Left Ribbon'">
+                         <span>May</span>
+                        </app-ribbon-cards>
+                   
+                    </div>
+                    <div class="col-xl-6">
+                        <app-ribbon-cards 
+                        [mainClass]="'mb-0 shadow-none border'"
+                         [bodyClass]="'p-4'"
+                         [ribbonClass]="'ribbon-4 top-right ribbon-secondary'"
+                         [descriptionClass]="''"
+                         [description]="'Join us in congratulating [Employee Name] for their outstanding contributions and dedication. Their hard work and commitment have truly set a standard for excellence. Lets celebrate their achievements together!'"
+                         [textAlignment]="'mb-2 text-start'"
+                         [topTitle]="'Top Right Ribbon'">
+                         <span>May</span>
+                        </app-ribbon-cards>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End:: row-4 -->
+
+<!-- Start:: row-5 -->
+<div class="row">
+    <div class="col-xl-12">
+        <div class="card custom-card">
+            <div class="card-header">
+                <div class="card-title">
+                    RIBBON STYLE 5
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row gy-3">
+                    <div class="col-xl-3">
+                        <app-ribbon-cards 
+                        [mainClass]="'mb-0 overflow-hidden  shadow-none border'"
+                         [bodyClass]="'p-4'"
+                         [ribbonClass]="'ribbon-5 top-left ribbon-primary'"
+                         [descriptionClass]="''"
+                         [description]="'Join us in congratulating [Employee Name] for their outstanding contributions and dedication. Their hard work and commitment have truly set a standard for excellence. Lets celebrate their achievements together!'"
+                         [textAlignment]="'mb-2 text-end'"
+                         [topTitle]="'Top Left Ribbon'">
+                         OFFER
+                        </app-ribbon-cards>
+                       
+                    </div>
+                    <div class="col-xl-3">
+                        <app-ribbon-cards 
+                        [mainClass]="'mb-0 overflow-hidden  shadow-none border'"
+                         [bodyClass]="'p-4'"
+                         [ribbonClass]="'ribbon-5 top-right ribbon-secondary'"
+                         [descriptionClass]="''"
+                         [description]="'Join us in congratulating [Employee Name] for their outstanding contributions and dedication. Their hard work and commitment have truly set a standard for excellence. Lets celebrate their achievements together!'"
+                         [textAlignment]="'mb-2 text-start'"
+                         [topTitle]="'Top Right Ribbon'">
+                         OPEN
+                        </app-ribbon-cards>
+                    </div>
+                    <div class="col-xl-3">
+                        <app-ribbon-cards 
+                        [mainClass]="'mb-0 overflow-hidden  shadow-none border'"
+                         [bodyClass]="'p-4'"
+                         [ribbonClass]="'ribbon-5 bottom-left ribbon-success'"
+                         [descriptionClass]="'mb-2'"
+                         [description]="'Join us in congratulating [Employee Name] for their outstanding contributions and dedication. Their hard work and commitment have truly set a standard for excellence. Lets celebrate their achievements together!'"
+                         [textAlignment]="'text-end'"
+                         [bottomTitle]="'Bottom Left Ribbon'">
+                         CLOSE
+                        </app-ribbon-cards>
+                    </div>
+                    <div class="col-xl-3">
+                        <app-ribbon-cards 
+                        [mainClass]="'mb-0 overflow-hidden  shadow-none border'"
+                         [bodyClass]="'p-4'"
+                         [ribbonClass]="'ribbon-5 bottom-right ribbon-orange'"
+                         [descriptionClass]="'mb-2'"
+                         [description]="'Join us in congratulating [Employee Name] for their outstanding contributions and dedication. Their hard work and commitment have truly set a standard for excellence. Lets celebrate their achievements together!'"
+                         [textAlignment]="'text-start'"
+                         [bottomTitle]="'Bottom Right Ribbon'">
+                         SALE
+                        </app-ribbon-cards>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End:: row-5 -->
+
+<!-- Start:: row-6 -->
+<div class="row">
+    <div class="col-xl-12">
+        <div class="card custom-card">
+            <div class="card-header">
+                <div class="card-title">RIBBON STYLE 6</div>
+            </div>
+            <div class="card-body">
+                <div class="row gy-3">
+                    <div class="col-xl-6">
+                        <app-ribbon-cards 
+                        [mainClass]="'mb-0   shadow-none border'"
+                         [bodyClass]="'p-4'"
+                         [ribbonClass]="'ribbon-6 ribbon-left ribbon-primary'"
+                         [descriptionClass]="''"
+                         [textAlignment]="'mb-2 text-end'"
+                         [topTitle]="'Top Left Ribbon'"
+                         [description]="'Join us in congratulating [Employee Name] for their outstanding contributions and dedication. Their hard work and commitment have truly set a standard for excellence. Lets celebrate their achievements together!'"
+                         >
+                         Service
+                        </app-ribbon-cards>
+                    </div>
+                    <div class="col-xl-6">
+                        <app-ribbon-cards 
+                        [mainClass]="'mb-0   shadow-none border'"
+                         [bodyClass]="'p-4'"
+                         [ribbonClass]="'ribbon-6 ribbon-right ribbon-secondary'"
+                         [descriptionClass]="''"
+                         [textAlignment]="'mb-2 text-start'"
+                         [topTitle]="'Top Right Ribbon'"
+                         [description]="'Join us in congratulating [Employee Name] for their outstanding contributions and dedication. Their hard work and commitment have truly set a standard for excellence. Lets celebrate their achievements together!'"
+                         >
+                         Offer
+                        </app-ribbon-cards>
+                     
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End:: row-6 -->

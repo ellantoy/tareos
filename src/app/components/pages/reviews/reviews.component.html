@@ -1,0 +1,577 @@
+<app-page-header title="Reviews" title1="Pages" activeTitle="Reviews" ></app-page-header>
+  <!-- Start::row-1 -->
+  <div class="row reviews-section">
+    <div class="col-xl-12">
+        <div class="card custom-card">
+            <div class="card-header">
+                <div class="card-title">
+                    Reviews Style 1 :
+                </div>
+            </div>
+            <div class="card-body pb-0">
+                <div class="swiper testimonialSwiper2">
+                    <div class="swiper-wrapper">
+                        <swiper-container 
+                        #swiperContainer3
+                        class="swiper mySwiper" 
+                        space-between="30"
+                        slides-per-view="4"
+                        slides-per-group="1"  
+                        autoplay-delay="2000"  autoplay-disable-on-interaction="false"
+                      >
+                      @for(review4 of reviewsstyle4;track $index){
+                        <swiper-slide >
+                            <div class="card custom-card border position-relative">
+                                <div class="card-body text-center">
+                                        <div>
+                                            <img [src]="review4.src" alt="img" class="mx-auto text-center avatar avatar-xl rounded-circle mb-2">
+                                        </div>
+                                        <div class="">
+                                            <div class="mb-0 fw-semibold fs-14">{{review4.name}}</div>
+                                            <div class="mb-2 text-warning fs-11">
+                                                <i class="lh-1 ri-star-fill me-1"></i>
+                                                <i class="lh-1 ri-star-fill me-1"></i>
+                                                <i class="lh-1 ri-star-fill me-1"></i>
+                                                <i class="lh-1 ri-star-fill me-1"></i>
+                                                <i class="lh-1 ri-star-half-line me-1"></i>
+                                            </div>
+                                            <i class="bx bxs-quote-right fs-2 me-1 text-primary"></i>
+                                            <p class="fs-14 mt-2 mb-1 px-3">
+                                                {{review4.description}}
+                                                
+                                            </p>
+                                        </div>
+                                </div>
+                            </div>
+                            </swiper-slide>
+                      }
+                      </swiper-container>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-12">
+        <h6 class="mb-3">Reviews Style 2 :</h6>
+        <div class="swiper testimonialSwiper01 pagination-dynamic swiper-backface-hidden">
+            <div class="swiper-wrapper">
+                <swiper-container 
+                #swiperContainer4
+                class="swiper mySwiper" 
+                space-between="30"
+                slides-per-view="3"
+                slides-per-group="1" 
+                centeredSlides="true" 
+                autoplay-delay="2000"  autoplay-disable-on-interaction="false"   
+              >
+
+                <swiper-slide class="swiper-slide">
+                    <div class="card custom-card  overflow-hidden">
+                        <div class="card-body">
+                            <p class="fs-16">
+                                <i class="ri-double-quotes-l fs-1 lh-1 me-3"></i> The network
+                                administrator has ensured our systems run smoothly and
+                                securely,always quick to resolve any issues and keep our network
+                                optimized."
+                            </p>
+                            <div class="d-flex justify-content-end flex-wrap gap-3">
+                                <div class="d-flex">
+                                    <div class="me-2 my-auto mb-0">
+                                        <div class="mb-0 lh-1 fs-12 fw-semibold">Vinny Rose
+                                            <span class="fs-11 fw-normal ms-2"><i
+                                                    class="ri-star-fill text-warning fs-9 mb-1 align-middle"></i>
+                                                4.5</span></div>
+                                        <p class="fs-12 mb-0 op-7">Systems Analyst</p>
+                                    </div>
+                                    <img src="./assets/images/faces/1.jpg" alt="img"
+                                        class="avatar avatar-md avatar-rounded border border-3 border-info">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </swiper-slide>
+             <swiper-slide class="swiper-slide">
+                <div class="card custom-card  overflow-hidden">
+                    <div class="card-body">
+                        <p class="fs-16">
+                            <i class="ri-double-quotes-l fs-1 lh-1 me-3"></i> Always
+                            reliable and efficient. They resolve technical problems quickly
+                            and provide clear, helpful guidance to our staff.."
+                        </p>
+                        <div class="d-flex justify-content-end flex-wrap gap-3">
+                            <div class="d-flex">
+                                <div class="me-2 my-auto mb-0">
+                                    <div class="mb-0 lh-1 fs-12 fw-semibold">Amaya Usha
+                                        <span class="fs-11 fw-normal ms-2"><i
+                                                class="ri-star-fill text-warning fs-9 mb-1 align-middle"></i>
+                                            4.5</span></div>
+                                    <p class="fs-12 mb-0 op-7">Web Developer</p>
+                                </div>
+                                <img src="./assets/images/faces/2.jpg" alt="img"
+                                    class="avatar avatar-md avatar-rounded border border-3 border-info">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+             </swiper-slide>
+             <swiper-slide class="swiper-slide">
+                <div class="card custom-card  overflow-hidden">
+                    <div class="card-body">
+                        <p class="fs-16">
+                            <i class="ri-double-quotes-l fs-1 lh-1 me-3"></i>Created a
+                            website that exceeded our expectations. It’s visually appealing,
+                            user-friendly, and has enhanced our online presence
+                            significantly.."
+                        </p>
+                        <div class="d-flex justify-content-end flex-wrap gap-3 text-end">
+                            <div class="d-flex">
+                                <div class="me-2 my-auto mb-0">
+                                    <div class="mb-0 lh-1 fs-12 fw-semibold">Sophia Ben
+                                        <span class="fs-11 fw-normal ms-2"><i
+                                                class="ri-star-fill text-warning fs-9 mb-1 align-middle"></i>
+                                            4.5</span></div>
+                                    <p class="fs-11 mb-0 op-7">Systems Analyst</p>
+                                </div>
+                                <img src="./assets/images/faces/3.jpg" alt="img"
+                                    class="avatar avatar-md avatar-rounded border border-3 border-info">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+             </swiper-slide>
+             <swiper-slide>
+                <div class="card custom-card  overflow-hidden">
+                    <div class="card-body">
+                        <p class="fs-16">
+                            <i class="ri-double-quotes-l fs-1 lh-1 me-3"></i>The network
+                            administrator has ensured our systems run smoothly and
+                            securely,always quick to resolve any issues and keep our network
+                            optimized."
+                        </p>
+                        <div class="d-flex justify-content-end text-end flex-wrap gap-3">
+                            <div class="d-flex">
+                                <div class="me-2 my-auto mb-0">
+                                    <div class="mb-0 lh-1 fs-12 fw-semibold">Sissera William
+                                        <span class="fs-11 fw-normal ms-2"><i
+                                                class="ri-star-fill text-warning fs-9 mb-1 align-middle"></i>
+                                            4.5</span></div>
+                                    <p class="fs-12 mb-0 op-7">Systems Analyst</p>
+                                </div>
+                                <img src="./assets/images/faces/4.jpg" alt="img"
+                                    class="avatar avatar-md avatar-rounded border border-3 border-info">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+             </swiper-slide>
+             <swiper-slide>
+                <div class="card custom-card  overflow-hidden">
+                    <div class="card-body">
+                        <p class="fs-16">
+                            <i class="ri-double-quotes-l fs-1 lh-1 me-3"></i>The network
+                            administrator has ensured our systems run smoothly and
+                            securely,Always quick to resolve any issues and keep our network
+                            optimized."
+                        </p>
+                        <div class="d-flex justify-content-end text-end flex-wrap gap-3">
+                            <div class="d-flex">
+                                <div class="me-2 my-auto mb-0">
+                                    <div class="mb-0 lh-1 fs-12 fw-semibold">Georgia Kate
+                                        <span class="fs-11 fw-normal ms-2"><i
+                                                class="ri-star-fill text-warning fs-9 mb-1 align-middle"></i>
+                                            4.5</span></div>
+                                    <p class="fs-12 mb-0 op-7">Systems Analyst</p>
+                                </div>
+                                <img src="./assets/images/faces/5.jpg" alt="img"
+                                    class="avatar avatar-md avatar-rounded border border-3 border-info">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+             </swiper-slide>
+                </swiper-container>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-12">
+        <h6 class="mb-3">Reviews Style 3 :</h6>
+        <div class="review-style-2 mb-3">
+            <div class="swiper pagination-dynamic testimonialSwiperService swiper-backface-hidden">
+                <div class="swiper-wrapper">
+                    <swiper-container
+                    #swiperContainer2
+                    class="swiper mySwiper"
+                    space-between="30"
+                    slides-per-view="2"
+                    slides-per-group="1"
+                    autoplay-delay="2000"   autoplay-disable-on-interaction="false"
+                  >
+                  @for(review3 of reviewsstyle3;track $index){
+                    <swiper-slide >
+                        <div class="card custom-card border mb-0">
+                            <div class="card-body">
+                                <div>
+                                    <span class=""><sup><i class="bi bi-quote fs-1 me-1 text-primary"></i></sup> Customer service at this company is
+                                        outstanding. They were quick to respond to my inquiry and
+                                        resolved my issue within hours. -- 
+                                        <a href="javascript:void(0);" class="fw-semibold fs-11" data-bs-toggle="tooltip" data-bs-custom-class="tooltip-dark" placement="bottom" ngbTooltip="customer service at this company is outstanding. They were quick to respond to my inquiry and resolved my issue within hours.">Read
+                                            More
+                                        </a>
+                                    </span>
+                                </div>
+                                <div class="d-flex align-items-center text-end  justify-content-end">
+                                    <div class="text-warning d-block me-1 fs-10">
+                                        <i class="ri-star-fill me-1"></i>
+                                        <i class="ri-star-fill me-1"></i>
+                                        <i class="ri-star-fill me-1"></i>
+                                        <i class="ri-star-fill me-1"></i>
+                                        <i class="ri-star-half-line me-1"></i>
+                                    </div>
+                                    <span>4.3</span>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="d-flex align-items-center">
+                                    <span class="avatar rounded-circle me-2 flex-shrink-0">
+                                        <img [src]="review3.src" alt="" class="img-fluid rounded-circle border border-primary border-2">
+                                    </span>
+                                    <div>
+                                        <p class="mb-0 fw-semibold">{{review3.name}}</p>
+                                        <p class="mb-0 fs-11 fw-normal op-8">{{review3.mail}}&#64;gmail.com</p>
+                                    </div>
+                                    <div class="ms-auto fs-12 fw-semibold op-8 text-end">
+                                        <div class="btn btn-sm btn-icon rounded-circle btn-primary-light m-1"><i class="ri-twitter-x-line"></i></div>
+                                        <div class="btn btn-sm btn-icon rounded-circle btn-success-light m-1"><i class="ri-share-line"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </swiper-slide>
+                    }
+              </swiper-container>
+                
+                </div>
+                <div
+                    class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-12">
+        <h6 class="mb-3">Reviews Style 4 :</h6>
+            <div class="card-body pb-0">
+                <div class="swiper testimonialSwiper2">
+                    <div class="swiper-wrapper">
+                        <swiper-container 
+                        #swiperContainer1
+                        class="swiper mySwiper" 
+                        space-between="30"
+                        slides-per-view="3"
+                        slides-per-group="1"
+      
+                        autoplay-delay="2000"  autoplay-disable-on-interaction="false"
+                      >
+                  
+                      @for(review of reviews;track $index){
+                          <swiper-slide >
+
+                                <div class="card custom-card overflow-hidden">
+                                    <div class="p-3 text-center align-items-center justify-content-start gap-2 border-bottom border-block-end-dashed bg-{{review.bg1}}-transparent">
+                                        <img [src]="review.src" alt="img" class="mb-2 mx-auto text-center avatar avatar-xl rounded-circle shadow-sm">
+                                        <div class="flex-grow-1">
+                                            <p class="mb-0 fw-semibold h6">{{review.name}}</p>
+                                            <span class="fw-normal text-muted fs-12"> {{review.role}}
+                                                </span>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="mb-0">
+                                            {{review.description}}
+                                          <i class="op-4 fs-11 fw-medium">--- {{review.name}}</i>
+                                        </div>
+                                        <div class="badge bg-{{review.bg}} rounded-pill float-end">{{review.rating}}
+                                            <i class="ri-star-fill text-warning"></i>
+                                        </div>
+                                        <i class="bx bxs-quote-alt-right review-quote {{review.bg2}}"></i>
+                                    </div>
+                                </div>
+                            </swiper-slide>
+                        }
+                            </swiper-container>
+                   
+                    </div>
+                </div>
+            </div>
+    </div>
+    <div class="col-xl-12">
+        <h6 class="mb-3">Reviews Style 5 :</h6>
+        <div class="swiper testimonialSwiperService1 swiper-backface-hidden">
+            <div class="swiper-wrapper">
+                <swiper-container 
+                #swiperContainer
+                class="swiper mySwiper" 
+                space-between="30"
+                slides-per-view="4"
+                slides-per-group="1"  
+                autoplay-delay="2000"  autoplay-disable-on-interaction="false"
+              >
+                  <swiper-slide >
+                    <div class="card custom-card text-fixed-white">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between gap-2 align-items-center mb-3">
+                                <span class="avatar rounded-circle">
+                                    <img src="./assets/images/faces/1.jpg" alt=""
+                                        class="img-fluid rounded-circle">
+                                </span>
+                                <div class="text-end">
+                                    <span class="text-info d-block ms-1">
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-half-line"></i>
+                                    </span>
+                                    <span class="op-8 d-block fs-12 fw-medium">65 views </span>
+                                </div>
+                            </div>
+                            <p class="fs-14">
+                                This
+                                Product is amazing! It has made my daily tasks so much easier and is
+                                very user-friendly. -- 
+                                <a href="javascript:void(0);"
+                                    class="fw-semibold fs-11" data-bs-toggle="tooltip"
+                                    tooltipClass="tooltip-primary" placement="top"
+                                    ngbTooltip="customer service at this company is outstanding. They were quick to respond to my inquiry and resolved my issue within hours.">Read
+                                    More
+                                </a>
+                            </p>
+                            <div class="d-flex align-items-center justify-content-between gap-3">
+                                <div class="flex-fill">
+                                    <p class="mb-0 fw-bold fs-14 text-primary">Hadley Kylin</p>
+                                    <p class="mb-0 fs-11 fw-normal op-8">UX Guru</p>
+                                </div>
+                                <div class="ms-auto fs-12 fw-semibold op-8 text-end">
+                                    <div class="btn btn-sm btn-icon btn-success-light"><i class="ri-thumb-up-line"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </swiper-slide>
+                    <swiper-slide >
+                        <div class="card custom-card text-fixed-white">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between gap-2 align-items-center mb-3">
+                                    <span class="avatar rounded-circle">
+                                        <img src="./assets/images/faces/13.jpg" alt=""
+                                            class="img-fluid rounded-circle">
+                                    </span>
+                                    <div class="text-end">
+                                        <span class="text-info d-block ms-1">
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-half-line"></i>
+                                        </span>
+                                        <span class="op-8 d-block fs-12 fw-medium">87 views </span>
+                                    </div>
+                                </div>
+                                <p class="fs-14">
+                                    Helping
+                                    me plan for my future. Their expertise and personalized approach have given me great.-- 
+                                    <a href="javascript:void(0);"
+                                        class="fw-semibold fs-11" data-bs-toggle="tooltip"
+                                        tooltipClass="tooltip-primary" placement="top"
+                                        ngbTooltip="customer service at this company is outstanding. They were quick to respond to my inquiry and resolved my issue within hours.">Read
+                                        More
+                                    </a>
+                                </p>
+                                <div class="d-flex align-items-center justify-content-between gap-3">
+                                    <div class="flex-fill">
+                                        <p class="mb-0 fw-bold fs-14 text-primary">Spencer Robin</p>
+                                        <p class="mb-0 fs-11 fw-normal op-8">Support Engineer</p>
+                                    </div>
+                                    <div class="ms-auto fs-12 fw-semibold op-8 text-end">
+                                        <div class="btn btn-sm btn-icon btn-success-light"><i class="ri-thumb-up-line"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </swiper-slide>
+                    <swiper-slide >
+                        <div class="card custom-card text-fixed-white">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between gap-2 align-items-center mb-3">
+                                    <span class="avatar rounded-circle">
+                                        <img src="./assets/images/faces/3.jpg" alt=""
+                                            class="img-fluid rounded-circle">
+                                    </span>
+                                    <div class="text-end">
+                                        <span class="text-info d-block ms-1">
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-half-line"></i>
+                                        </span>
+                                        <span class="op-8 d-block fs-12 fw-medium">47 views </span>
+                                    </div>
+                                </div>
+                                <p class="fs-14">
+                                    A game-changer for our business. Their insights and
+                                strategic advice helped us streamline. -- 
+                                    <a href="javascript:void(0);"
+                                        class="fw-semibold fs-11" data-bs-toggle="tooltip"
+                                        tooltipClass="tooltip-primary" placement="top"
+                                        ngbTooltip="customer service at this company is outstanding. They were quick to respond to my inquiry and resolved my issue within hours.">Read
+                                        More
+                                    </a>
+                                </p>
+                                <div class="d-flex align-items-center justify-content-between gap-3">
+                                    <div class="flex-fill">
+                                        <p class="mb-0 fw-bold fs-14 text-primary">Iliana Lilly</p>
+                                        <p class="mb-0 fs-11 fw-normal op-8">Optima Works</p>
+                                    </div>
+                                    <div class="ms-auto fs-12 fw-semibold op-8 text-end">
+                                        <div class="btn btn-sm btn-icon btn-success-light"><i class="ri-thumb-up-line"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </swiper-slide>
+                    <swiper-slide >
+                        <div class="card custom-card text-fixed-white">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between gap-2 align-items-center mb-3">
+                                    <span class="avatar rounded-circle">
+                                        <img src="./assets/images/faces/14.jpg" alt=""
+                                            class="img-fluid rounded-circle">
+                                    </span>
+                                    <div class="text-end">
+                                        <span class="text-info d-block ms-1">
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-half-line"></i>
+                                        </span>
+                                        <span class="op-8 d-block fs-12 fw-medium">87 views </span>
+                                    </div>
+                                </div>
+                                <p class="fs-14">
+                                    Incredibly
+                                    knowledgeable and supportive throughout the entire process. They
+                                    provided clear. -- 
+                                    <a href="javascript:void(0);"
+                                        class="fw-semibold fs-11" data-bs-toggle="tooltip"
+                                        tooltipClass="tooltip-primary" placement="top"
+                                        ngbTooltip="customer service at this company is outstanding. They were quick to respond to my inquiry and resolved my issue within hours.">Read
+                                        More
+                                    </a>
+                                </p>
+                                <div class="d-flex align-items-center justify-content-between gap-3">
+                                    <div class="flex-fill">
+                                        <p class="mb-0 fw-bold fs-14 text-primary">Tommy Rosen</p>
+                                        <p class="mb-0 fs-11 fw-normal op-8">Freelance Dev</p>
+                                    </div>
+                                    <div class="ms-auto fs-12 fw-semibold op-8 text-end">
+                                        <div class="btn btn-sm btn-icon btn-success-light"><i class="ri-thumb-up-line"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </swiper-slide>
+                    <swiper-slide >
+                        <div class="card custom-card text-fixed-white">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between gap-2 align-items-center mb-3">
+                                    <span class="avatar rounded-circle">
+                                        <img src="./assets/images/faces/5.jpg" alt=""
+                                            class="img-fluid rounded-circle">
+                                    </span>
+                                    <div class="text-end">
+                                        <span class="text-info d-block ms-1">
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-half-line"></i>
+                                        </span>
+                                        <span class="op-8 d-block fs-12 fw-medium">87 views </span>
+                                    </div>
+                                </div>
+                                <p class="fs-14">
+                                    This
+                                    blender a month ago, and it has exceeded my expectations. It’s powerful,
+                                    easy to clean, and makes perfect --
+                                    <a href="javascript:void(0);"
+                                        class="fw-semibold fs-11" data-bs-toggle="tooltip"
+                                        tooltipClass="tooltip-primary" placement="top"
+                                        ngbTooltip="customer service at this company is outstanding. They were quick to respond to my inquiry and resolved my issue within hours.">Read
+                                        More
+                                    </a>
+                                </p>
+                                <div class="d-flex align-items-center justify-content-between gap-3">
+                                    <div class="flex-fill">
+                                        <p class="mb-0 fw-bold fs-14 text-primary">Jasmine Della</p>
+                                        <p class="mb-0 fs-11 fw-normal op-8">Web oneness</p>
+                                    </div>
+                                    <div class="ms-auto fs-12 fw-semibold op-8 text-end">
+                                        <div class="btn btn-sm btn-icon btn-success-light"><i class="ri-thumb-up-line"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </swiper-slide>
+                    <swiper-slide >
+                        <div class="card custom-card text-fixed-white">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between gap-2 align-items-center mb-3">
+                                    <span class="avatar rounded-circle">
+                                        <img src="./assets/images/faces/14.jpg" alt=""
+                                            class="img-fluid rounded-circle">
+                                    </span>
+                                    <div class="text-end">
+                                        <span class="text-info d-block ms-1">
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-half-line"></i>
+                                        </span>
+                                        <span class="op-8 d-block fs-12 fw-medium">87 views </span>
+                                    </div>
+                                </div>
+                                <p class="fs-14">
+                                    Cloud
+                                    architect designed a scalable and efficient cloud infrastructure for us.
+                                    Their expertise has greatly. -- 
+                                    <a href="javascript:void(0);"
+                                        class="fw-semibold fs-11" data-bs-toggle="tooltip"
+                                        tooltipClass="tooltip-primary" placement="top"
+                                        ngbTooltip="customer service at this company is outstanding. They were quick to respond to my inquiry and resolved my issue within hours.">Read
+                                        More
+                                    </a>
+                                </p>
+                                <div class="d-flex align-items-center justify-content-between gap-3">
+                                    <div class="flex-fill">
+                                        <p class="mb-0 fw-bold fs-14 text-primary">Samson Thomas</p>
+                                        <p class="mb-0 fs-11 fw-normal op-8">Cloud architect</p>
+                                    </div>
+                                    <div class="ms-auto fs-12 fw-semibold op-8 text-end">
+                                        <div class="btn btn-sm btn-icon btn-success-light"><i class="ri-thumb-up-line"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </swiper-slide>
+                
+                    </swiper-container>
+               
+            </div>
+        </div>
+    </div>
+</div>
+<!--End::row-1 -->
+
+

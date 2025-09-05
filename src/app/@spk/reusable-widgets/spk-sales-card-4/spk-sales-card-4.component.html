@@ -1,0 +1,38 @@
+
+  <div class="card custom-card">
+    <div class="card-body">
+      <div class="d-flex justify-content-between">
+        <span class="avatar avatar-rounded avatar-md bg-{{backgroundColor}}-transparent svg-{{backgroundColor}}" [ngClass]="backgroundColor">
+          <svg xmlns="http://www.w3.org/2000/svg" class="svg-{{backgroundColor}}" width="32" height="32" fill="#000000" viewBox="0 0 256 256">
+            <path [attr.d]="svgPath" opacity="0.2"></path>
+            <path [attr.d]="svgPath1"></path></svg>
+        </span>
+        <spk-dropdowns [Customclass]="'dropdown'" [Icon]="true" [IconClass]="'bx bx-dots-horizontal-rounded fs-20'" 
+                                    [class]="'text-muted no-caret p-0'" [Menuclass]="'dropdown-menu'">
+            <li>
+              <a class="dropdown-item" href="javascript:void(0);">Week</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="javascript:void(0);">Day</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="javascript:void(0);">Year</a>
+            </li>
+        </spk-dropdowns>
+      </div>
+      <p class="flex-fill text-muted fs-14 mb-0">{{ title }}</p>
+      <div class="d-flex align-items-center justify-content-between">
+        <div class="fs-22 fw-medium mb-0 d-flex align-items-center">{{ value }}</div>
+        <span [ngClass]="percentageChange.includes('+') ? 'text-success' : 'text-danger'" class="text-{{badgeColor}} badge bg-{{badgeColor}}-transparent rounded-pill d-flex align-items-center fs-11 me-0 ms-2 mb-0">
+          @if (percentageChange.includes('+')) {
+          <i class="ri-arrow-left-up-line fs-11" ></i>
+          }
+          @if (percentageChange.includes('-')) {
+          <i class="ri-arrow-left-down-line fs-11" ></i>
+          }
+          {{ percentageChange }}
+        </span>
+      </div>
+    </div>
+  </div>
+

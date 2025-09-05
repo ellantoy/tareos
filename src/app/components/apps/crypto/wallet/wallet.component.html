@@ -1,0 +1,25 @@
+<app-page-header firstTitle="Apps" title="Wallet" title1="Crypto" activeTitle="Wallet"></app-page-header>
+<!-- Start::row-1 -->
+<div class="row">
+    @for(wallet of wallets;track $index){
+    <div class="col-xl-4">
+        <app-spk-crypto-wallet-card [walletType]="wallet.title" [walletAddress]="wallet.walletAddress"
+            [sentAmount]="wallet.sent" [totalAmount]="wallet.balance" [currency]="wallet.currency"
+            [imageUrl]="wallet.imgSrc" [receivedAmount]="wallet.received"></app-spk-crypto-wallet-card>
+    </div>
+    }
+</div>
+<!--End::row-1 -->
+
+<!--Start::row-2 -->
+<div class="row">
+    @for(wallet of availableWallets;track $index){
+        <div class="col-xxl-3 col-lg-6">
+            <app-spk-crypto-available-card [title]="wallet.title" [available]="wallet.available"
+            [usdValue]="wallet.usdValue" [currencySymbol]="wallet.currencySymbol" 
+            [imgSrc]="wallet.imgSrc" ></app-spk-crypto-available-card>
+           
+        </div>
+    }
+</div>
+<!--End::row-2 -->

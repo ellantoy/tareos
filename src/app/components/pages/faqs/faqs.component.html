@@ -1,0 +1,118 @@
+<app-page-header title="FAQs" title1="Pages" activeTitle="FAQs" ></app-page-header>
+
+    <!-- Start:: row-2 -->
+    <div class="row justify-content-center">
+      <div class="col-xl-10">
+          <div class="card custom-card">
+              <div class="card-body custom-tabs">
+                  <div class="row justify-content-center border-bottom border-block-end-dashed mb-4 ">
+                      <div class="col-xl-7">
+                          <div class="py-2">
+                              <div class="text-center">
+                                  <h3 class="text-success mb-3">FAQs</h3>
+                                  <h5 class="d-block">Require assistance? Here are some of our commonly asked questions!</h5>
+                                  <p class="text-muted mb-2 px-4">Discover answers to common queries and find solutions to your concerns with our comprehensive list of frequently asked questions.</p>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="row mb-2">
+                  <div class="col-xl-3">
+                  <ul ngbNav #nav="ngbNav" [activeId]="2"  class="nav nav-tabs nav-tabs-header mb-4 d-flex flex-column justify-content-center faq-nav gap-2" role="tablist">
+                    <li class="nav-item" role="presentation" [ngbNavItem]="1">
+                        <a ngbNavLink class="nav-link" data-bs-toggle="tab" role="tab" aria-current="page" href="#general-settings" aria-selected="false" tabindex="-1">
+                          <i class="ti ti-settings me-1 d-inline-block"></i>General Settings
+                        </a>
+                        <ng-template ngbNavContent>
+                          <div class="tab-pane border-0 p-0" id="general-settings" role="tabpanel">
+        <app-ngb-accordion [accordionId]="'accordionExample'" [closeOthers]="true" [accordionItems]="panels" [accodionClass]="'accordion accordion-customicon1 faq-accordion accordion-primary accordions-items-seperate'" ></app-ngb-accordion>
+
+                          </div>
+                        </ng-template>
+                      </li>
+                      
+                      <li class="nav-item" role="presentation" [ngbNavItem]="2">
+                          <a  ngbNavLink class="nav-link" data-bs-toggle="tab" role="tab" aria-current="page" href="#theme-customization" aria-selected="true"><i class="ti ti-palette me-1 d-inline-block"></i>Theme Customization</a>
+                          <ng-template ngbNavContent>
+                            <div class="tab-pane show active border-0 p-0" id="theme-customization"
+                            role="tabpanel">
+        <app-ngb-accordion [accordionId]="'accordionExample'" [closeOthers]="true" [accordionItems]="panels1" [accodionClass]="'accordion accordion-customicon1 faq-accordion accordion-primary accordions-items-seperate'" ></app-ngb-accordion>
+                            
+                        </div>
+                          </ng-template>
+                        </li>
+                      <li class="nav-item" role="presentation" [ngbNavItem]="3">
+                          <a ngbNavLink class="nav-link" data-bs-toggle="tab" role="tab" aria-current="page" href="#user-management" aria-selected="false" tabindex="-1"><i class="ti ti-user-cog me-1 d-inline-block"></i>User Management</a>
+                          <ng-template ngbNavContent>
+                            <div class="tab-pane border-0 p-0" id="user-management"
+                            role="tabpanel">
+        <app-ngb-accordion [accordionId]="'accordionExample'" [closeOthers]="true" [accordionItems]="panels2" [accodionClass]="'accordion accordion-customicon1 faq-accordion accordion-primary accordions-items-seperate'" ></app-ngb-accordion>
+
+                        </div>
+                          </ng-template>
+                        </li>
+                      <li class="nav-item" role="presentation" [ngbNavItem]="4">
+                          <a ngbNavLink class="nav-link" data-bs-toggle="tab" role="tab" aria-current="page" href="#security-authentication" aria-selected="false" tabindex="-1"><i class="ti ti-shield-lock me-1 d-inline-block"></i>Security and Authentication</a>
+                          <ng-template ngbNavContent>
+                            <div class="tab-pane border-0 p-0" id="security-authentication"
+                            role="tabpanel">
+        <app-ngb-accordion [accordionId]="'accordionExample'" [closeOthers]="true" [accordionItems]="panels3" [accodionClass]="'accordion accordion-customicon1 faq-accordion accordion-primary accordions-items-seperate'" ></app-ngb-accordion>
+
+                        </div>
+                          </ng-template>
+                        </li>
+                      <li class="" role="presentation" [ngbNavItem]="5">
+                          <a ngbNavLink class="nav-link" data-bs-toggle="tab" role="tab" aria-current="page" href="#troubleshooting" aria-selected="false" tabindex="-1"><i class="ti ti-headset me-1 d-inline-block"></i>Troubleshooting and Support</a>
+                          <ng-template ngbNavContent>
+                            <div class="tab-pane border-0 p-0" id="troubleshooting"
+                            role="tabpanel">
+        <app-ngb-accordion [accordionId]="'accordionExample'" [closeOthers]="true" [accordionItems]="panels4" [accodionClass]="'accordion accordion-customicon1 faq-accordion accordion-primary accordions-items-seperate'" ></app-ngb-accordion>
+
+                        </div>
+                          </ng-template>
+                        </li>
+                  </ul>
+                  </div>
+                  <div class="col-xl-9">
+                  <div class="tab-content mb-4" [ngbNavOutlet]="nav">
+                  </div>
+                  </div>
+                  </div>
+                  <div class="row border border-dashed mx-0 justify-content-between align-items-center rounded">
+                      <div class="col-sm-3 d-md-block d-none px-0">
+                          <img src="./assets/images/media/media-65.png" alt="" class="img-fluid ps-3">
+                      </div>
+                      <div class="col-md-8 px-0">
+                          <div class="p-3">
+                              <div>
+                                  <h5 class="fw-semibold mb-2">Still Have Questions? We're Here to Help!</h5>
+                                  <span class="d-block fs-12 text-muted">
+                                      Contact our support team for personalized assistance. Your satisfaction is our priority!
+                                      Write your question below and we'll get back to you shortly.
+                                  </span>
+                                  <div class="row gy-3 mt-3"> 
+                                      <div class="col-xl-6"> 
+                                          <label for="user-name" class="form-label">Your Name</label> 
+                                          <input type="text" class="form-control" id="user-name" placeholder="Enter Your Name"> 
+                                      </div> 
+                                      <div class="col-xl-6"> 
+                                          <label for="user-email" class="form-label">Email Id</label> 
+                                          <input type="text" class="form-control" id="user-email" placeholder="Enter Email"> 
+                                      </div> 
+                                      <div class="col-xl-12"> 
+                                          <label for="text-area" class="form-label">Textarea</label>
+                                          <textarea class="form-control" placeholder="Enter your query here" id="text-area" rows="3"></textarea>
+                                      </div>
+                                      <div class="col-xl-12">
+                                          <button class="btn btn-primary btn-wave waves-effect waves-light" type="button" id="send">Send your question</button>
+                                      </div> 
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <!-- End:: row-2 -->

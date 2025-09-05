@@ -1,0 +1,44 @@
+
+<div class="row authentication authentication-cover-main mx-0">
+    <div class="col-xxl-8 col-xl-7">
+        <div class="row justify-content-center align-items-center h-100">
+            <div class="col-xxl-5 col-xl-9 col-lg-6 col-md-6 col-sm-8 col-12">
+                <div class="card custom-card my-4 border">
+                    <div class="card-body p-5">
+                        <p class="h5 mb-2 text-center">Lock Screen</p>
+                        <p class="text-muted mb-4 text-center">Let's get started</p>
+                        <div class="row gy-3">
+                            <div class="col-xl-12 mb-2">
+                                <label for="lockscreen-password" class="form-label text-default">Password<sup class="fs-12 text-danger">*</sup></label>
+                                <div class="position-relative">
+                                    <input class="form-control create-password-input"  [type]="showPassword ? 'text' : 'password'" autocomplete id="create-password" placeholder="password" type="password">
+                                 <a class="show-password-button text-muted" href="javascript:void(0);" (click)="createpassword()"><i class="ri-eye-{{toggleClass}} align-middle"></i></a>
+                                </div>
+                            </div>
+                            <div class="col-xl-12 d-grid mt-2">
+                                <a routerLink="/dashboards/sales" class="btn btn-primary">Unlock</a>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <p class="text-muted mt-3 mb-0">Back to home ? <a class="text-primary fw-medium" routerLink="/dashboards/sales" >Click Here</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xxl-4 col-xl-5 col-lg-12 d-xl-block d-none px-0">
+        <div class="authentication-cover overflow-hidden">
+            <div class="authentication-cover-logo"> 
+                <a routerLink="/dashboards/sales" > 
+                    <img src="./assets/images/brand-logos/desktop-white.png" alt="" class="authentication-brand desktop-white"> 
+                </a> 
+            </div>
+            <div class="aunthentication-cover-content d-flex align-items-center justify-content-center">
+                <div>
+                    <img src="./assets/images/media/media-76.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

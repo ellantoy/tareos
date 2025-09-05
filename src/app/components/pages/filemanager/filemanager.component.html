@@ -1,0 +1,522 @@
+<app-page-header title="File Manager" title1="Pages" activeTitle="File Manager"></app-page-header>
+
+<!-- Start:: row-1 -->
+<div class="row">
+    <div class="col-xxl-3">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card custom-card">
+                    <div class="border-bottom border-block-end-dashed p-3"> 
+                        <div class="input-group"> 
+                            <input type="text" class="form-control w-50" placeholder="Search File" aria-describedby="button-addon01"> 
+                            <button class="btn btn-primary" type="button" id="button-addon01"><i class="ri-search-line"></i></button> 
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-unstyled files-main-nav" id="files-main-nav">
+                            <li class="px-0 pt-0">
+                                <span class="fs-12 text-muted">My Files</span>
+                            </li>
+                            @for(item of fileNavItems;track $index){
+                            <li [class.active]="item.active" class="files-type">
+                                <a href="javascript:void(0)">
+                                    <div class="d-flex align-items-center">
+                                        <div class="me-2">
+                                            <i class="{{ item.icon }} fs-16"></i>
+                                        </div>
+                                        <span class="flex-fill text-nowrap">{{ item.name }}</span>
+                                        @if(item.badge){
+                                        <span class="badge bg-{{item.badgeColor}}">{{ item.badge }}</span>
+                                        }
+                                    </div>
+                                </a>
+                            </li>
+                            }
+
+                            <li class="px-0 pt-0">
+                                <span class="fs-12 text-muted">Most Recent</span>
+                            </li>
+                            @for (file of recentFiles; track $index) {
+                            <li>
+                                <div class="d-flex align-items-center gap-2">
+                                    <div class="me-0">
+                                        <span
+                                            class="avatar avatar-md {{ file.iconColorClass }} {{ file.textColorClass }}">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+                                                <rect width="256" height="256" fill="none" />
+                                                <path
+                                                    d="M112,175.67V168a8,8,0,0,0-8-8H48a8,8,0,0,0-8,8v40a8,8,0,0,0,8,8h56a8,8,0,0,0,8-8v-8.82L144,216V160Z"
+                                                    opacity="0.2" />
+                                                <polyline points="112 175.67 144 160 144 216 112 199.18" fill="none"
+                                                    stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                                    stroke-width="16" />
+                                                <rect x="40" y="160" width="72" height="56" rx="8" fill="none"
+                                                    stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                                    stroke-width="16" />
+                                                <polygon points="152 32 152 88 208 88 152 32" opacity="0.2" />
+                                                <polyline points="152 32 152 88 208 88" fill="none"
+                                                    stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                                    stroke-width="16" />
+                                                <path d="M176,224h24a8,8,0,0,0,8-8V88L152,32H56a8,8,0,0,0-8,8v88"
+                                                    fill="none" stroke="currentColor" stroke-linecap="round"
+                                                    stroke-linejoin="round" stroke-width="16" />
+                                            </svg>
+                                        </span>
+                                    </div>
+                                    <div>
+                                        <a href="javascript:void(0);" data-bs-toggle="offcanvas"
+                                            (click)="openOffcanvas(content2)" data-bs-target="#offcanvasRight"
+                                            aria-controls="offcanvasRight">
+                                            {{ file.name }}
+                                        </a>
+                                    </div>
+                                    <div class="ms-auto">
+                                        <span class="fw-medium text-muted">{{ file.size }}</span>
+                                    </div>
+                                </div>
+                            </li>
+                            }
+                            <li class="px-0 pt-3">
+                                <span class="fs-12 text-muted">Upload File</span>
+                            </li>
+                            <li class="p-3 border border-dashed">
+                                <label class="form-label">Drop File here :</label>
+                                <file-pond #myPond [options]="pondOptions" class="blog-images" multiple name="filepond"
+                                    idata-allow-reorder="true" data-max-file-size="3MB" data-max-files="6"
+                                    [files]="pondFiles" (oninit)="pondHandleInit()"
+                                    (onaddfile)="pondHandleAddFile($event)"
+                                    (onactivatefile)="pondHandleActivateFile($event)">
+                                </file-pond>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-12">
+                <div class="card custom-card">
+                    <div class="card-body">
+                        <div class="filemanager-upgrade-storage w-100 text-center">
+                            <span class="d-block mb-3 pb-1 border border-dashed rounded-2"> <img
+                                    src="./assets/images/media/file-manager/2.png" alt=""> </span>
+                            <span class="fs-16 fw-semibold text-default">Get more storage with Pro.</span>
+                            <span class="d-block text-muted mt-2">Upgrade now for increased storage space and enhanced
+                                functionality.</span>
+                            <div class="mt-4 d-grid"> <button
+                                    class="btn btn-lg btn-primary btn-wave waves-effect waves-light">Upgrade Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xxl-9">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card custom-card overflow-hidden">
+                    <div class="card-body p-0">
+                        <div class="file-manager-folders">
+                            <div class="d-flex p-3 flex-wrap gap-2 align-items-center justify-content-between border-bottom">
+                                <div class="flex-fill">
+                                    <h6 class="fw-medium mb-0">All Folders</h6>
+                                </div>
+                                <div class="d-flex gap-2 flex-lg-nowrap flex-wrap justify-content-sm-end w-75">
+                                    <a (click)="open(content)"
+                                        class="btn btn-primary btn-w-md d-flex align-items-center justify-content-center btn-wave waves-light text-nowrap"
+                                        data-bs-toggle="modal" data-bs-target="#create-folder">
+                                        <i class="ri-add-circle-line align-middle me-1"></i>Create Folder
+                                    </a>
+        
+                                    <ng-template #content let-modal>
+                                        <div class="modal-header">
+                                            <h6 class="modal-title" id="staticBackdropLabel">Create Folder
+                                            </h6>
+                                            <button type="button" class="btn-close" (click)="modal.close('cross click')"
+                                                data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <label for="create-folder1" class="form-label">Folder Name</label>
+                                            <input type="text" class="form-control" id="create-folder1"
+                                                placeholder="Folder Name">
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-sm btn-icon btn-light"
+                                                (click)="modal.close('cross click')" data-bs-dismiss="modal"><i
+                                                    class="ri-close-fill"></i></button>
+                                            <button type="button" class="btn btn-sm btn-success">Create</button>
+                                        </div>
+                                    </ng-template>
+        
+                                    <a (click)="open1(content1)"
+                                        class="btn btn-success-light btn-w-md d-flex align-items-center justify-content-center btn-wave waves-light"
+                                        data-bs-toggle="modal" data-bs-target="#create-file">
+                                        <i class="ri-add-circle-line align-middle me-1"></i>Create File
+                                    </a>
+        
+                                    <ng-template #content1 let-modal>
+                                        <div class="modal-header">
+                                            <h6 class="modal-title" id="staticBackdropLabel1">Create File
+                                            </h6>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                (click)="modal.close('cross click')" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <label for="create-file1" class="form-label">File Name</label>
+                                            <input type="text" class="form-control" id="create-file1" placeholder="File Name">
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-sm btn-icon btn-light"
+                                                (click)="modal.close('cross click')" data-bs-dismiss="modal"><i
+                                                    class="ri-close-fill"></i></button>
+                                            <button type="button" class="btn btn-sm btn-success">Create</button>
+                                        </div>
+                                    </ng-template>
+        
+                                </div>
+                            </div>
+                            <div class="p-3 file-folders-container">
+                                <div class="d-flex mb-3 align-items-center justify-content-between">
+                                    <p class="mb-0 fw-medium fs-14">Quick Access</p>
+                                    <a href="javascript:void(0);" class="fs-12 text-muted fw-medium"> View All<i
+                                            class="ti ti-arrow-narrow-right ms-1"></i> </a>
+                                </div>
+                                <div class="row">
+                                    @for(item of cardItems;track $index){
+                                    <div class="col-xxl-4 col-xl-6 col-lg-6 col-md-6">
+                                        <div class="card custom-card shadow-none border">
+                                            <div class="card-body">
+                                                <div class="d-flex align-items-center gap-3 flex-wrap">
+                                                    <div class="main-card-icon">
+                                                        <div
+                                                            class="avatar avatar-md {{ item.avatarClass }} border {{ item.borderClass }} border-opacity-10">
+                                                            <div class="avatar avatar-sm {{ item.textColorClass }}">
+                                                                <i class="{{ item.iconClass }} fs-24"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="flex-fill">
+                                                        <a href="javascript:void(0);" class="d-block fw-medium">{{ item.title
+                                                            }}</a>
+                                                        <span class="fs-12 text-muted">{{ item.usage }}</span>
+                                                    </div>
+                                                    <div class="text-end">
+                                                        <span class="fw-medium">{{ item.fileCount }}</span>
+                                                        <span class="d-block fs-12 {{item.text}}">{{ item.storage }}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    }
+        
+                                </div>
+                                <div class="d-flex mb-3 align-items-center justify-content-between">
+                                    <p class="mb-0 fw-medium fs-14">Folders</p>
+                                    <a href="javascript:void(0);" class="fs-12 text-muted fw-medium"> View All<i
+                                            class="ti ti-arrow-narrow-right ms-1"></i> </a>
+                                </div>
+                                <div class="row mb-2">
+                                    @for(folder of folders;track $index){
+                                    <div class="col-xxl-3 col-xl-6 col-lg-6 col-md-6">
+                                        <div class="card custom-card shadow-none border">
+                                            <div class="card-body">
+                                                <div
+                                                    class="mb-4 folder-svg-container d-flex flex-wrap justify-content-between align-items-top">
+                                                    <div class="avatar">
+                                                        <img [src]="folder.imageUrl" alt="" class="img-fluid">
+                                                    </div>
+                                                    <div>
+                                                        <spk-dropdowns [Customclass]="'dropdown'"  [class]="'no-caret btn-outline-light border-0 bg-transparent p-0'" [Icon]="true" [IconClass]="'ri-more-fill fw-semibold text-muted'" 
+                                                        [Menuclass]="'dropdown-menu'"  >
+                                                        <li><a class="dropdown-item"
+                                                            href="javascript:void(0);">Delete</a></li>
+                                                    <li><a class="dropdown-item"
+                                                            href="javascript:void(0);">Rename</a></li>
+                                                    <li><a class="dropdown-item" href="javascript:void(0);">Hide
+                                                            Folder</a></li>
+                                                    </spk-dropdowns>
+                                                
+                                                    </div>
+                                                </div>
+                                                <p class="fs-14 fw-medium mb-1 lh-1">
+                                                    <a href="javascript:void(0);">{{ folder.name }}</a>
+                                                </p>
+                                                <div class="d-flex align-items-center justify-content-between flex-wrap">
+                                                    <div>
+                                                        <span class="text-muted fs-12">{{ folder.filesCount }}</span>
+                                                    </div>
+                                                    <div>
+                                                        <span class="text-default fw-medium">{{ folder.size }}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    }
+                                </div>
+                                <div class="d-flex mb-3 align-items-center justify-content-between">
+                                    <p class="mb-0 fw-medium fs-14">Recent Files</p>
+                                    <a href="javascript:void(0);" class="fs-12 text-muted fw-medium"> View All<i
+                                            class="ti ti-arrow-narrow-right ms-1"></i> </a>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xl-12">
+                                        <div class="table-responsive border">
+                                            <spk-reusable-tables tableClass=" text-nowrap table-hover"
+                                                tableBody="files-list" [columns]="fileColumns" [showCheckbox]="false">
+                                                @for(file of files;track $index){
+                                                <tr class="{{file.tableActive}}">
+                                                    <th scope="row">
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="me-0">
+                                                                <span class="avatar avatar-md {{file.bg}} "
+                                                                    [innerHTML]="getSanitizedSVG(file.icon)">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                                                        viewBox="0 0 256 256">
+                                                                        <rect width="256" height="256" fill="none" />
+                                                                        <path
+                                                                            d="M112,175.67V168a8,8,0,0,0-8-8H48a8,8,0,0,0-8,8v40a8,8,0,0,0,8,8h56a8,8,0,0,0,8-8v-8.82L144,216V160Z"
+                                                                            opacity="0.2" />
+                                                                        <polyline points="112 175.67 144 160 144 216 112 199.18"
+                                                                            fill="none" stroke="currentColor"
+                                                                            stroke-linecap="round" stroke-linejoin="round"
+                                                                            stroke-width="16" />
+                                                                        <rect x="40" y="160" width="72" height="56" rx="8"
+                                                                            fill="none" stroke="currentColor"
+                                                                            stroke-linecap="round" stroke-linejoin="round"
+                                                                            stroke-width="16" />
+                                                                        <polygon points="152 32 152 88 208 88 152 32"
+                                                                            opacity="0.2" />
+                                                                        <polyline points="152 32 152 88 208 88" fill="none"
+                                                                            stroke="currentColor" stroke-linecap="round"
+                                                                            stroke-linejoin="round" stroke-width="16" />
+                                                                        <path
+                                                                            d="M176,224h24a8,8,0,0,0,8-8V88L152,32H56a8,8,0,0,0-8,8v88"
+                                                                            fill="none" stroke="currentColor"
+                                                                            stroke-linecap="round" stroke-linejoin="round"
+                                                                            stroke-width="16" />
+                                                                    </svg>
+                                                                </span>
+                                                            </div>
+                                                            <div>
+                                                                <a href="javascript:void(0);" data-bs-toggle="offcanvas"
+                                                                    (click)="openOffcanvas(content2)"
+                                                                    data-bs-target="#offcanvasRight"
+                                                                    aria-controls="offcanvasRight">{{ file.name }}</a>
+                                                            </div>
+                                                        </div>
+                                                    </th>
+                                                    <td>{{ file.category }}</td>
+                                                    <td>{{ file.size }}</td>
+                                                    <td>{{ file.dateModified }}</td>
+                                                    <td>
+                                                        <div class="hstack gap-2 fs-15">
+                                                            <a href="javascript:void(0);"
+                                                                class="btn btn-icon btn-sm btn-info-light">
+                                                                <i class="ri-eye-line"></i>
+                                                            </a>
+                                                            <a href="javascript:void(0);"
+                                                                class="btn btn-icon btn-sm btn-secondary-light">
+                                                                <i class="ri-delete-bin-line"></i>
+                                                            </a>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                }
+                                                <td colspan="5">
+                                                    <nav aria-label="Page navigation" class="pagination-style-4 py-0 float-end">
+                                                        <ul class="pagination mb-0">
+                                                            <li class="page-item disabled">
+                                                                <a class="page-link" href="javascript:void(0)">
+                                                                    Prev
+                                                                </a>
+                                                            </li>
+                                                            <li class="page-item active"><a class="page-link"
+                                                                    href="javascript:void(0)">1</a></li>
+                                                            <li class="page-item"><a class="page-link"
+                                                                    href="javascript:void(0)">2</a></li>
+                                                            <li class="page-item">
+                                                                <a class="page-link text-primary" href="javascript:void(0)">
+                                                                    next
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </nav>
+                                                </td>
+                                            </spk-reusable-tables>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-12">
+           <div class="card custom-card">
+            <div class="card-body">
+                <div class="row gy-3 gy-xl-0">
+                    <div class="col-xl-3 my-auto">
+                        <div class="d-flex align-items-start gap-3">
+                            <div>
+                                <span class="avatar avatar-md bg-secondary-transparent">
+                                    <i class="ri-hard-drive-2-fill fs-16"></i>
+                                </span>
+                            </div>
+                            <div class="flex-fill">
+                                <div class=" mb-3"> All Folders
+                                    <p class="mb-0"><span class="fw-bold fs-14">68.12GB</span> Used</p>
+                                    <p class="fs-11 text-muted mb-0">21.35GB free space</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="file-manager-storage">
+                            <spk-apexcharts [chartOptions]="chartOptions"></spk-apexcharts>
+                        </div>
+                    </div>
+                    <div class="col-xl-9">
+                        <div class="row gy-3">
+                            @for(item of listItems;track $index){
+                            <div class="col-xl-6">
+                                    <div class="border border-dashed rounded p-3">
+                                        <div class="d-flex align-items-center gap-3">
+                                          <div class="main-card-icon">
+                                            <div class="avatar avatar-lg {{ item.avatarClass }}-transparent border {{ item.borderClass }} border-opacity-10">
+                                              <div class="avatar avatar-sm {{ item.textColorClass }}">
+                                                <i class="{{ item.iconClass }} fs-20"></i>
+                                              </div>
+                                            </div>
+                                          </div>
+                                          <div class="flex-fill">
+                                            <span class="fw-medium">{{ item.title }}</span>
+                                            <span class="text-muted fs-12 d-block">{{ item.filesCount }}</span>
+                                          </div>
+                                          <div>
+                                            <span class="fw-medium {{ item.textColorClass }} mb-0 fs-14">{{ item.size }}</span>
+                                          </div>
+                                        </div>
+                                        <div class="progress progress-md p-1 {{ item.avatarClass }}-transparent mt-3" role="progressbar"
+                                             [attr.aria-valuenow]="item.progress" aria-valuemin="0" aria-valuemax="100">
+                                          <div class="progress-bar progress-bar-striped progress-bar-animated {{item.avatarClass}}" 
+                                                [style.width.%]="item.progress">
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            </div>
+        </div>
+       
+    </div>
+   
+</div>
+<!-- End:: row-1 -->
+
+<!-- Start::mail information offcanvas -->
+<ng-template #content2 let-offcanvas>
+    <div class="offcanvas-body p-0">
+        <div class="selected-file-details">
+            <div class="d-flex p-3 align-items-center justify-content-between border-bottom">
+                <div>
+                    <h6 class="fw-medium mb-0">File Details</h6>
+                </div>
+                <div class="d-flex align-items-center">
+                    <spk-dropdowns [Customclass]="'dropdown me-1'"  [class]="'btn btn-sm btn-icon btn-primary-light btn-wave waves-light waves-effect waves-light no-caret'" [Icon]="true" [IconClass]="'ri-more-2-fill'" 
+                    [Menuclass]="'dropdown-menu'"  >
+                    <li><a class="dropdown-item" ngbDropdownItem href="javascript:void(0);">Share</a></li>
+                    <li><a class="dropdown-item" ngbDropdownItem href="javascript:void(0);">Copy</a></li>
+                    <li><a class="dropdown-item" ngbDropdownItem href="javascript:void(0);">Move</a></li>
+                    <li><a class="dropdown-item" ngbDropdownItem href="javascript:void(0);">Delete</a></li>
+                    <li><a class="dropdown-item" ngbDropdownItem href="javascript:void(0);">Raname</a></li>
+                </spk-dropdowns>
+                    <button type="button" class="btn btn-sm btn-icon btn-outline-light border"
+                        (click)="offcanvas.close('cross click')" data-bs-dismiss="offcanvas" aria-label="Close"><i
+                            class="ri-close-line"></i></button>
+                </div>
+            </div>
+            <div class="filemanager-file-details" id="filemanager-file-details">
+                <div class="p-3 text-center border-bottom border-block-end-dashed">
+                    <div class="file-details mb-3">
+                        <img src="./assets/images/media/blog/9.jpg" alt="">
+                    </div>
+                    <div>
+                        <p class="mb-0 fw-medium fs-16">IMG-09123878-SPK734.jpeg</p>
+                        <p class="mb-0 text-muted fs-10">422KB | 23,Nov 2024</p>
+                    </div>
+                </div>
+                <div class="p-3 border-bottom border-block-end-dashed">
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <div>
+                                <span class="fw-medium">File Format : </span><span class="fs-12 text-muted">jpeg</span>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div>
+                                <p class="fw-medium mb-0">File Description : </p>
+                                <span class="fs-12 text-muted">This file contains 3 folder zeno.main & zeno.premium
+                                    & zeno.featured and 42 images and layout styles are added in this update.</span>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <p class="fw-medium mb-0">File Location : </p>
+                            <span class="fs-12 text-muted">Device/Storage/Archives/IMG-09123878-SPK734.jpeg</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="p-3 border-bottom border-block-end-dashed">
+                    <p class="mb-1 fw-medium fs-14">Downloaded from :</p>
+                    <a class="text-primary fw-medium text-break" href="https://themeforest.net/user/spruko/portfolio"
+                        target="_blank">
+                        <u>https://themeforest.net/user/spruko/portfolio</u>
+                    </a>
+                </div>
+                <div class="p-3">
+                    <p class="mb-2 fw-medium fs-14">Shared With :</p>
+                    <a href="javascript:void(0);">
+                        <div class="d-flex align-items-center p-2 mb-1">
+                            <span class="avatar avatar-sm me-2 avatar-rounded">
+                                <img src="./assets/images/faces/1.jpg" alt="">
+                            </span>
+                            <span class="fw-medium flex-fill">Akira Susan</span>
+                            <span class="badge bg-success-transparent fw-normal">28,Nov 2024</span>
+                        </div>
+                    </a>
+                    <a href="javascript:void(0);">
+                        <div class="d-flex align-items-center p-2 mb-1">
+                            <span class="avatar avatar-sm me-2 avatar-rounded">
+                                <img src="./assets/images/faces/15.jpg" alt="">
+                            </span>
+                            <span class="fw-medium flex-fill">Khalid Ahmad</span>
+                            <span class="badge bg-success-transparent fw-normal">16,Oct 2024</span>
+                        </div>
+                    </a>
+                    <a href="javascript:void(0);">
+                        <div class="d-flex align-items-center p-2 mb-1">
+                            <span class="avatar avatar-sm me-2 avatar-rounded">
+                                <img src="./assets/images/faces/8.jpg" alt="">
+                            </span>
+                            <span class="fw-medium flex-fill">Jeremiah Jackson</span>
+                            <span class="badge bg-success-transparent fw-normal">05,Dec 2024</span>
+                        </div>
+                    </a>
+                    <a href="javascript:void(0);">
+                        <div class="d-flex align-items-center p-2">
+                            <span class="avatar avatar-sm me-2 avatar-rounded">
+                                <img src="./assets/images/faces/13.jpg" alt="">
+                            </span>
+                            <span class="fw-medium flex-fill">Brigo Jhonson</span>
+                            <span class="badge bg-success-transparent fw-normal">26,Apr 2024</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>
+<!-- End::mail information offcanvas -->

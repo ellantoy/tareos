@@ -1,0 +1,249 @@
+<app-page-header firstTitle="Apps" title="Order Details" title1="Ecommerce" activeTitle="Order Details" ></app-page-header>
+   <!-- Start::row-1 -->
+   <div class="row">
+    <div class="col-xxl-9">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card custom-card">
+                    <div class="card-header d-flex justify-content-between">
+                        <div class="card-title">
+                            Order No - <span class="text-primary">#SPK-434422</span>
+                        </div>
+                        <div>
+                            <span class="badge bg-primary-transparent">
+                                Estimated delivery : 30,Nov 2023
+                            </span>
+                        </div>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <spk-reusable-tables [columns]="orderColumn"  tableClass="table text-nowrap"  [showCheckbox]="false">
+                                    @for (product of products; track $index) {
+                                    <tr>
+                                      <td>
+                                        <div class="d-flex align-items-center">
+                                          <div class="me-3">
+                                            <span class="avatar avatar-xl bg-light">
+                                              <img [src]="product.image" [alt]="product.name">
+                                            </span>
+                                          </div>
+                                          <div>
+                                            <div class="mb-1 fs-14 fw-medium">
+                                              <a href="javascript:void(0);">{{ product.name }}</a>
+                                            </div>
+                                            <div class="mb-1">
+                                              <span class="me-1 d-inline-block">Category :</span>
+                                              <span class="text-muted">{{ product.category }}</span>
+                                            </div>
+                                            <div class="mb-1">
+                                              <span class="me-1 d-inline-block">Brand :</span>
+                                              <span class="text-muted">
+                                                {{ product.brand }}
+                                                @if (product.offer) {
+                                                <span class="badge bg-success ms-2">{{ product.offer }}</span>
+                                                }
+                                                @if (product.discount) {
+                                                <span class="badge bg-primary ms-2">{{ product.discount }}</span>
+                                                }
+                                              </span>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </td>
+                                      <td>
+                                        <a href="javascript:void(0);" class="text-primary">{{ product.sku }}</a>
+                                      </td>
+                                      <td>
+                                        <span class="fs-15 fw-medium">${{ product.price }}</span>
+                                      </td>
+                                      <td>{{ product.quantity }}</td>
+                                      <td>${{ product.total }}</td>
+                                    </tr>
+                                }
+                            </spk-reusable-tables>
+                        </div>
+                    </div>
+                    <div class="card-footer border-top-0 d-flex align-items-center justify-content-between gap-2">
+                        <button class="btn btn-primary-light btn-wave   " onclick="javascript:window.print();"><i class="ri-printer-line me-1 align-middle d-inline-block"></i>Print</button>
+                        <button class="btn btn-primary btn-wave "><i class="ri-share-forward-line me-1 align-middle d-inline-block"></i>Share Details</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xxl-3">
+        <div class="card custom-card">
+            <div class="card-header">
+                <div class="card-title">
+                    Order Tracking
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="d-flex align-items-center gap-4">
+                    <p class="mb-3">
+                        <span class="">Order ID :</span>
+                        <span class="text-primary">#434422</span>
+                    </p>
+                    <p class="mb-3">
+                        <span class="">Product :</span>
+                        <span class="text-secondary">Men's Sports Shoes</span>
+                    </p>
+                </div>
+                <div class="order-track">
+                    <div ngbAccordion class="accordion" id="basicAccordion">
+                        <div ngbAccordionItem  [collapsed]="false" class="accordion-item border-0 bg-transparent mb-3">
+                            <div ngbAccordionHeader class="accordion-header" id="headingOne">
+                                <button ngbAccordionButton class="px-0 py-0 d-block" href="javascript:void(0)" role="button" data-bs-toggle="collapse" data-bs-target="#basicOne" aria-expanded="true" aria-controls="basicOne">
+                                    <div class="d-flex align-items-center mb-0 lh-1">
+                                        <div class="me-2 p-1 border border-primary border-opacity-25 rounded-pill">
+                                            <span class="avatar avatar-sm avatar-rounded p-2 bg-primary">
+                                                <i class="ri-shopping-cart-2-line fs-16"></i>
+                                            </span>
+                                        </div>
+                                        <div class="flex-fill">
+                                            <p class="fw-semibold mb-0 fs-15 mb-0">Order Placed</p>
+                                        </div>
+                                    </div>
+                                </button>
+                            </div>
+                            <div ngbAccordionCollapse id="basicOne" class="accordion-collapse collapse show border-top-0" aria-labelledby="headingOne" data-bs-parent="#basicAccordion">
+                                <div ngbAccordionBody class="accordion-body pt-0 ps-5 mb-0 pb-0">
+                                    <ng-template>
+                                        <div class="">
+                                            <p class="mb-0">Order placed successfully by <a href="javascript:void(0);" class="font-weight-semibold text-primary">Sansa Taylor</a></p>
+                                            <span class="text-muted fs-12">Nov 03, 2024, 15:36</span>
+                                        </div>
+                                        </ng-template>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div ngbAccordion class="accordion" id="basicAccordion1">
+                        <div ngbAccordionItem [collapsed]="false" class="accordion-item border-0 bg-transparent mb-3">
+                            <div ngbAccordionHeader class="accordion-header" id="headingTwo">
+                                <button ngbAccordionButton class="px-0 py-0 d-block" href="javascript:void(0)" role="button" data-bs-toggle="collapse" data-bs-target="#basicTwo" aria-expanded="true" aria-controls="basicTwo">
+                                    <div class="d-flex align-items-center mb-0 lh-1">
+                                        <div class="me-2 p-1 border border-success border-opacity-25 rounded-pill">
+                                            <span class="avatar avatar-sm avatar-rounded p-2 bg-success">
+                                                <i class="ri-check-double-line fs-16"></i>
+                                            </span>
+                                        </div>
+                                        <div class="flex-fill">
+                                            <p class="fw-semibold mb-0 fs-15">Picked</p>
+                                        </div>
+                                    </div>
+                                </button>
+                            </div>
+                            <div ngbAccordionCollapse id="basicTwo" class="accordion-collapse show collapse border-top-0" aria-labelledby="headingTwo" data-bs-parent="#basicAccordion1">
+                                <div ngbAccordionBody class="accordion-body pt-0 ps-5 mb-0 pb-0">
+                                    <ng-template>
+                                        <div class="">
+                                            <p class="mb-0">Your order has been picked up by <span class="font-weight-semibold">Smart Good Services</span></p>
+                                            <span class="text-muted fs-12">Nov 03, 2024, 15:36</span>
+                                        </div>
+                                        </ng-template>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div ngbAccordion class="accordion" id="basicAccordion2">
+                        <div ngbAccordionItem [collapsed]="false" class="accordion-item border-0 bg-transparent mb-3">
+                            <div ngbAccordionHeader class="accordion-header" id="headingThree">
+                                <button ngbAccordionButton class="px-0 py-0 d-block" href="javascript:void(0)" role="button" data-bs-toggle="collapse" data-bs-target="#basicThree" aria-expanded="true" aria-controls="basicThree">
+                                    <div class="d-flex align-items-center  lh-1">
+                                        <div class="me-2 p-1 border border-info border-opacity-25 rounded-pill">
+                                            <span class="avatar avatar-sm avatar-rounded p-2 bg-info">
+                                                <i class="ri-caravan-line fs-16"></i>
+                                            </span>
+                                        </div>
+                                        <div class="flex-fill">
+                                            <p class="fw-semibold mb-0 fs-15">Shipping</p>
+                                        </div>
+                                    </div>
+                                </button>
+                            </div>
+                            <div id="basicThree" ngbAccordionCollapse class="accordion-collapse show collapse border-top-0" aria-labelledby="headingThree" data-bs-parent="#basicAccordion2">
+                                <div ngbAccordionBody class="accordion-body pt-0 ps-5 mb-0 pb-0">
+                                    <div class=" mb-3">
+                                        <p class="mb-0">Arrived USA <span class="font-weight-semibold">SGS Warehouse</span></p>
+                                        <span class="text-muted fs-12">Nov 03, 2024, 15:36</span>
+                                    </div>
+                                    <div class=" mb-3">
+                                        <p class="mb-0">picked up by <span class="font-weight-semibold">SGS Agent</span> and on the way to Hyderabad</p>
+                                        <span class="text-muted fs-12">Nov 03, 2024, 15:36</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion" id="basicAccordion3" ngbAccordion>
+                        <div ngbAccordionItem [collapsed]="true" class="accordion-item border-0 bg-transparent next-step mb-3">
+                            <div ngbAccordionHeader class="accordion-header" id="headingFour">
+                                <button ngbAccordionButton class="collapsed px-0 py-0 d-block" href="javascript:void(0)" role="button" data-bs-toggle="collapse" data-bs-target="#basicFour" aria-expanded="false" aria-controls="basicFour">
+                                    <div class="d-flex mb-2 lh-1">
+                                        <div class="me-2 p-1 border border-secondary border-opacity-25 rounded-pill">
+                                            <span class="avatar avatar-sm avatar-rounded bg-secondary border"><i class="ri-box-3-line fs-16"></i></span>
+                                        </div>
+                                        <div class="flex-fill">
+                                            <p class="fw-semibold mb-2 fs-15">Out For Delivery</p>
+                                            <span class="text-muted fs-12">Nov 03, 15:10 (expected)</span>
+                                        </div>
+                                    </div>
+                                </button>
+                            </div>
+                            <div id="basicFour" ngbAccordionCollapse class="accordion-collapse collapse border-top-0" aria-labelledby="headingFour" data-bs-parent="#basicAccordion3">
+                                <div ngbAccordionBody class="accordion-body pt-0 ps-5 mb-0 pb-0">
+                                    <div class="">
+                                        <p class="mb-2">Your order is out for devlivery</p>
+                                        <span class="text-muted fs-12">Nov 03, 2024, 15:36 (expected)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion"  id="basicAccordion4">
+                        <div  class="accordion-item border-0 bg-transparent next-step">
+                            <div  class="accordion-header" id="headingFive">
+                               <a  class="collapsed px-0 pt-0" href="javascript:void(0)" role="button" data-bs-toggle="collapse" aria-expanded="false" >
+                                <div class="d-flex mb-2 lh-1">
+                                    <div class="me-2 p-1 border border-warning border-opacity-25 rounded-pill">
+                                        <span class="avatar avatar-sm avatar-rounded bg-warning border"><i class="ri-box-3-line fs-16"></i></span>
+                                    </div>
+                                    <div class="flex-fill">
+                                        <p class="fw-semibold mb-2 fs-15">Delivered</p>
+                                        <span class="fs-12 text-muted">Nov 03, 18:42</span>
+                                    </div>
+                                </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card custom-card overflow-hidden">
+            <div class="card-header justify-content-between">
+                <div class="card-title">
+                    Order Summary
+                </div>
+                <div>
+                    ID : <a href="javascript:void(0);" class="text-primary fw-medium">#434422</a>
+                </div>
+            </div>
+            <div class="card-body p-0 table-responsive">
+                <spk-reusable-tables> 
+                    @for(item of cartSummary;track $index){
+                        <tr>
+                            <td>
+                                <div class="fw-medium">{{ item.label }} :</div>
+                            </td>
+                            <td [innerHTML]="item.value">
+                            </td>
+                        </tr>
+                    }
+                    </spk-reusable-tables>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End::row-1 -->

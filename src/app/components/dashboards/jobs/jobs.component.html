@@ -1,0 +1,279 @@
+<app-page-header title="Jobs" title1="Dashboards" activeTitle="Jobs" ></app-page-header>
+ <!-- Start::row-1 -->
+ <div class="row">
+    <div class="col-xxl-7">
+        <div class="card custom-card overflow-hidden">
+            <div class="card-header d-flex justify-content-between">
+                <div class="card-title">Candidates Performance</div>
+                <button type="button" class="ms-auto btn btn-sm btn-primary btn-wave d-inline-flex">
+                    <span><i class="ri-download-2-line"></i></span>
+                    <span class="ms-2">Download</span>
+                </button>
+            </div>
+            <div class="card-body">
+                <div id="candidatePerformance">
+                    <spk-apexcharts [chartOptions]="chartOptions"></spk-apexcharts>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xxl-5">
+        <div class="row">
+            @for (card of cards; track $index) {
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+            <spk-jobs-dashboard
+    [title]="card.title"
+    [count]="card.count"
+    [timeFrame]="card.timeFrame"
+    [avatarBgClass]="card.avatarBgClass"
+    [iconClass]="card.iconClass"
+    [badgeClass]="card.badgeClass"
+    [percentage]="card.percentage"
+    [overflowHidden]="card.overflowHidden">
+  </spk-jobs-dashboard>
+  </div>
+}
+            <div class="col-xl-12 col-md-12 col-sm-12">
+                <div class="card custom-card">
+                    <div class="card-body">
+                        <div class="d-flex mb-3">
+                            <div class="fw-medium fs-15 mb-0">Applicants Summary</div>
+                            <a href="javascript:void(0);" class="d-inline-flex ms-auto text-primary">
+                                <span><i class="ri-alarm-line"></i></span>
+                                <span class="ms-1 fw-medium">Send reminder</span>
+                            </a>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-xl-4">
+                                <span class="fw-medium applicant full-time">Full Time</span>
+                            </div>
+                            <div class="col-xl-4">
+                                <span class="fw-medium applicant part-time">Part Time</span>
+                            </div>
+                            <div class="col-xl-4">
+                                <span class="fw-medium applicant internship">Internship</span>
+                            </div>
+                        </div>
+                        <div class="progress progress-xl bg-white gap-1">  
+                            <div class="progress-bar rounded-pill progress-border" role="progressbar" style="width: 25%"
+                                aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+                            <div class="progress-bar rounded-pill progress-border bg-info" role="progressbar" style="width: 35%"
+                                aria-valuenow="35" aria-valuemin="0" aria-valuemax="100">35%</div>
+                            <div class="progress-bar rounded-pill progress-border bg-success" role="progressbar" style="width: 40%"
+                                aria-valuenow="40" aria-valuemin="0" aria-valuemax="100">40%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End::row-1 -->
+
+<!-- Start::row-2 -->
+<div class="row">
+    <div class="col-xxl-3 col-lg-6 col-md-6 col-sm-12">
+        <div class="card custom-card overflow-hidden">
+            <div class="card-header">
+                <div class="card-title">Recent Applicants</div>
+            </div>
+            <div class="card-body p-0">
+                <ul class="list-group list-group-flush">
+                    @for (person of people; track $index) {
+                    <li class="list-group-item">
+                      <div class="d-flex align-items-center gap-2 flex-wrap">
+                        <span class="avatar avatar-md avatar-rounded">
+                          <img [src]="person.imageUrl" alt="image">
+                        </span>
+                        <div class="flex-fill">
+                          <span class="d-block fw-medium">{{ person.name }}</span>
+                          <span class="fw-medium text-muted fs-12">{{ person.role }}</span>
+                        </div>
+                        <div class="btn-list ms-auto">
+                          <a href="javascript:void(0)" data-bs-toggle="tooltip" data-bs-placement="top" ngbTooltip="Mail" class="btn btn-icon rounded-pill btn-secondary-light">
+                            <i class="ti ti-mail align-middle"></i>
+                          </a>
+                          <a href="javascript:void(0)" data-bs-toggle="tooltip" data-bs-placement="top" ngbTooltip="Call" class="btn btn-icon rounded-pill btn-primary-light">
+                            <i class="ti ti-phone align-middle"></i>
+                          </a>
+                        </div>
+                      </div>
+                    </li>
+                }
+                  </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-xxl-3 col-lg-6 col-md-6 col-sm-12">
+        <div class="card custom-card overflow-hidden">
+            <div class="card-header">
+                <div class="card-title">Job Statistics</div>
+            </div>
+            <div class="card-body pb-4">
+                <div id="quickData" class="mt-3 mb-4">
+                <spk-apexcharts [chartOptions]="chartOptions1"></spk-apexcharts>
+            </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xxl-6 col-lg-12 col-md-12 col-sm-12">
+        <div class="card custom-card overflow-hidden overflow-hidden">
+            <div class="card-header">
+                <div class="card-title">Recent Hirings</div>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <spk-reusable-tables [columns]="HiringsHeader"  tableClass="table text-nowrap"  [showCheckbox]="true">
+                            <tr *ngFor="let person of HiringsData">
+                              <th scope="row" class="text-center">
+                                <input class="form-check-input" type="checkbox" [id]="person.id" [checked]="person.checked" aria-label="...">
+                              </th>
+                              <td>
+                                <div class="d-flex align-items-center">
+                                  <div class="avatar avatar-sm me-2 avatar-rounded">
+                                    <img [src]="person.avatar" alt="image">
+                                  </div>
+                                  <div class="lh-1">
+                                    <span class="fw-medium d-block mb-1">{{ person.name }}</span>
+                                    <span class="fs-12 text-muted">{{ person.email }}</span>
+                                  </div>
+                                </div>
+                              </td>
+                              <td><span class="badge" [ngClass]="{'bg-primary-transparent': person.role === 'Product Manager', 'bg-success-transparent': person.role === 'Lead Developer', 'bg-info-transparent': person.role === 'Manager', 'bg-secondary-transparent': person.role === 'Lead UI/UX Designer', 'bg-warning-transparent': person.role === 'Angular Developer'}">{{ person.role }}</span></td>
+                              <td class="text-center">
+                                {{ person.orders }}
+                              </td>
+                              <td>
+                                <span class="badge bg-light text-muted">{{ person.date }}</span>
+                              </td>
+                            </tr>
+                    </spk-reusable-tables>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End::row-2 -->
+
+<!-- Start::row-3 -->
+<div class="row">
+    <div class="col-xxl-9">
+        <div class="card custom-card overflow-hidden">
+            <div class="card-header d-flex justify-content-between">
+                <div class="card-title">Pending Request Approvals</div>
+                <div class="d-flex flex-wrap gap-2"> 
+                    <div> 
+                        <input class="form-control form-control-sm" type="text" placeholder="Search Here" aria-label=".form-control-sm example"> 
+                    </div> 
+                    <spk-dropdowns [Customclass]="'dropdown'" [Icon]="true" [title]="'Sort By'" [IconClass]="'ri-arrow-down-s-line align-middle ms-1 d-inline-block'"
+                                    [class]="'btn btn-primary btn-sm btn-wave waves-effect waves-light no-caret'" [Menuclass]="'dropdown-menu'">
+                            <li><a class="dropdown-item" href="javascript:void(0);">New</a></li> 
+                            <li><a class="dropdown-item" href="javascript:void(0);">Popular</a></li> 
+                            <li><a class="dropdown-item" href="javascript:void(0);">Relevant</a></li> 
+                    </spk-dropdowns>
+                </div>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <spk-reusable-tables [columns]="RequestHeader"  tableClass="table text-nowrap"  [showCheckbox]="false">
+                        @for (job of jobs; track $index) {
+                        <tr>
+                          <td>
+                            <div class="d-flex align-items-center">
+                              <div [class]="job.avatarClass + ' avatar avatar-sm me-2'">
+                                <i [class]="job.icon"></i>
+                              </div>
+                              <div class="lh-1">
+                                <p class="fw-medium mb-0">{{ job.role }}</p>
+                              </div>
+                            </div>
+                          </td>
+                          <td>{{ job.experience }}</td>
+                          <td>{{ job.department }}</td>
+                          <td>
+                            <span class="badge bg-light text-primary">{{ job.rating }}</span>
+                          </td>
+                          <td>{{ job.applications }}</td>
+                          <td>{{ job.date }}</td>
+                          <td>
+                            <span class="badge" [ngClass]="{'bg-success-transparent': job.status === 'Open', 'bg-danger-transparent': job.status === 'Closed'}">{{ job.status }}</span>
+                          </td>
+                          <td>
+                            <div class="btn-list">
+                              <button type="button" class="btn btn-sm btn-outline-success">Reject</button>
+                              <button type="button" class="btn btn-sm btn-primary waves-effect waves-light">Accept</button>
+                            </div>
+                          </td>
+                        </tr>
+                    }
+                      </spk-reusable-tables>
+                </div>
+            </div>
+            <div class="card-footer"> 
+                <div class="d-flex align-items-center"> 
+                    <div> Showing 5 Entries <i class="bi bi-arrow-right ms-2 fw-medium"></i> </div>
+                    <div class="ms-auto"> 
+                    <nav aria-label="Page navigation" class="pagination-style-4"> 
+                        <ul class="pagination mb-0"> 
+                            <li class="page-item disabled"> <a class="page-link" href="javascript:void(0);"> Prev </a> </li>
+                                <li class="page-item active"><a class="page-link" href="javascript:void(0);">1</a></li> 
+                                <li class="page-item"><a class="page-link" href="javascript:void(0);">2</a></li> 
+                                <li class="page-item"> <a class="page-link text-primary" href="javascript:void(0);"> next </a> </li> 
+                            </ul> 
+                        </nav> 
+                    </div> 
+                </div> 
+            </div>
+        </div>
+    </div>
+    <div class="col-xxl-3">
+        <div class="card custom-card">
+            <div class="card-header">
+                <div class="card-title">
+                    Acquisitions
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="fs-12 text-muted d-flex align-items-center gap-2">
+                    <h5 class="mb-0 fw-meidum">1,982</h5>
+                    <div>Applications received</div>
+                </div>
+                <div class="progress progress-xl my-4 mt-2">
+                    <div class="progress-bar bg-primary" role="progressbar" style="width: 32%" aria-valuenow="32" aria-valuemin="0" aria-valuemax="100">32%</div>
+                    <div class="progress-bar bg-info" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">20%</div>
+                    <div class="progress-bar bg-success" role="progressbar" style="width: 12%" aria-valuenow="12" aria-valuemin="0" aria-valuemax="100">12%</div>
+                    <div class="progress-bar bg-secondary" role="progressbar" style="width: 16%" aria-valuenow="16" aria-valuemin="0" aria-valuemax="100">16%</div>
+                    <div class="progress-bar bg-warning" role="progressbar" style="width: 12%" aria-valuenow="12" aria-valuemin="0" aria-valuemax="100">12%</div>
+                    <div class="progress-bar bg-danger" role="progressbar" style="width: 8%" aria-valuenow="8" aria-valuemin="0" aria-valuemax="100">8%</div>
+                </div>
+                <ul class="list-group acquisitions-list mt-1">
+                    <li class="list-group-item">
+                        Total Applications
+                        <span class="badge float-end bg-primary-transparent">1,982</span>
+                    </li>
+                    <li class="list-group-item">
+                        Recruited
+                        <span class="badge float-end bg-info-transparent">214</span>
+                    </li>
+                    <li class="list-group-item">
+                        Short Listed
+                        <span class="badge float-end bg-success-transparent">262</span>
+                    </li>
+                    <li class="list-group-item">
+                        Rejected
+                        <span class="badge float-end bg-secondary-transparent">395</span>
+                    </li>
+                    <li class="list-group-item">
+                        Blocked
+                        <span class="badge float-end bg-warning-transparent">79</span>
+                    </li>
+                    <li class="list-group-item">
+                        Pending
+                        <span class="badge float-end bg-danger-transparent">64</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End::row-3 -->

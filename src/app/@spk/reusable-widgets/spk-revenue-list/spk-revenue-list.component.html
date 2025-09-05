@@ -1,0 +1,27 @@
+<ul class="list-group list-group-flush revenue-list border-top">
+    @for ( item of revenues; track $index) {
+    <li class="list-group-item">
+      <div class="d-flex align-items-center">
+        <div class="flex-fill align-items-center pt-1">
+          <div class="d-flex align-items-top justify-content-between">
+            <p class="mb-0 text-muted d-flex align-items-center">
+              <i class="ti ti-point-filled fs-20 me-1" [ngClass]="item.iconClass"></i>
+              {{ item.label }}
+            </p>
+            <h6 class="mb-0 lh-1">{{ item.amount }}</h6>
+          </div>
+          <div [ngClass]="'text-' + item.changeType">
+            @if (item.changeType === 'success') {
+            <i class="ri-arrow-up-s-fill me-1 align-middle"></i>
+            }
+            @if (item.changeType === 'danger') {
+            <i class="ri-arrow-down-s-fill me-1 align-middle"></i>
+            }
+            {{ item.change }}
+          </div>
+        </div>
+      </div>
+    </li>
+}
+  </ul>
+  

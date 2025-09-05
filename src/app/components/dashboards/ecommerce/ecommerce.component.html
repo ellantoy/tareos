@@ -1,0 +1,370 @@
+<app-page-header title="Ecommerce" title1="Dashboards" activeTitle="Ecommerce"></app-page-header>
+<!-- Start:: row-1 -->
+<div class="row">
+    <div class="col-xxl-9">
+        <div class="row">
+            @for (card of cards; track $index) {
+                <div class="col-xl-3 col-md-6">
+            <spk-ecommerce-card 
+            [title]="card.title"
+            [value]="card.value"
+            [percentageChange]="card.percentageChange"
+            [changeDirection]="card.changeDirection"
+            [iconSvg]="card.iconSvg"
+            [avatarBgClass]="card.avatarBgClass">
+          </spk-ecommerce-card>
+          </div>
+        }
+            <div class="col-xl-8">
+                <div class="card custom-card">
+                    <div class="card-header justify-content-between">
+                        <div class="card-title">Order Status</div>
+                        <div class="d-flex gap-2">
+                            <div class="btn btn-sm btn-outline-light">Today</div>
+                            <div class="btn btn-sm btn-outline-light">Weakly</div>
+                            <div class="btn btn-sm btn-light">Yearly</div>
+                        </div>
+                    </div>
+                    <div class="card-body pb-2">
+                        <div id="order-status">
+                            <spk-apexcharts [chartOptions]="chartOptions"></spk-apexcharts>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4">
+                <div class="card custom-card overflow-hidden">
+                    <div class="card-header justify-content-between">
+                        <div class="card-title">Recent Orders</div>
+                        <a href="javascript:void(0);" class="btn btn-outline-light border d-flex align-items-center text-muted btn-sm">
+                            View All
+                        </a>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <spk-reusable-tables [columns]="OderderTableHeader"  tableClass="table text-nowrap table-hover"  [showCheckbox]="false">
+                                @for (order of orders; track $index) {
+                                    <tr>
+                                      <td><a href="javascript:void(0);" class="text-primary">{{ order.orderId }}</a></td>
+                                      <td>
+                                        <div class="d-flex align-items-center">
+                                          <div class="me-2 lh-1">
+                                            <span class="avatar avatar-sm">
+                                              <img [src]="order.image" alt="Order Image">
+                                            </span>
+                                          </div>
+                                          <div>
+                                            <a href="javascript:void(0)" class="fw-medium">{{ order.customer }}</a>
+                                          </div>
+                                        </div>
+                                      </td>
+                                      <td>
+                                        <span class="d-block mb-1">{{ order.amount }}</span>
+                                      </td>
+                                    </tr>
+                                }
+                            </spk-reusable-tables>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4">
+                <div class="card custom-card">
+                    <div class="card-header justify-content-between">
+                        <div class="card-title">
+                            Payment Methods
+                        </div>
+                        <spk-dropdowns [Customclass]="'dropdown'" [Icon]="true" [IconClass]="'fe fe-more-vertical'"
+                        [class]="'btn btn-outline-light btn-icons btn-sm text-muted no-caret'" [Menuclass]="'dropdown-menu'">
+                                <li class="border-bottom"><a class="dropdown-item" href="javascript:void(0);">Today</a></li>
+                                <li class="border-bottom"><a class="dropdown-item" href="javascript:void(0);">This Week</a></li>
+                                <li><a class="dropdown-item" href="javascript:void(0);">Last Week</a></li>
+                        </spk-dropdowns>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-unstyled payment-methods-list">
+                            @for (method of paymentMethods; track $index) {
+                            <li class="d-flex justify-content-between align-items-center">
+                              <div class="lh-1">
+                                <i [class]="method.icon + ' lh-1 me-2 fs-22 rounded-1 align-middle ' + method.color"></i>
+                                {{ method.name }}
+                              </div>
+                              <span class="badge bg-primary rounded-pill">{{ method.percentage }}</span>
+                            </li>
+                        }
+                          </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4">
+                <div class="card custom-card">
+                    <div class="card-header justify-content-between flex-wrap">
+                        <div class="card-title">
+                            Top Selling Categories
+                        </div>
+                        <spk-dropdowns [Customclass]="'dropdown'" [Icon]="true" [IconClass]="'fe fe-more-vertical'"
+                        [class]="'btn btn-outline-light btn-icons btn-sm text-muted no-caret'" [Menuclass]="'dropdown-menu'">
+                                <li class="border-bottom"><a class="dropdown-item" href="javascript:void(0);">Today</a></li>
+                                <li class="border-bottom"><a class="dropdown-item" href="javascript:void(0);">This Week</a></li>
+                                <li><a class="dropdown-item" href="javascript:void(0);">Last Week</a></li>
+                        </spk-dropdowns>
+                    </div>
+                    <div class="card-body py-0">
+                        <div id="top-selling-categories">
+                            <spk-apexcharts [chartOptions]="chartOptions2"></spk-apexcharts>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4">
+                <div class="card custom-card overflow-hidden">
+                    <div class="card-header justify-content-between pb-3">
+                        <div class="card-title">
+                            Traffic Sources
+                        </div>
+                          <spk-dropdowns [Customclass]="'dropdown'" [Icon]="true" [title]="'View All'" [IconClass]="'ri-arrow-down-s-line align-middle ms-1 d-inline-block'"
+                        [class]="'btn btn-light btn-sm text-muted no-caret'" [Menuclass]="'dropdown-menu'">
+                                <li><a class="dropdown-item" href="javascript:void(0);">Download</a></li>
+                                <li><a class="dropdown-item" href="javascript:void(0);">Import</a></li>
+                                <li><a class="dropdown-item" href="javascript:void(0);">Export</a></li>
+                           </spk-dropdowns>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <spk-reusable-tables [columns]="browsweHeader"  tableClass="table table-hover text-nowrap"  [showCheckbox]="false">
+                                    @for (browser of browserStats; track $index) {
+                                    <tr>
+                                      <td>
+                                        <div class="d-flex align-items-center">
+                                          <span class="avatar avatar-sm p-1 bg-light me-2">
+                                            <img [src]="'./assets/images/browsers/' + browser.image" alt="">
+                                          </span>
+                                          <div class="fw-medium">{{ browser.name }}</div>
+                                        </div>
+                                      </td>
+                                      <td>
+                                        <div class="progress progress-sm">
+                                          <div class="progress-bar progress-bar-striped progress-bar-animated" [ngClass]="browser.progressColor" role="progressbar" [style.width]="browser.progress + '%'" aria-valuenow="browser.progress" aria-valuemin="0" aria-valuemax="100">
+                                          </div>
+                                        </div>
+                                      </td>
+                                      <td class="text-center">
+                                        <span>{{ browser.users }}<i [class]="browser.arrow + ' ms-1 ' + browser.arrowColor + ' align-middle fs-18'"></i></span>
+                                      </td>
+                                    </tr>
+                                }
+                            </spk-reusable-tables>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-12">
+                <div class="card custom-card">
+                    <div class="card-header justify-content-between">
+                        <div class="card-title">
+                            Newly Added Products
+                        </div>
+                        <div class="d-sm-flex">
+                            <div class="me-3 mb-3 mb-sm-0">
+                                <input class="form-control form-control-sm" type="text" placeholder="Search" aria-label=".form-control-sm example">
+                            </div>
+                            <spk-dropdowns [Customclass]="'dropdown'" [Icon]="true" [title]="'Sort By'" [IconClass]="'ri-arrow-down-s-line align-middle ms-1 d-inline-block'"
+                            [class]="'btn btn-primary btn-sm no-caret'" [Menuclass]="'dropdown-menu'">
+                                    <li><a class="dropdown-item" href="javascript:void(0);">New</a></li>
+                                    <li><a class="dropdown-item" href="javascript:void(0);">Popular</a></li>
+                                    <li><a class="dropdown-item" href="javascript:void(0);">Relevant</a></li>
+                            </spk-dropdowns>
+                        </div>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <spk-reusable-tables [columns]="ProductsHeader"  tableClass="table text-nowrap"  [showCheckbox]="false">
+                              @for (product of products; track $index) {
+                                    <tr>
+                                      <td>
+                                        <span class="fw-medium">{{ product.id }}</span>
+                                      </td>
+                                      <td>
+                                        <div class="d-flex align-items-center">
+                                          <div class="me-2 lh-1">
+                                            <span class="avatar avatar-md bg-light">
+                                              <img [src]="'./assets/images/ecommerce/png/' + product.image" alt="">
+                                            </span>
+                                          </div>
+                                          <div>{{ product.name }}</div>
+                                        </div>
+                                      </td>
+                                      <td>
+                                        <span class="fw-medium">{{ product.category }}</span>
+                                      </td>
+                                      <td>
+                                        <span class="badge bg-primary">{{ product.discount }}</span>
+                                      </td>
+                                      <td>
+                                        {{ product.price }}
+                                      </td>
+                                      <td>
+                                        <span class="badge" [ngClass]="{'bg-success-transparent': product.status === 'Published', 'bg-warning-transparent': product.status === 'Pending', 'bg-info-transparent': product.status === 'Saved as Draft'}">{{ product.status }}</span>
+                                      </td>
+                                      <td>
+                                        <span class="fw-medium">{{ product.date }}</span>
+                                      </td>
+                                      <td>
+                                        <div class="btn-list">
+                                          <a aria-label="anchor" href="javascript:void(0);" data-bs-toggle="tooltip" data-bs-placement="top" ngbTooltip="View" class="btn btn-icon btn-secondary-light"><i class="ti ti-eye"></i></a>
+                                          <a aria-label="anchor" href="javascript:void(0);" data-bs-toggle="tooltip" data-bs-placement="top" ngbTooltip="Edit" class="btn btn-icon btn-info-light"><i class="ti ti-pencil"></i></a>
+                                          <a aria-label="anchor" href="javascript:void(0);" data-bs-toggle="tooltip" data-bs-placement="top" ngbTooltip="Delete" class="btn btn-icon btn-success-light"><i class="ti ti-trash"></i></a>
+                                        </div>
+                                      </td>
+                                    </tr>
+                                }
+                                 </spk-reusable-tables>
+
+                                  
+                        </div>
+                    </div>
+                    <div class="card-footer border-top-0">
+                        <div class="d-flex align-items-center">
+                            <div>
+                                Showing 5 Entries <i class="bi bi-arrow-right ms-2 fw-medium"></i>
+                            </div>
+                            <div class="ms-auto">
+                                <nav aria-label="Page navigation" class="pagination-style-4">
+                                    <ul class="pagination mb-0">
+                                        <li class="page-item disabled">
+                                            <a class="page-link" href="javascript:void(0);">
+                                                Prev
+                                            </a>
+                                        </li>
+                                        <li class="page-item active"><a class="page-link" href="javascript:void(0);">1</a></li>
+                                        <li class="page-item"><a class="page-link" href="javascript:void(0);">2</a></li>
+                                        <li class="page-item">
+                                            <a class="page-link text-primary" href="javascript:void(0);">
+                                                next
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xxl-3">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card custom-card">
+                    <div class="card-header justify-content-between">
+                        <div class="card-title">Total Orders
+                        </div>
+                        <spk-dropdowns [Customclass]="'dropdown'" [Icon]="true" [title]="'View All'" [IconClass]="'ri-arrow-down-s-line align-middle ms-1 d-inline-block'"
+                        [class]="'btn btn-outline-light btn-sm border d-flex align-items-center text-muted no-caret'" [Menuclass]="'dropdown-menu'">
+                                <li><a class="dropdown-item" href="javascript:void(0);">Yearly</a>
+                                </li>
+                                <li><a class="dropdown-item" href="javascript:void(0);">Monthly
+                                    </a>
+                                </li>
+                                <li><a class="dropdown-item" href="javascript:void(0);">Weakly</a></li>
+                        </spk-dropdowns>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center text-center bg-light p-3 rounded-1 order-content">
+                            <div>
+                                <p class="mb-1">Total Orders</p>
+                                <h4 class="text-primary mb-0">12,500</h4>
+                            </div>
+                            <div class="text-end">
+                                <p class="mb-1">Overall Growth from Last Year</p>
+                                <h5 class="text-success mb-0">+15%</h5>
+                            </div>
+                        </div>
+                        <div id="total-orders">
+                            <spk-apexcharts [chartOptions]="chartOptions1"></spk-apexcharts>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-12">
+                <div class="card custom-card">
+                    <div class="card-header justify-content-between">
+                        <div class="card-title"> Recent Activity </div>
+                        <spk-dropdowns [Customclass]="'dropdown'" [Icon]="true" [title]="'View All'"
+                        [class]="'fs-12 text-muted bg-light rounded btn btn-sm btn-light'" [Menuclass]="'dropdown-menu'">
+                                <li><a class="dropdown-item" href="javascript:void(0);">Today</a></li>
+                                <li><a class="dropdown-item" href="javascript:void(0);">This Week</a></li>
+                                <li><a class="dropdown-item" href="javascript:void(0);">Last Week</a></li>
+                        </spk-dropdowns>
+                    </div>
+                    <div class="card-body pb-1">
+                        <ul class="list-unstyled mb-4 ecommerce-recent-activity">
+                            @for (activity of activities; track $index) {
+                            <li class="ecommerce-recent-activity-content {{activity.customClass}}">
+                              <div class="d-flex align-items-top">
+                                <div class="me-3">
+                                  <span class="avatar avatar-sm avatar-rounded" [ngClass]="activity.bgColor">
+                                    <i class="{{ activity.icon }}"></i>
+                                  </span>
+                                </div>
+                                <div class="activity-content">
+                                  <span class="d-block fw-medium">{{ activity.title }}</span>
+                                  <span class="d-block fs-12 text-muted">{{ activity.description }}</span>
+                                  <!-- Conditionally Render Images if Available -->
+                                   @if (activity.images) {
+                                  <ng-container>
+                                    @for (img of activity.images; track $index) {
+                                    <a href="javascript:void(0);" class="avatar avatar-sm bg-gray-200 me-2">
+                                      <img [src]="'./assets/images/ecommerce/png/' + img" alt="">
+                                    </a>
+                                }
+                                  </ng-container>
+                                }
+                                </div>
+                                <div class="flex-fill text-end">
+                                  <span class="d-block text-muted fs-11 op-7">{{ activity.timeAgo }}</span>
+                                </div>
+                              </div>
+                            </li>
+                        }
+                          </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-12">
+                <div class="card custom-card">
+                    <div class="card-header justify-content-between">
+                        <div class="card-title">Top-Selling Products</div>
+                        <a href="javascript:void(0);" class="btn btn-outline-light border d-flex align-items-center text-muted btn-sm">
+                           View All
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group">
+                            @for (product of products2; track $index) {
+                            <li class="list-group-item">
+                              <div class="d-flex align-items-center flex-wrap">
+                                <div class="me-3 lh-1">
+                                  <span class="avatar avatar-lg bg-gray-200">
+                                    <img [src]="'./assets/images/ecommerce/png/' + product.image" alt="">
+                                  </span>
+                                </div>
+                                <div class="flex-fill">
+                                  <span class="d-block mb-0 fw-medium">{{ product.name }}</span>
+                                  <span class="text-muted fs-12">{{ product.category }}</span>
+                                </div>
+                                <div class="text-end">
+                                  <p class="mb-0 fw-medium">{{ product.price }}</p>
+                                  <p class="mb-0 text-muted">{{ product.sales }} Sales</p>
+                                </div>
+                              </div>
+                            </li>
+                        }
+                          </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End:: row-1 -->

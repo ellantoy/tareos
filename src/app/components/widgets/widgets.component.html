@@ -1,0 +1,387 @@
+<app-page-header title="Widgets" title1="Widgets" activeTitle="Widgets"></app-page-header>
+ <!-- Start:: row-1 -->
+ <div class="row">
+    <div class="col-xxl-9">
+        <div class="row">
+            @for (card of salesCards; track $index) {
+                <div class="col-md-6 col-xl-3">
+            <spk-sales-card-1 [cardData]="card"></spk-sales-card-1>
+            </div>
+            }
+            @for ( card of salesCards2; track $index) {
+            <div class="col-md-6 col-xl-3" >
+                <spk-sales-card-2
+                  [title]="card.title"
+                  [value]="card.value"
+                  [percentageChange]="card.percentageChange"
+                  [avatarClass]="card.avatarClass" 
+                  [svgViewBox]="card.svgViewBox"
+                  [svgPath]="card.svgPath"
+                ></spk-sales-card-2>
+              </div>
+            }
+            <div class="col-xxl-8">
+                <div class="card custom-card">
+                    <div class="card-header justify-content-between">
+                        <div class="card-title">Sales Analysis</div>
+                        <spk-dropdowns [Customclass]="'dropdown'" [Icon]="true" [title]="'View All'" [IconClass]="'ri-arrow-down-s-line align-middle ms-1 d-inline-block'"
+                                    [class]="'btn btn-sm btn-outline-light text-muted no-caret'" [Menuclass]="'dropdown-menu'">
+                                <li><a class="dropdown-item" href="javascript:void(0);">Today</a></li>
+                                <li><a class="dropdown-item" href="javascript:void(0);">This Week</a></li>
+                                <li><a class="dropdown-item" href="javascript:void(0);">Last Week</a></li>
+                        </spk-dropdowns>
+                    </div>
+                    <div class="card-body">
+                        <div id="widgets-sales-analysis">
+                            <spk-apexcharts [chartOptions]="chartOptions5"></spk-apexcharts>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xxl-4">
+                <div class="card custom-card">
+                    <div class="card-header justify-content-between flex-wrap">
+                        <div class="card-title">Customers Activity</div>
+                        <spk-dropdowns [Customclass]="'dropdown'" [Icon]="true" [title]="'View All'" [IconClass]="'ri-arrow-down-s-line align-middle ms-1 d-inline-block'"
+                        [class]="'btn btn-sm btn-outline-light text-muted no-caret'" [Menuclass]="'dropdown-menu'">
+                    <li><a class="dropdown-item" href="javascript:void(0);">Today</a></li>
+                    <li><a class="dropdown-item" href="javascript:void(0);">This Week</a></li>
+                    <li><a class="dropdown-item" href="javascript:void(0);">Last Week</a></li>
+            </spk-dropdowns>
+                    </div>
+                    <div class="card-body pb-2">
+                        <div class="row gy-2 gy-xl-0">
+                            <div class="col-xl-6">
+                                <div class="p-2 border br-7 bg-success-transparent">
+                                    <h5 class="mb-2 text-center text-success">1586</h5>
+                                    <p class="text-muted fs-13 text-center mb-0 text-success">New Customers</p>
+                                </div>
+                            </div>
+                            <div class="col-xl-6">
+                                <div class="p-2 border br-7 bg-danger-transparent">
+                                    <h5 class="mb-2 text-center text-danger">486</h5>
+                                    <p class="text-muted fs-13 text-center mb-0 text-danger">Return Customers
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="mb-2 mt-3 fw-medium">Recent Transactions</p>
+                        <div>
+                            @for (transaction of transactions; track $index) {
+                            <spk-transaction-card
+                              [avatar]="transaction.avatar"
+                              [name]="transaction.name"
+                              [message]="transaction.message"
+                              [amount]="transaction.amount"
+                              [time]="transaction.time">
+                            </spk-transaction-card>
+                        }
+                          </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xxl-3">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card custom-card overflow-hidden">
+                    <div class="card-header justify-content-between">
+                        <div class="card-title">
+                            Total Revenue
+                        </div>
+                        <spk-dropdowns [Customclass]="'dropdown'" [Icon]="true" [title]="'View All'" [IconClass]="'ri-arrow-down-s-line align-middle ms-1 d-inline-block'"
+                                    [class]="'btn btn-sm btn-outline-light text-muted no-caret'" [Menuclass]="'dropdown-menu'">
+                                <li><a class="dropdown-item" href="javascript:void(0);">Today</a></li>
+                                <li><a class="dropdown-item" href="javascript:void(0);">This Week</a></li>
+                                <li><a class="dropdown-item" href="javascript:void(0);">Last Week</a></li>
+                        </spk-dropdowns>
+                   
+                    </div>
+                    <div class="card-body pb-0">
+                        <div class="d-flex align-items-center mb-2">
+                            <h3 class="fw-medium mb-0">$4,289</h3>
+                            <div class="ms-2">
+                                <span class="badge bg-success-transparent">1.02<i class="ri-arrow-up-s-fill align-mmiddle ms-1"></i></span>
+                            </div>
+                        </div>
+                        <div class="progress-stacked progress-animate progress-sm mb-4">
+                            <div class="progress-bar" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div class="progress-bar bg-info" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div class="progress-bar bg-success" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                    <spk-revenue-list [revenues]="revenueData"></spk-revenue-list>
+                </div>
+            </div>
+            <div class="col-xl-12">
+                <div class="card custom-card">
+                    <div class="card-header">
+                        <div class="card-title">Total Sales</div>
+                    </div>
+                    <div class="card-body pb-0">
+                        <div id="websitedesign">
+                            <spk-apexcharts [chartOptions]="chartOptions6"></spk-apexcharts>
+
+                        </div>
+                    </div>
+                    <div class="card-footer p-0">
+                        <div class="row">
+                           <div class="col-xl-6 text-center border-end p-2">
+                             <p class="mb-1"><i class="bx bxs-circle text-orange fs-10 me-1"></i>Sale Items</p>
+                             <h5 class="mb-1 fw-semibold">567</h5>
+                           </div>
+                           <div class="col-xl-6 text-center p-2">
+                             <p class="mb-1"><i class="bx bxs-circle text-orange op-2 fs-10 me-1"></i>Sale Value</p>
+                             <h5 class="mb-1 fw-semibold">$1267</h5>
+                           </div>
+                        </div>
+                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End:: row-1 -->
+
+<!-- Start:: row-2 -->
+<div class="row">
+    <div class="col-md-12 col-xxl-9">
+        <div class="row">
+            @for (card of salesCards3; track $index) {
+                <div class="col-md-6 col-xl-3">
+            <spk-sales-card-3
+            [title]="card.title"
+            [value]="card.value"
+            [iconPath]="card.iconPath"
+            [iconColor]="card.iconColor"
+            [badgeClass]="card.badgeClass"
+            [badgeText]="card.badgeText"
+            [chartId]="card.chartId"
+            [chartOptions]="card.chartOptions"
+          ></spk-sales-card-3>
+          </div>
+            }
+            <div class="col-xxl-8">
+                <div class="card custom-card">
+                    <div class="card-header justify-content-between">
+                        <div class="card-title">Sales Revenue</div>
+                        <spk-dropdowns [Customclass]="'dropdown'" [Icon]="true" [title]="'Monthly'" [IconClass]="'bx bx-caret-down ms-1 fs-16'"
+                        [class]="'btn btn-outline-light border d-flex align-items-center text-muted no-caret'" [Menuclass]="'dropdown-menu'">
+                    <li><a class="dropdown-item" href="javascript:void(0);">Yearly</a>
+                    </li>
+                    <li><a class="dropdown-item" href="javascript:void(0);">Monthly
+                        </a>
+                    </li>
+                    <li><a class="dropdown-item" href="javascript:void(0);">Weakly</a></li>
+                    </spk-dropdowns>
+                    </div>
+                    <div class="card-body">
+                        <div id="salerevenue">
+                            <spk-apexcharts [chartOptions]="chartOptions7"></spk-apexcharts>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 col-xl-12 col-xxl-4">
+                <div class="card custom-card overflow-hidden">
+                    <div class="card-header justify-content-between">
+                        <div class="card-title">Total Sales</div>
+                        <spk-dropdowns [Customclass]="'dropdown'" [Icon]="true" [title]="'Monthly'" [IconClass]="'bx bx-caret-down ms-1 fs-16'"
+                                    [class]="'btn btn-outline-light border d-flex align-items-center text-muted no-caret'" [Menuclass]="'dropdown-menu'">
+                                <li><a class="dropdown-item" href="javascript:void(0);">Yearly</a>
+                                </li>
+                                <li><a class="dropdown-item" href="javascript:void(0);">Monthly
+                                    </a>
+                                </li>
+                                <li><a class="dropdown-item" href="javascript:void(0);">Weakly</a></li>
+                        </spk-dropdowns>
+                    </div>
+                    <div class="card-body  pb-0">
+                        <div class="circle-chart-widget">
+                            <div id="circlechart"></div>
+                            <spk-apexcharts [chartOptions]="chartOptions8"></spk-apexcharts>
+                        </div>
+                        <div class="row border-top mt-3 border-block-start-dashed">
+                            <div class="col border-end border-inline-end-dashed">
+                                <div class="text-center p-3">
+                                    <span class="visit-gender male">Avarage Sales</span>
+                                    <div class="mt-1">
+                                        <span class="fs-18">1,654</span>
+                                    </div>
+                                    <span class="badge bg-success-transparent text-success mt-1 rounded-pill">+12.3%</span>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="text-center p-3">
+                                    <span class="visit-gender female">Average Profit</span>
+                                    <div class="mt-1">
+                                        <span class="fs-18">$12,234</span>
+                                    </div>
+                                    <span class="badge bg-danger-transparent text-danger mt-1 rounded-pill">-11.3%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12 col-xxl-3">
+        <div class="card custom-card">
+            <div class="card-header justify-content-between">
+                <div class="card-title">Top Customers</div>
+                <spk-dropdowns [Customclass]="'dropdown'" [Icon]="true" [title]="'View All'" [IconClass]="'bx bx-caret-down ms-1 fs-16'"
+                                    [class]="'btn btn-outline-light border d-flex align-items-center text-muted no-caret'" [Menuclass]="'dropdown-menu'">
+                                <li><a class="dropdown-item" href="javascript:void(0);">Yearly</a>
+                                </li>
+                                <li><a class="dropdown-item" href="javascript:void(0);">Monthly
+                                    </a>
+                                </li>
+                                <li><a class="dropdown-item" href="javascript:void(0);">Weakly</a></li>
+                        </spk-dropdowns>
+                        </div>
+                   <div class="card-body">
+                    @for (deal of topDeals; track $index) {
+                    <spk-top-customers
+                      [avatar]="deal.avatar"
+                      [name]="deal.name"
+                      [email]="deal.email"
+                      [defaultClass]="deal.defaultClass"
+                      [amount]="deal.amount">
+                    </spk-top-customers>
+                }
+            </div>
+        </div>
+        <div class="card custom-card">
+            <div class="card-header justify-content-between">
+                <div class="card-title">Sales details</div>
+                <spk-dropdowns [Customclass]="'dropdown'" [Icon]="true" [title]="'View All'" [IconClass]="'bx bx-caret-down ms-1 fs-16'"
+                                    [class]="'btn btn-outline-light border d-flex align-items-center text-muted no-caret'" [Menuclass]="'dropdown-menu'">
+                                <li><a class="dropdown-item" href="javascript:void(0);">Yearly</a>
+                                </li>
+                                <li><a class="dropdown-item" href="javascript:void(0);">Monthly
+                                    </a>
+                                </li>
+                                <li><a class="dropdown-item" href="javascript:void(0);">Weakly</a></li>
+                        </spk-dropdowns>
+            </div>
+            <div class="card-body pb-0">
+                @for (item of financialData; track $index) {
+                <spk-sales-details
+                [iconClass]="item.iconClass"
+                [bgClass]="item.bgClass"
+                [title]="item.title"
+                [amount]="item.amount"
+                [progress]="item.progress"
+                [progressClass]="item.progressClass">
+              </spk-sales-details>
+            }
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End:: row-2 -->
+
+<!-- Start:: row-3 -->
+<div class="row">
+    <div class="col-md-12 col-xxl-4">
+        <div class="card custom-card">
+            <div class="card-header justify-content-between">
+                <div class="card-title">Sales Revenue</div>
+                <div class="d-flex gap-2">
+                    <div class="btn btn-outline-light border btn-full btn-sm">Today<span
+                            class="btn-con"><i class="bx bxs-circle fs-7 text-primary"></i></span></div>
+                    <div class="btn btn-outline-light border btn-full btn-sm">Weakly<span><i
+                                class="bx bxs-circle fs-7 ms-2 text-secondary op-5"></i></span>
+                    </div>
+                    <div class="btn btn-outline-light border btn-full btn-sm">Yearly<span><i
+                                class="bx bxs-circle fs-7 ms-2 text-secondary op-5"></i></span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div id="salerevenue1">
+                    <spk-apexcharts [chartOptions]="chartOptions9"></spk-apexcharts>
+                </div>
+            </div>
+        </div>
+        <div class="card custom-card overflow-hidden">
+            <div class="card-header justify-content-between">
+                <div class="card-title">
+                  Total Revenue
+                </div>
+                <spk-dropdowns [Customclass]="'dropdown'" [Icon]="true" [title]="'View All'" [IconClass]="'ti ti-chevron-down ms-1 d-inline-block'"
+                                    [class]="'btn btn-outline-light border btn-full btn-sm no-caret'" [Menuclass]="'dropdown-menu'">
+                        <li><a class="dropdown-item" href="javascript:void(0);">Download</a>
+                        </li>
+                        <li><a class="dropdown-item" href="javascript:void(0);">Import</a></li>
+                        <li><a class="dropdown-item" href="javascript:void(0);">Export</a></li>
+                </spk-dropdowns>
+            </div>
+            <div class="card-body">
+                <div id="sales-statistics1">
+                    <spk-apexcharts [chartOptions]="chartOptions11"></spk-apexcharts>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12 col-xxl-5">
+        <div class="row">
+            @for (card of salesCards4; track $index) {
+                <div class="col-md-6 col-xl-6">
+                    <spk-sales-card-4
+                    [title]="card.title"
+                    [value]="card.value"
+                    [percentageChange]="card.percentageChange"
+                    [svgPath]="card.svgPath"
+                    [svgPath1]="card.svgPath1"
+                    [badgeColor]="card.badgeColor"
+                    [backgroundColor]="card.backgroundColor">
+                  </spk-sales-card-4>
+  </div>
+}
+            <div class="col-xl-12">
+                <div class="card custom-card">
+                    <div class="card-header justify-content-between">
+                        <div class="card-title">Total Sales</div>
+                        <spk-dropdowns [Customclass]="'dropdown'" [Icon]="true" [title]="'View All'" [IconClass]="'ti ti-chevron-down ms-1 d-inline-block'"
+                        [class]="'btn btn-outline-light border btn-full btn-sm no-caret'" [Menuclass]="'dropdown-menu'">
+            <li><a class="dropdown-item" href="javascript:void(0);">Download</a>
+            </li>
+            <li><a class="dropdown-item" href="javascript:void(0);">Import</a></li>
+            <li><a class="dropdown-item" href="javascript:void(0);">Export</a></li>
+    </spk-dropdowns>
+                    </div>
+                    <div class="card-body">
+                        <div id="audienceReport">
+                            <spk-apexcharts [chartOptions]="chartOptions10"></spk-apexcharts>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12 col-xxl-3">
+      <div class="card custom-card">
+         <div class="card-header">
+             <div class="card-title">Recent Transactions</div>
+         </div>
+         <div class="card-body p-0">
+             <div id="chart-15">
+                <spk-apexcharts [chartOptions]="chartOptions12"></spk-apexcharts>
+             </div>
+             @for (customer of recenttransaction; track $index) {
+             <spk-recent-transaction
+             [avatarSrc]="customer.avatarSrc"
+             [customerName]="customer.name"
+             [purchasesCount]="customer.purchases"
+             [saleValue]="customer.saleValue">
+           </spk-recent-transaction>
+        }
+         </div>
+      </div>
+    </div>
+</div>
+<!-- End:: row-3 -->

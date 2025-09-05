@@ -1,0 +1,111 @@
+<app-page-header title="Full-Calendar" title1="Apps" activeTitle="Full-Calendar"></app-page-header>
+
+            <!-- Start::row-1 -->
+            <div class="row">
+              <div class="col-xl-3">
+                <div class="card custom-card">
+                  <div class="card-header justify-content-between">
+                    <div class="card-title">All Events</div>
+                    <button class="btn btn-primary btn-wave"><i class="ri-add-line align-middle me-1 fw-medium d-inline-block"></i>Create New Event</button>
+                  </div>
+                  <div class="card-body p-0">
+                      <ul #external id="external-events" class="mb-0 p-3 list-unstyled column-list">
+                          <li class="fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event mb-1 bg-primary">
+                            <div class="fc-event-main">Calendar Events</div>
+                          </li>
+                          <li class="fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event mb-1 bg-success"
+                            data-class="bg-success">
+                            <div class="fc-event-main">Birthday Events</div>
+                          </li>
+                          <li class="fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event mb-1 bg-info"
+                            data-class="bg-info">
+                            <div class="fc-event-main">Holiday Calendar</div>
+                          </li>
+                          <li class="fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event mb-1 bg-secondary"
+                            data-class="bg-secondary">
+                            <div class="fc-event-main">Office Events</div>
+                          </li>
+                          <li class="fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event mb-1 bg-warning"
+                            data-class="bg-secondary">
+                            <div class="fc-event-main">Other Events</div>
+                          </li>
+                          <li class="fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event mb-1 bg-danger"
+                            data-class="bg-danger">
+                            <div class="fc-event-main">Festival Events</div>
+                          </li>
+                          <li class="fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event mb-1 bg-teal"
+                            data-class="bg-teal">
+                            <div class="fc-event-main">Timeline Events</div>
+                          </li>
+                          <li class="fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event mb-1 bg-orange"
+                            data-class="bg-orange">
+                            <div class="fc-event-main">Others Events</div>
+                          </li>
+                      </ul>
+                  </div>
+              </div>
+                <div class="card custom-card">
+                    <div class="card-header justify-content-between">
+                        <div class="card-title">
+                          Activity :
+                        </div>
+                        <button class="btn btn-primary-light btn-sm btn-wave">View All</button>
+                    </div>
+                  <div class="card-body p-0">
+                    <overlay-scrollbars class="p-3 border-bottom" id="full-calendar-activity">
+                      <ul class="list-unstyled mb-0 fullcalendar-events-activity">
+                        <li>
+                          <div class="d-flex align-items-center justify-content-between flex-wrap">
+                            <p class="mb-1 fw-medium">Tuesday, Feb 5, 2025</p>
+                            <span class="badge bg-light text-default mb-1">10:00AM - 11:00AM</span>
+                          </div>
+                          <p class="mb-0 text-muted fs-12">Discussion with team on project updates.</p>
+                        </li>
+                        <li>
+                          <div class="d-flex align-items-center justify-content-between flex-wrap">
+                            <p class="mb-1 fw-medium">Monday, Jan 2, 2023</p>
+                            <span class="badge bg-success mb-1">Completed</span>
+                          </div>
+                          <p class="mb-0 text-muted fs-12">Review and finalize budget proposal.</p>
+                        </li>
+                        <li>
+                          <div class="d-flex align-items-center justify-content-between flex-wrap">
+                            <p class="mb-1 fw-medium">Thursday, Mar 8, 2025</p>
+                            <span class="badge bg-warning-transparent mb-1">Reminder</span>
+                          </div>
+                          <p class="mb-0 text-muted fs-12">Prepare presentation slides for client meeting.</p>
+                        </li>
+                        <li>
+                          <div class="d-flex align-items-center justify-content-between flex-wrap">
+                            <p class="mb-1 fw-medium">Friday, Apr 12, 2025</p>
+                            <span class="badge bg-light text-default mb-1">2:00PM - 4:00PM</span>
+                          </div>
+                          <p class="mb-0 text-muted fs-12">Training session on new software tools.</p>
+                        </li>
+                        <li>
+                          <div class="d-flex align-items-center justify-content-between flex-wrap">
+                            <p class="mb-1 fw-medium">Saturday, Mar 16, 2025</p>
+                            <span class="badge bg-danger-transparent mb-1">Due Date</span>
+                          </div>
+                          <p class="mb-0 text-muted fs-12">Submit quarterly report to management.</p>
+                        </li>
+                      </ul>
+                    </overlay-scrollbars>
+                  </div>
+                </div>
+              </div>
+                <div class="col-xl-9">
+                    <div class="card custom-card">
+                      <div class="card-header">
+                          <div class="card-title">Full Calendar</div>
+                      </div>
+                      <div class="card-body">
+                          <div id='calendar2'>
+                            <full-calendar  [options]="calendarOptions" 
+                            ></full-calendar>
+                          </div>
+                      </div>
+                  </div>
+                </div>
+            </div>
+            <!--End::row-1 -->

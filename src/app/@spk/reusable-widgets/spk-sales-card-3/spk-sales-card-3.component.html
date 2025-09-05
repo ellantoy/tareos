@@ -1,0 +1,32 @@
+
+    <div class="card custom-card overflow-hidden">
+      <div class="card-body">
+        <div class="d-flex justify-content-between">
+          <div>
+            <div class="flex-fill fs-13 text-muted">{{ title }}</div>
+            <div class="fs-22 fw-medium mb-2">{{ value }}</div>
+          </div>
+          <div class="avatar avatar-md avatar-rounded bg-{{iconColor}}-transparent svg-{{iconColor}}">
+            <svg xmlns="http://www.w3.org/2000/svg" class="fill-{{iconColor}}" width="32" height="32" viewBox="0 0 256 256">
+              <path [attr.d]="iconPath"></path>
+            </svg>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xl-6">
+            <div class="d-flex align-items-center">
+              <span class="badge-sm rounded-pill" [ngClass]="badgeClass"><i class="ri-arrow-left-down-line fs-11"></i></span>
+              <span class="mb-1">{{ badgeText }}</span>
+            </div>
+            <p class="fs-11 text-muted mb-0">This Month</p>
+          </div>
+          <div class="col-xl-6 text-end">
+            <div [id]="chartId">
+              <spk-apexcharts [chartOptions]="chartOptions"></spk-apexcharts>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+ 
+  

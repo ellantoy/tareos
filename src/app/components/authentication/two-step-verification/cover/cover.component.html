@@ -1,0 +1,52 @@
+<div class="row authentication two-step-verification authentication-cover-main mx-0">
+    <div class="col-xxl-8 col-xl-7">
+        <div class="row justify-content-center align-items-center h-100">
+            <div class="col-xxl-5 col-xl-9 col-lg-6 col-md-6 col-sm-8 col-12">
+                <div class="card custom-card my-4 border">
+                    <div class="card-body p-5">
+                        <p class="h5 mb-2 text-center">Verification Code</p>
+                        <p class="mb-4 text-muted op-7 fw-normal text-center fs-12">Enter the 4 digit code sent to the moble number ******9556.</p>
+                        <div class="row gy-3">
+                            <div class="col-xl-12 mb-2">
+                                <div class="row gx-3">
+                                    <div class="col-3">
+                                        <input #oneInput type="text" class="form-control text-center" id="one" maxlength="1" required (keyup)="onDigitInput($event, twoInput)">
+                                    </div>
+                                    <div class="col-3">
+                                        <input #twoInput type="text" class="form-control text-center" id="two" maxlength="1" (keyup)="onDigitInput($event, threeInput)">
+                                    </div>
+                                    <div class="col-3">
+                                        <input  #threeInput type="text" class="form-control text-center" id="three" maxlength="1" (keyup)="onDigitInput($event, fourInput)">
+                                    </div>
+                                    <div class="col-3">
+                                        <input #fourInput type="text" class="form-control text-center" id="four" maxlength="1">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-12 d-grid mt-2">
+                                <a routerLink="/dashboards/sales"  class="btn btn-primary">Verify</a>
+                                <div class="text-center">
+                                    <p class="text-muted mt-3 mb-0">Didn't recieve a code ? <a href="javascript:void(0);" class="text-primary fw-medium">Resend</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xxl-4 col-xl-5 col-lg-12 d-xl-block d-none px-0">
+        <div class="authentication-cover overflow-hidden">
+            <div class="authentication-cover-logo"> 
+                <a routerLink="/dashboards/sales" > 
+                    <img src="./assets/images/brand-logos/desktop-white.png" alt="" class="authentication-brand desktop-white"> 
+                </a> 
+            </div>
+            <div class="aunthentication-cover-content d-flex align-items-center justify-content-center">
+                <div>
+                    <img src="./assets/images/media/media-72.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

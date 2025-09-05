@@ -1,0 +1,333 @@
+<app-page-header title="School" title1="Dashboards" activeTitle="School" ></app-page-header>
+<!-- Start:: row-1 -->
+<div class="row">
+    <div class="col-xxl-9">
+        <div class="row">
+            @for (card of statCards; track $index) {
+                <div class="col-xxl-3 col-xl-6">
+                <spk-school
+                [title]="card.title"
+                [value]="card.value"
+                [icon]="card.icon"
+                [plans]="card.plans"
+                [changePercentage]="card.changePercentage"
+                [changeDirection]="card.changeDirection" 
+                [backgroundColor]="card.backgroundColor">
+            </spk-school>
+            </div>
+        }
+            <div class="col-xxl-8">
+                <div class="card custom-card">
+                    <div class="card-header">
+                        <div class="card-title">
+                            Earnings Report
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div id="earnings-report">
+                            <spk-apexcharts [chartOptions]="chartOptions"></spk-apexcharts>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xxl-4">
+                <div class="card custom-card">
+                    <div class="card-header justify-content-between">
+                        <div class="card-title">
+                            Upcoming Assignments
+                        </div>
+                        <a href="javascript:void(0);" class="fs-12 text-muted ms-auto"> View All<i class="ti ti-arrow-narrow-right ms-1"></i> </a>
+                    </div>
+                    <div class="card-body">
+                      
+<ul class="list-unstyled upcoming-assignments-list">
+    @for (assignment of assignments; track $index) {
+    <li>
+      <div class="d-flex align-items-start justify-content-between flex-wrap">
+        <div>
+          <a href="javascript:void(0);" class="fw-medium d-block mb-1">
+            {{ assignment.title }}
+          </a>
+          <span class="text-muted fs-12 d-flex align-items-center gap-3">
+            {{ assignment.startDate }} - {{ assignment.endDate }}
+            <span class="badge" [ngClass]="assignment.badgeClass">
+              {{ assignment.daysLeft }}
+            </span>
+          </span>
+        </div>
+        <div class="ms-auto">
+          <button class="btn btn-light btn-icon btn-sm">
+            <i class="ri-arrow-right-s-line rtl-rotate"></i>
+          </button>
+        </div>
+      </div>
+    </li>
+}
+  </ul>
+  
+                    </div>
+                </div>
+            </div>
+            <div class="col-xxl-5">
+                <div class="card custom-card">
+                    <div class="card-header justify-content-between">
+                        <div class="card-title">
+                            Activity
+                        </div>
+                        <a href="javascript:void(0);" class="btn btn-sm bg-light btn-light text-muted"> View All<i class="ti ti-arrow-narrow-right ms-1"></i> </a>
+                    </div>
+                    <div class="card-body">
+<ul class="list-unstyled school-activity-list">
+    @for (activity of activities; track $index) {
+    <li>
+      <div>
+        <h6 class="mb-1 fs-13">
+          {{ activity.name }}
+          <span class="fs-11 text-muted float-end">{{ activity.time }}</span>
+        </h6>
+        <span class="d-block fs-13 text-muted fw-normal">
+          {{ activity.description }}
+          @if (activity.badgeText) {
+          <span class="fw-medium text-secondary me-1 d-inline-block" [ngClass]="activity.badgeClass">
+            {{ activity.badgeText }}
+          </span>
+        }
+        @if (activity.badgeText1) {
+          <span class="fs-13 text-muted fw-normal">
+            {{ activity.badgeText1 }}
+          </span>
+        }
+        </span>
+        @if (activity.extraMessage) {
+        <div class="p-2 rounded-1 bg-light fs-13">
+          {{ activity.extraMessage }}
+        </div>
+        }
+      </div>
+    </li>
+}
+  </ul>
+  
+                    </div>
+                </div>
+            </div>
+            <div class="col-xxl-7">
+                <div class="card custom-card">
+                    <div class="card-header justify-content-between">
+                        <div class="card-title">
+                         Top Students
+                        </div>
+                        <a href="javascript:void(0);" class="fs-12 text-muted tag-link"> View All<i class="ti ti-arrow-narrow-right ms-1"></i> </a>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <spk-reusable-tables [columns]="studentTableHeader"  tableClass="table text-nowrap table-hover"  [showCheckbox]="false">
+                                    @for (student of students; track $index) {
+                                    <tr>
+                                      <td>
+                                        <div class="d-flex align-items-center">
+                                          <span class="avatar avatar-sm avatar-rounded me-2">
+                                            <img [src]="student.avatar" alt="img">
+                                          </span>
+                                          <a href="javascript:void(0);" class="fw-medium">{{ student.name }}</a>
+                                        </div>
+                                      </td>
+                                      <td>{{ student.id }}</td>
+                                      <td>{{ student.score }}</td>
+                                      <td><span [ngClass]="{ 'text-primary': student.percentage === '99%', 'text-secondary': student.percentage === '95%', 'text-success': student.percentage === '92%', 'text-info': student.percentage === '85%', 'text-warning': student.percentage === '82%', 'text-danger': student.percentage === '75%' }">{{ student.percentage }}</span></td>
+                                      <td>{{ student.year }}</td>
+                                      <td class="text-end">
+                                        <div class="btn-list">
+                                          <a href="javascript:void(0);" class="btn btn-icon btn-sm btn-primary-light" data-bs-toggle="tooltip" ngbTooltip="Edit" aria-label="Edit"><i class="bi bi-pencil-square"></i></a>
+                                          <a href="javascript:void(0);" class="btn btn-icon btn-sm btn-secondary-light" data-bs-toggle="tooltip" ngbTooltip="Delete" aria-label="Delete"><i class="bi bi-trash"></i></a>
+                                        </div>
+                                      </td>
+                                    </tr>
+                                }
+                            </spk-reusable-tables>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xxl-3">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card custom-card overflow-hidden">
+                    <div class="card-header">
+                        <div class="card-title">Attendance Overview</div>
+                    </div>
+                    <div class="card-body p-0">
+                        <div id="attendance-overview" class="p-3">
+                            <spk-apexcharts [chartOptions]="chartOptions1"></spk-apexcharts>
+                        </div>
+                        <div class="border-top"> 
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                    <div class="d-flex align-items-start flex-wrap gap-2 lh-1">
+                                        <div class="lh-1">
+                                            <span class="avatar avatar-sm bg-primary-transparent avatar-rounded fs-5">
+                                                B
+                                            </span>
+                                        </div>
+                                        <div class="flex-fill">
+                                            <span class="d-block fw-medium mb-1">Boys</span>
+                                            <span class="text-muted fs-12">This year</span>
+                                        </div>
+                                        <div class="text-end">
+                                            <span class="fw-semibold d-block mb-1">4,342</span>
+                                            <span class="text-success fs-12"><i class="ti ti-trending-up me-1 align-middle d-inline-block"></i>2.19%</span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item">
+                                    <div class="d-flex align-items-start flex-wrap gap-2 lh-1">
+                                        <div class="lh-1">
+                                            <span class="avatar avatar-sm bg-secondary-transparent avatar-rounded fs-5">
+                                                G
+                                            </span>
+                                        </div>
+                                        <div class="flex-fill">
+                                            <span class="d-block fw-medium mb-1">Girls</span>
+                                            <span class="text-muted fs-12">This year</span>
+                                        </div>
+                                        <div class="text-end">
+                                            <span class="fw-semibold d-block mb-1">12.533 - USDT</span>
+                                            <span class="text-success fs-12"><i class="ti ti-trending-up me-1 align-middle d-inline-block"></i>1.67%</span>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-12">
+                <div class="card custom-card overflow-hidden">
+                    <div class="card-header justify-content-between">
+                        <div class="card-title">
+                            Teachers List
+                        </div>
+                        <a href="javascript:void(0);" class="fs-12 text-muted tag-link"> View All<i class="ti ti-arrow-narrow-right ms-1"></i> </a>
+                    </div>
+                    <div class="card-body">
+                      
+<ul class="list-group list-unstyled teachers-list">
+    @for (teacher of teachers; track $index) {
+    <li>
+      <div class="d-flex align-items-start gap-3 justify-content-between">
+        <div class="lh-1">
+          <span class="avatar avatar-md avatar-rounded">
+            <img [src]="teacher.avatar" alt="">
+          </span>
+        </div>
+        <div class="flex-fill">
+          <a href="javascript:void(0);" class="fw-medium">{{ teacher.name }}</a>
+          <span class="fs-12 text-muted d-block">{{ teacher.qualification }}</span>
+        </div>
+        <div class="fw-medium" [ngClass]="{
+          'text-primary': teacher.subject === 'Mathematics',
+          'text-secondary': teacher.subject === 'English',
+          'text-warning': teacher.subject === 'Physics',
+          'text-info': teacher.subject === 'History',
+          'text-orange': teacher.subject === 'Geography',
+          'text-success': teacher.subject === 'Chemistry',
+          'text-danger': teacher.subject === 'English Literature',
+          'text-teal': teacher.subject === 'Arts & Sciences'
+        }">
+          {{ teacher.subject }}
+        </div>
+      </div>
+    </li>
+}
+  </ul>
+  
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End:: row-1 -->
+
+<!-- Start:: row-2 -->
+<div class="row">
+    <div class="col-xxl-12 col-xl-12">
+        <div class="card custom-card">
+            <div class="card-header justify-content-between">
+                <div class="card-title">
+                    Student Marks
+                </div>
+                <div class="d-flex flex-wrap gap-2"> 
+                    <div> 
+                        <input class="form-control form-control-sm" type="text" placeholder="Search Here" aria-label=".form-control-sm example"> 
+                    </div> 
+                    <spk-dropdowns [Customclass]="'dropdown'" [Icon]="true" [title]="'Sort By'" [IconClass]="'ri-arrow-down-s-line align-middle ms-1 d-inline-block'"
+                                    [class]="'btn btn-primary btn-sm btn-wave waves-effect waves-light no-caret'" [Menuclass]="'dropdown-menu'">
+                            <li><a class="dropdown-item" href="javascript:void(0);">New</a></li> 
+                            <li><a class="dropdown-item" href="javascript:void(0);">Popular</a></li> 
+                            <li><a class="dropdown-item" href="javascript:void(0);">Relevant</a></li> 
+                    </spk-dropdowns>
+                </div>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <spk-reusable-tables [columns]="StudentMarksHeader"  tableClass="table text-nowrap"  [showCheckbox]="false">
+                      @for ( student of StudentMarksData; track $index) {
+                      <tr>
+                          <td>{{ student.id }}</td>
+                          <td>
+                            <div class="d-flex align-items-center">
+                              <a href="javascript:void(0);" class="avatar avatar-xs avatar-rounded me-2">
+                                <img [src]="student.avatar" alt="img">
+                              </a>
+                              <a href="javascript:void(0);">{{ student.name }}</a>
+                            </div>
+                          </td>
+                          <td>{{ student.studentId }}</td>
+                          <td>{{ student.age }}</td>
+                          <td><span [ngClass]="{'text-primary': student.gender === 'Boy', 'text-danger': student.gender === 'Girl'}">{{ student.gender }}</span></td>
+                          <td>{{ student.grade }}</td>
+                          <td>{{ student.section }}</td>
+                          <td>{{ student.percentage }}</td>
+                          <td>{{ student.cgpa }}</td>
+                          <td>
+                            <span class="badge rounded-pill" [ngClass]="{'bg-success': student.status === 'Pass', 'bg-danger': student.status === 'Fail'}">
+                              {{ student.status }}
+                            </span>
+                          </td>
+                          <td>
+                            <div class="btn-list">
+                              <button class="btn btn-sm btn-icon btn-primary-light btn-wave waves-effect waves-light">
+                                <i class="ri-eye-line"></i>
+                              </button>
+                              <button class="btn btn-sm btn-icon btn-secondary-light btn-wave waves-effect waves-light">
+                                <i class="ri-edit-line"></i>
+                              </button>
+                            </div>
+                          </td>
+                        </tr>
+                      }
+                    </spk-reusable-tables>
+                </div>
+            </div>
+            <div class="card-footer border-top-0"> 
+                <div class="d-flex align-items-center"> 
+                    <div> Showing 5 Entries <i class="bi bi-arrow-right ms-2 fw-semibold"></i> </div>
+                    <div class="ms-auto"> 
+                    <nav aria-label="Page navigation" class="pagination-style-4"> 
+                        <ul class="pagination mb-0"> 
+                            <li class="page-item disabled"> <a class="page-link" href="javascript:void(0);"> Prev </a> </li>
+                                <li class="page-item active"><a class="page-link" href="javascript:void(0);">1</a></li> 
+                                <li class="page-item"><a class="page-link" href="javascript:void(0);">2</a></li> 
+                                <li class="page-item"> <a class="page-link text-primary" href="javascript:void(0);"> next </a> </li> 
+                            </ul> 
+                        </nav> 
+                    </div> 
+                </div> 
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End:: row-2 -->

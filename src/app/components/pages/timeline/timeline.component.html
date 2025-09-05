@@ -1,0 +1,54 @@
+<app-page-header title="Timeline" title1="Pages" activeTitle="Timeline" ></app-page-header>
+   <!-- Start:: row-3 -->
+   <div class="row justify-content-center timeline-3">
+    <div class="col-xxl-11">
+        <div class="card custom-card">
+            <div class="card-header pb-4">
+                <div class="card-title">Timeline 01</div>
+            </div>
+            <div class="card-body">
+                <spk-timeline03 [steps]="steps" ></spk-timeline03>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End:: row-3 -->  
+<!-- Start:: row-1 -->
+    <div class="row justify-content-center">
+        <div class="col-xxl-11">
+            <div class="card custom-card border overflow-hidden">
+                <div class="card-header">
+                    <div class="card-title">
+                        Timeline 02
+                    </div>
+                </div>
+                <div class="card-body">
+                    <spk-timeline01 [timelineData]="timeline"></spk-timeline01>                
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End:: row-1 -->
+
+    <!-- Start:: row-2 -->
+    <div class="row justify-content-center timeline-2">
+        <div class="col-xxl-11">
+            <div class="card custom-card">
+                <div class="card-header justify-content-between">
+                    <div class="card-title">
+                        Timeline 03
+                    </div>
+                </div>
+                <spk-timeline02 [notifications]="notificationList"></spk-timeline02>
+                 <div class="text-center mb-4">
+                    <button class="btn btn-success-light btn-loader mx-auto">
+                        <span class="me-2">Loading</span>
+                        <span class="loading"><i class="ri-loader-4-line fs-16"></i></span>
+                    </button>
+                 </div>
+            </div>
+        </div>
+    </div>
+    <!-- End:: row-2 -->
+    
+ 

@@ -1,0 +1,329 @@
+<app-page-header firstTitle="Apps" title="Search Candidate" title1="Jobs" activeTitle="Search Candidate"></app-page-header>
+   <!-- Start::row-1 -->
+   <div class="row">
+    <div class="col-xxl-3 col-xl-4">
+        <div class="card custom-card products-navigation-card">
+            <div class="card-body p-0">
+                <div class="p-3 border border-dashed m-2 rounded">
+                    <h6 class="fw-medium mb-0">Categories</h6>
+                    <div class="py-3 pb-0">
+                        <div class="form-check mb-2">
+                            <input class="form-check-input me-2" type="checkbox" value="" id="c-1" checked>
+                            <label class="form-check-label" for="c-1">
+                                Software Development
+                            </label>
+                            <span class="badge bg-light text-default fw-500 float-end">3,200</span>
+                        </div>
+                        <div class="form-check mb-2">
+                            <input class="form-check-input me-2" type="checkbox" value="" id="c-2">
+                            <label class="form-check-label" for="c-2">
+                                Finance
+                            </label>
+                            <span class="badge bg-light text-default fw-500 float-end">780</span>
+                        </div>
+                        <div class="form-check mb-2">
+                            <input class="form-check-input me-2" type="checkbox" value="" id="c-3" checked>
+                            <label class="form-check-label" for="c-3">
+                                Marketing
+                            </label>
+                            <span class="badge bg-light text-default fw-500 float-end">15,500</span>
+                        </div>
+                        <div class="form-check mb-2">
+                            <input class="form-check-input me-2" type="checkbox" value="" id="c-4" checked>
+                            <label class="form-check-label" for="c-4">
+                                Customer Service
+                            </label>
+                            <span class="badge bg-light text-default fw-500 float-end">2,950</span>
+                        </div>
+                        <div class="form-check mb-2">
+                            <input class="form-check-input me-2" type="checkbox" value="" id="c-5">
+                            <label class="form-check-label" for="c-5">
+                                Operations
+                            </label>
+                            <span class="badge bg-light text-default fw-500 float-end">6,800</span>
+                        </div>
+                        <div class="collapse" id="category-more" #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
+                            <div class="form-check mb-2">
+                                <input class="form-check-input me-2" type="checkbox" value="" id="c-6">
+                                <label class="form-check-label" for="c-6">
+                                    Human Resources
+                                </label>
+                                <span class="badge bg-light text-default fw-500 float-end">4,500</span>
+                            </div>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input me-2" type="checkbox" value="" id="c-7">
+                                <label class="form-check-label" for="c-7">
+                                    Business Development
+                                </label>
+                                <span class="badge bg-light text-default fw-500 float-end">1,600</span>
+                            </div>
+                        </div>
+                        <a class="ecommerce-more-link" data-bs-toggle="collapse" (click)="collapse.toggle()" aria-expanded="false"  [attr.aria-expanded]="!isCollapsed" role="button"  aria-controls="category-more">MORE</a>
+                    </div>                                    
+                </div>
+                <div class="p-3 border border-dashed m-2 rounded">
+                    <h6 class="fw-medium mb-0">Availability</h6>
+                    <div class="py-3 pb-0">
+                        <div class="form-check mb-2">
+                            <input class="form-check-input me-2" type="checkbox" value="" id="available-1" checked>
+                            <label class="form-check-label" for="available-1">
+                                Available Now
+                            </label>
+                            <span class="badge bg-light text-default fw-500 float-end">620</span>
+                        </div>
+                        <div class="form-check mb-2">
+                            <input class="form-check-input me-2" type="checkbox" value="" id="available-2">
+                            <label class="form-check-label" for="available-2">
+                                30 Days Notice
+                            </label>
+                            <span class="badge bg-light text-default fw-500 float-end">1,850</span>
+                        </div>
+                    </div>
+                </div>                                
+                <div class="p-3 border border-dashed m-2 rounded">
+                    <h6 class="fw-medium mb-0">Bond Agreement</h6>
+                    <div class="py-3 pb-0">
+                        <div class="form-check mb-2">
+                            <input class="form-check-input me-2" type="checkbox" value="" id="bond-1" checked>
+                            <label class="form-check-label" for="bond-1">
+                                1 Year
+                            </label>
+                            <span class="badge bg-light text-default fw-500 float-end">760</span>
+                        </div>
+                        <div class="form-check mb-2">
+                            <input class="form-check-input me-2" type="checkbox" value="" id="bond-2">
+                            <label class="form-check-label" for="bond-2">
+                                2 yrs
+                            </label>
+                            <span class="badge bg-light text-default fw-500 float-end">480</span>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input me-2" type="checkbox" value="" id="bond-3">
+                            <label class="form-check-label" for="bond-3">
+                                3 yrs
+                            </label>
+                            <span class="badge bg-light text-default fw-500 float-end">240</span>
+                        </div>
+                    </div>
+                </div>                                
+                <div class="p-3 border border-dashed m-2 rounded">
+                    <h6 class="fw-medium mb-0">Languages</h6>
+                    <div class="py-3 pb-0">
+                        <div class="form-check mb-2">
+                            <input class="form-check-input me-2" type="checkbox" value="" id="languages-1" checked>
+                            <label class="form-check-label" for="languages-1">
+                                English
+                            </label>
+                            <span class="badge bg-light text-default fw-500 float-end">1,250</span>
+                        </div>
+                        <div class="form-check mb-2">
+                            <input class="form-check-input me-2" type="checkbox" value="" id="languages-2">
+                            <label class="form-check-label" for="languages-2">
+                                Hindi
+                            </label>
+                            <span class="badge bg-light text-default fw-500 float-end">350</span>
+                        </div>
+                    </div>
+                </div>                                
+                <div class="p-3 border border-dashed m-2 rounded">
+                    <h6 class="fw-medium mb-0">Job Type</h6>
+                    <div class="py-3 pb-0">
+                        <div class="form-check mb-2">
+                            <input class="form-check-input me-2" type="checkbox" value="" id="j-1" checked>
+                            <label class="form-check-label" for="j-1">
+                                Full Time
+                            </label>
+                            <span class="badge bg-light text-default fw-500 float-end">1,920</span>
+                        </div>
+                        <div class="form-check mb-2">
+                            <input class="form-check-input me-2" type="checkbox" value="" id="j-2" checked>
+                            <label class="form-check-label" for="j-2">
+                                Part Time
+                            </label>
+                            <span class="badge bg-light text-default fw-500 float-end">3,100</span>
+                        </div>
+                        <div class="form-check mb-2">
+                            <input class="form-check-input me-2" type="checkbox" value="" id="j-3" checked>
+                            <label class="form-check-label" for="j-3">
+                                Internship
+                            </label>
+                            <span class="badge bg-light text-default fw-500 float-end">860</span>
+                        </div>
+                        <div class="form-check mb-2">
+                            <input class="form-check-input me-2" type="checkbox" value="" id="j-4">
+                            <label class="form-check-label" for="j-4">
+                                Freelancer
+                            </label>
+                            <span class="badge bg-light text-default fw-500 float-end">75</span>
+                        </div>
+                    </div>
+                </div>                                                                
+                <div class="p-3 border border-dashed m-2 rounded">
+                    <h6 class="fw-medium mb-0">Salary Range</h6>
+                    <div class="py-3 pb-0">
+                        <div id="nonlinear"> </div>
+                            <div class="d-flex mt-4 flex-wrap gap-2">
+                                <div class="fw-semibold px-3 py-1 border rounded">
+                                  $<span id="lower-value">{{ lowerValue }}</span>
+                                </div>
+                                <span class="fw-semibold px-2 py-1">-</span>
+                                <div class="fw-semibold px-3 py-1 border rounded">
+                                  $<span id="upper-value">{{ upperValue }}</span>
+                                </div>
+                              </div>
+                    </div>
+                </div>
+                <div class="p-3 border border-dashed m-2 rounded">
+                    <h6 class="fw-medium mb-0">Qualification</h6>
+                    <div class="py-3 pb-0">
+                        <div class="form-check mb-2">
+                            <input class="form-check-input me-2" type="checkbox" value="" id="q-1">
+                            <label class="form-check-label" for="q-1">
+                                All Education Levels
+                            </label>
+                            <span class="badge bg-light text-default fw-500 float-end">22,457</span>
+                        </div>
+                        <div class="form-check mb-2">
+                            <input class="form-check-input me-2" type="checkbox" value="" id="q-2" checked>
+                            <label class="form-check-label" for="q-2">
+                                10th Pass and Above
+                            </label>
+                            <span class="badge bg-light text-default fw-500 float-end">12,562</span>
+                        </div>
+                        <div class="form-check mb-2">
+                            <input class="form-check-input me-2" type="checkbox" value="" id="q-4" checked>
+                            <label class="form-check-label" for="q-4">
+                                Diploma and Graduate
+                            </label>
+                            <span class="badge bg-light text-default fw-500 float-end">5,767</span>
+                        </div>
+                    </div>
+                </div>                                
+                <div class="p-3 border border-dashed m-2 rounded">
+                    <h6 class="fw-medium mb-0">Skills</h6>
+                    <div class="py-3 pb-0">
+                        <div class="form-check mb-2">
+                            <input class="form-check-input me-2" type="checkbox" value="" id="s-1" checked>
+                            <label class="form-check-label" for="s-1">
+                                HTML5
+                            </label>
+                            <span class="badge bg-light text-default fw-500 float-end">23,156</span>
+                        </div>
+                        <div class="collapse" id="sizes-more" #collapse1="ngbCollapse" [(ngbCollapse)]="isCollapsed1">
+                            <div class="form-check mb-2">
+                                <input class="form-check-input me-2" type="checkbox" value="" id="s-4">
+                                <label class="form-check-label" for="s-4">
+                                    CSS3
+                                </label>
+                                <span class="badge bg-light text-default fw-500 float-end">7,154</span>
+                            </div>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input me-2" type="checkbox" value="" id="s-5">
+                                <label class="form-check-label" for="s-5">
+                                    Bootstrap
+                                </label>
+                                <span class="badge bg-light text-default fw-500 float-end">5,946</span>
+                            </div>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input me-2" type="checkbox" value="" id="s-6">
+                                <label class="form-check-label" for="s-6">
+                                    Angular
+                                </label>
+                                <span class="badge bg-light text-default fw-500 float-end">3,267</span>
+                            </div>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input me-2" type="checkbox" value="" id="s-7">
+                                <label class="form-check-label" for="s-7">
+                                    React
+                                </label>
+                                <span class="badge bg-light text-default fw-500 float-end">578</span>
+                            </div>
+                        </div>
+                        <a class="ecommerce-more-link" data-bs-toggle="collapse" (click)="collapse1.toggle()" [attr.aria-expanded]="!isCollapsed1" role="button" aria-expanded="false" aria-controls="sizes-more">MORE</a>
+                    </div>
+                </div>                                
+            </div>
+        </div>
+    </div>
+    <div class="col-xxl-9 col-xl-8">
+        <div class="row align-items-center">
+            <div class="col-lg-12">
+                <div class="card custom-card">
+                    <div class="card-body p-md-0">
+                        <div class="input-group companies-search-input companies-search-input1 flex-lg-nowrap">
+                            <input type="text" class="form-control form-control-lg" aria-label="Text input with segmented dropdown button" placeholder="Enter your keyword here">
+                            <spk-ng-select 
+                            [options]="Categories"
+                            [selectClass]="'form-control form-select-lg rounded-0 width-select-custom'"
+                            [clearable]="true"
+                            [searchable]="true"
+                            [hideSelected]="true"
+                            [placeholder]="'All Categories'"
+                            [additionalProperties]="{}">
+                            </spk-ng-select>
+                           
+                            <input type="text" class="form-control form-control-lg" aria-label="Text input with segmented dropdown button" placeholder="Search by location">
+                            <spk-ng-select 
+                            [options]="Qualification"
+                            [selectClass]="'form-control form-select-lg rounded-0 width-select-custom'"
+                            [clearable]="true"
+                            [searchable]="true"
+                            [hideSelected]="true"
+                            [placeholder]="'Freshers'"
+                            [additionalProperties]="{}">
+                            </spk-ng-select>
+                           
+                            <button type="button" class="btn btn-lg btn-primary"><i class="ri-search-line"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-12">
+                <div class="card custom-card">
+                    <div class="card-body">
+                        <div class="d-flex flex-wrap gap-2 align-items-center">
+                            <h5 class="fw-medium mb-0 flex-grow-1">3,232 <span class="fw-normal fs-18">Candidates match your job search</span> </h5>
+                            <spk-dropdowns [Customclass]="'btn-group'" 
+                            [class]="'btn btn-outline-light border dropdown-toggle'" [title]="'Sort By'" 
+                            [Menuclass]="'dropdown-menu dropdown-menu-end'">
+                                    <li><a class="dropdown-item" ngbDropdownItem href="javascript:void(0);">Premium</a></li>
+                                    <li><a class="dropdown-item" ngbDropdownItem href="javascript:void(0);">Newest</a></li>
+                                    <li><a class="dropdown-item" ngbDropdownItem href="javascript:void(0);">Most Relevant</a></li>
+                                    <li><a class="dropdown-item" ngbDropdownItem href="javascript:void(0);">Fresher</a></li>
+                                    <li><a class="dropdown-item" ngbDropdownItem href="javascript:void(0);">Experienced</a></li>
+                                    <li><a class="dropdown-item" ngbDropdownItem href="javascript:void(0);">Bond Agreement</a></li>
+                                    <li><a class="dropdown-item" ngbDropdownItem href="javascript:void(0);">Flexible Shift</a></li>
+                                    <li><a class="dropdown-item" ngbDropdownItem href="javascript:void(0);">Day Shift</a></li>
+                        </spk-dropdowns>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                    @for(candidate of candidates;track $index){
+                        <div class="col-xl-12" >
+                            <app-spk-candidate-reusable-card [candidate]="candidate">
+                            </app-spk-candidate-reusable-card> 
+                        </div>
+                    }
+                 
+                
+         
+        </div>
+        <ul class="pagination mb-4 justify-content-end">
+            <li class="page-item disabled">
+                <a class="page-link" href="javascript:void(0);">
+                    Prev
+                </a>
+            </li>
+            <li class="page-item active"><a class="page-link" href="javascript:void(0);">1</a></li>
+            <li class="page-item"><a class="page-link" href="javascript:void(0);">2</a></li>
+            <li class="page-item"><a class="page-link" href="javascript:void(0);">3</a></li>
+            <li class="page-item">
+                <a class="page-link text-primary" href="javascript:void(0);">
+                    next
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+<!--End::row-1 -->

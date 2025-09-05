@@ -1,0 +1,470 @@
+<app-page-header firstTitle="Pages" title="Mail" title1="Email" activeTitle="Mail"></app-page-header>
+
+<div class="main-mail-container mb-2 gap-2 d-flex">
+    <div #mailNavigation class="mail-navigation border">
+        <div class="d-grid align-items-top p-3 border-bottom border-block-end-dashed">
+            <button class="btn btn-primary d-flex align-items-center justify-content-center" (click)="open(content)"
+                data-bs-toggle="modal" data-bs-target="#mail-Compose">
+                <i class="ri-add-circle-line fs-16 align-middle me-1"></i>Compose Mail
+            </button>
+
+            <ng-template #content let-modal>
+                <div class="modal-header">
+                    <h6 class="modal-title" id="mail-ComposeLabel">Compose Mail</h6>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" (click)="modal.close('cross click')"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-xl-6 mb-2">
+                            <label for="fromMail" class="form-label">From<sup><i
+                                        class="ri-star-s-fill text-success fs-8"></i></sup></label>
+                            <input type="email" class="form-control" id="fromMail" value="henrymilo2345@gmail.com">
+                        </div>
+                        <div class="col-xl-6 mb-2">
+                            <label for="toMail" class="form-label">To<sup><i
+                                        class="ri-star-s-fill text-success fs-8"></i></sup></label>
+                            <spk-ng-select [options]="Mails" [id]="'toMail'" [selectClass]="''"
+                                [defaultValue]="selectedTags" [clearable]="true" [searchable]="true" [multiple]="true"
+                                [hideSelected]="true" placeholder="1 Day" [additionalProperties]="{}">
+                            </spk-ng-select>
+
+                        </div>
+                        <div class="col-xl-6 mb-2">
+                            <label for="mailCC" class="form-label text-dark fw-medium">Cc</label>
+                            <input type="email" class="form-control" id="mailCC">
+                        </div>
+                        <div class="col-xl-6 mb-2">
+                            <label for="mailBcc" class="form-label text-dark fw-medium">Bcc</label>
+                            <input type="email" class="form-control" id="mailBcc">
+                        </div>
+                        <div class="col-xl-12 mb-2">
+                            <label for="Subject" class="form-label">Subject</label>
+                            <input type="text" class="form-control" id="Subject" placeholder="Subject">
+                        </div>
+                        <div class="col-xl-12">
+                            <label class="col-form-label">Content :</label>
+                            <div class="mail-compose">
+                                <div id="mail-compose-editor">
+                                    <form [formGroup]="form">
+                                        <div class="NgxEditor__Wrapper">
+                                            <ngx-editor-menu [editor]="editor" [toolbar]="toolbar">
+                                            </ngx-editor-menu>
+                                            <ngx-editor [editor]="editor">
+                                            </ngx-editor>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light" (click)="modal.close('cross click')"
+                        data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary">Send</button>
+                </div>
+            </ng-template>
+
+        </div>
+        <div>
+            <overlay-scrollbars>
+                <ul (click)="onMailTypeClick()" class="list-unstyled mail-main-nav" id="mail-main-nav">
+                    <li class="px-0 pt-0">
+                        <span class="fs-11 text-muted op-7 fw-medium">MAILS</span>
+                    </li>
+                    @for(mail of mails;track $index){
+                    <li [class.active]="mail.name === 'All Mails'" class="mail-type">
+                        <a href="javascript:void(0);">
+                            <div class="d-flex align-items-center">
+                                <span class="me-2 lh-1">
+                                    <i class="{{ mail.icon }} align-middle fs-16"></i>
+                                </span>
+                                <span class="flex-fill text-nowrap">{{ mail.name }}</span>
+                                @if(mail.badge){
+
+                                <span class="badge {{ mail.badgeClass }} rounded-pill">{{ mail.badge }}</span>
+                                }
+                            </div>
+                        </a>
+                    </li>
+                    }
+                    <li class="px-0">
+                        <span class="fs-11 text-muted op-7 fw-medium">SETTINGS</span>
+                    </li>
+                    <li>
+                        <a routerLink="/pages/email/mailsettings">
+                            <div class="d-flex align-items-center">
+                                <span class="me-2 lh-1">
+                                    <i class="ti ti-settings align-middle fs-14"></i>
+                                </span>
+                                <span class="flex-fill text-nowrap">
+                                    Settings
+                                </span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="px-0">
+                        <span class="fs-11 text-muted op-7 fw-medium">LABELS</span>
+                    </li>
+                    @for(label of labels;track $index){
+                    <li>
+                        <a href="javascript:void(0);">
+                            <div class="d-flex align-items-center">
+                                <span class="me-2 lh-1">
+                                    <i class="ri-circle-fill align-middle fs-10 fw-medium {{ label.iconClass }}"></i>
+                                </span>
+                                <span class="flex-fill text-nowrap">{{ label.name }}</span>
+                            </div>
+                        </a>
+                    </li>
+                    }            
+                    <li class="px-0">
+                        <span class="fs-11 text-muted op-7 fw-medium">ONLINE USERS</span>
+                    </li>
+                    @for(user of onlineUsers;track $index){
+                        <li>
+                            <a href="javascript:void(0);">
+                              <div class="d-flex align-items-top lh-1">
+                                <div class="me-2">
+                                  <span class="avatar avatar-sm online avatar-rounded">
+                                    <img [src]="user.avatar" alt="{{ user.name }}">
+                                  </span>
+                                </div>
+                                <div class="mb-2">
+                                  <p class="text-default fw-medium mb-1">{{ user.name }}</p>
+                                  <p class="fs-12 text-muted mb-0 fw-normal">{{ user.message }}</p>
+                                </div>
+                              </div>
+                            </a>
+                          </li>
+                    }              
+                   
+                </ul>
+
+            </overlay-scrollbars>
+        </div>
+    </div>
+    <div #totalMailsElement class="total-mails border">
+        <div class="p-3 d-flex align-items-center border-bottom border-block-end-dashed flex-wrap gap-2">
+            <div class="input-group">
+                <input type="text" class="form-control shadow-none" placeholder="Search Email"
+                    aria-describedby="button-addon">
+                <button class="btn btn-primary" type="button" id="button-addon"><i class="ri-search-line me-1"></i>
+                    Search</button>
+            </div>
+        </div>
+        <div class="px-3 p-2 d-flex align-items-center border-bottom flex-wrap gap-2">
+            <div class="me-3">
+                <input class="form-check-input check-all" (change)="toggleSelectAll($event)" type="checkbox" id="checkAll" value="" aria-label="...">
+            </div>
+            <div class="flex-fill">
+                <h6 class="fw-medium mb-0">All Mails</h6>
+            </div>
+            <div class="d-flex gap-1">
+                <button class="btn btn-icon btn-light me-1 d-lg-none d-block total-mails-close btn-sm"
+                    (click)="onTotalMailsCloseClick()">
+                    <i class="ri-close-line"></i>
+                </button>
+                <div class="dropdown">
+                <button class="btn btn-sm btn-success-light btn-wave waves-effect waves-light me-1" type="button" aria-expanded="false"> <i class="ri-inbox-archive-line me-1"></i> Archive </button>
+                <button class="btn btn-sm btn-info-light btn-wave waves-effect waves-light" type="button" aria-expanded="false"> <i class="ri-error-warning-line me-1"></i> Spam </button>
+            </div>
+                <spk-dropdowns [Customclass]="'dropdown'" [Icon]="true" [IconClass]="'ti ti-dots-vertical'"
+                [class]="'btn btn-sm btn-icon btn-secondary-light btn-wave waves-effect waves-light no-caret'" [Menuclass]="'dropdown-menu'">
+                <li><a class="dropdown-item" ngbDropdownItem href="javascript:void(0);">Recent</a></li>
+                <li><a class="dropdown-item" ngbDropdownItem href="javascript:void(0);">Unread</a></li>
+                <li><a class="dropdown-item" ngbDropdownItem href="javascript:void(0);">Mark All Read</a></li>
+                <li><a class="dropdown-item" ngbDropdownItem href="javascript:void(0);">Delete All</a></li>
+            </spk-dropdowns>
+            </div>
+        </div>
+        <overlay-scrollbars class="mail-messages" id="mail-messages">
+
+            <ul class="list-unstyled mb-0 mail-messages-container">
+                @for(mail of allMails;track $index){
+                    <li  [class.active]="mail.isChecked">
+                        <div class="d-flex align-items-top">
+                          <div class="me-3 mt-1">
+                            <input class="form-check-input" [checked]="allTasksChecked" [(ngModel)]="mail.isChecked" type="checkbox"  aria-label="...">
+                          </div>
+                          <div class="me-1 lh-1">
+                            @if(mail.avatar){
+
+                                <span  class="avatar avatar-md me-2 avatar-rounded mail-msg-avatar">
+                                  <img [src]="mail.avatar" alt="">
+                                </span>
+                            }
+                            @if(!mail.avatar){
+                                <span  class="avatar avatar-md me-2 avatar-rounded {{ mail.avatarClass }} mail-msg-avatar">
+                                  {{ mail.initials }}
+                                </span>
+                            }
+                          </div>
+                          <div class="flex-fill text-truncate text-wrap">
+                            <a href="javascript:void(0);" data-bs-toggle="offcanvas" (click)="openOffcanvas(content1)" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+                              <p class="mb-1 fs-12 fw-medium">
+                                {{ mail.sender }}
+                                @if(mail.badge){
+
+                                    <span  class="badge ms-2 {{ mail.badgeClass }}">{{ mail.badge }}</span>
+                                }
+                                <span class="float-end text-muted fw-normal fs-11">
+                                    @if(mail.isStarred){
+
+                                        <span  class="me-2"><i class="{{mail.iconClass}}"></i></span>
+                                    }
+                                    {{ mail.time }}
+                                </span>
+                              </p>
+                            </a>
+                            <div class="mail-msg mb-0">
+                              <span class="d-block mb-0 fw-medium text-truncate w-75">{{ mail.subject }}</span>
+                                <button class="btn p-0 lh-1 mail-starred border-0 float-end" [class.true]="mail.isStarred">
+                                  <i class="ri-star-fill fs-14" [class.text-warning]="mail.isStarred"></i>
+                                </button>
+                                <div class="fs-12 text-muted w-75 text-truncate mail-msg-content">
+                                    {{ mail.message }}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                }
+         
+            </ul>
+        </overlay-scrollbars>
+
+    </div>
+    <div class="mail-recepients border">
+        <div class="p-3 border-bottom">
+            <button class="btn btn-success-light btn-icon rounded-pill" data-bs-toggle="tooltip" placement="auto"
+                ngbTooltip="Add Recepient"><i class="ri-add-line"></i></button>
+        </div>
+        <overlay-scrollbars>
+            <div class="p-3 d-flex flex-column align-items-center total-mail-recepients" id="mail-recepients">
+                @for(recipient of recipients;track $index){
+                    <a  href="javascript:void(0);" class="mail-recipient-person">
+                        <span class="avatar avatar-rounded {{recipient.status}}" >
+                          <img [src]="recipient.avatar" alt="" data-bs-toggle="tooltip" placement="auto" ngbTooltip="{{recipient.name}}">
+                        </span>
+                      </a>
+                }
+             
+            </div>
+        </overlay-scrollbars>
+    </div>
+</div>
+<ng-template let-offcanvas #content1>
+    <div class="offcanvas-body p-0">
+        <div class="mails-information">
+            <div class="mail-info-header d-flex flex-wrap gap-2 align-items-center">
+                <span class="avatar avatar-md me-2 avatar-rounded mail-msg-avatar me-1">
+                    <img src="./assets/images/faces/12.jpg" alt="">
+                </span>
+                <div class="flex-fill">
+                    <h6 class="mb-0 fw-medium">Raiden stevie</h6>
+                    <span class="text-muted fs-11">raidenstevie777&#64;gmail.com</span>
+                </div>
+                <div class="mail-action-icons">
+                    <button class="btn btn-icon btn-outline-light border" data-bs-toggle="tooltip" placement="bottom"
+                        ngbTooltip="Starred">
+                        <i class="ri-star-line"></i>
+                    </button>
+                    <button class="btn btn-icon btn-outline-light border ms-1" data-bs-toggle="tooltip"
+                        placement="bottom" ngbTooltip="Archive">
+                        <i class="ri-inbox-archive-line"></i>
+                    </button>
+                    <button class="btn btn-icon btn-outline-light border ms-1" data-bs-toggle="tooltip"
+                        placement="bottom" ngbTooltip="Report spam">
+                        <i class="ri-spam-2-line"></i>
+                    </button>
+                    <button class="btn btn-icon btn-outline-light border ms-1" data-bs-toggle="tooltip"
+                        placement="bottom" ngbTooltip="Delete">
+                        <i class="ri-delete-bin-line"></i>
+                    </button>
+                    <button class="btn btn-icon btn-outline-light border ms-1 m-1" data-bs-toggle="tooltip"
+                        placement="bottom" ngbTooltip="Reply">
+                        <i class="ri-reply-line"></i>
+                    </button>
+                    <button type="button" class="btn-close btn btn-sm btn-icon border" data-bs-dismiss="offcanvas"
+                        (click)="offcanvas.close('cross click')" aria-label="Close"></button>
+                </div>
+                <div class="responsive-mail-action-icons">
+                    <spk-dropdowns [Customclass]="'dropdown'" 
+                        [class]="'btn btn-icon btn-light btn-wave waves-light waves-effect waves-light no-caret'"
+                        [Icon]="true" [IconClass]="'ti ti-dots-vertical'" [Menuclass]="'dropdown-menu'">
+                        <li><a class="dropdown-item" ngbDropdownItem href="javascript:void(0);"><i
+                                    class="ri-star-line me-1 align-middle d-inline-block"></i>Starred</a></li>
+                        <li><a class="dropdown-item" ngbDropdownItem href="javascript:void(0);"><i
+                                    class="ri-inbox-archive-line me-1 align-middle d-inline-block"></i>Archive</a>
+                        </li>
+                        <li><a class="dropdown-item" ngbDropdownItem href="javascript:void(0);"><i
+                                    class="ri-spam-2-line me-1 align-middle d-inline-block"></i>Report Spam</a></li>
+                        <li><a class="dropdown-item" ngbDropdownItem href="javascript:void(0);"><i
+                                    class="ri-delete-bin-line me-1 align-middle d-inline-block"></i>Delete</a></li>
+                        <li><a class="dropdown-item" ngbDropdownItem href="javascript:void(0);"><i
+                                    class="ri-reply-line me-1 align-middle d-inline-block"></i>Reply</a></li>
+                    </spk-dropdowns>
+                    <button class="btn btn-icon btn-light ms-1 close-button" (click)="offcanvas.close('cross click')"
+                        data-bs-dismiss="offcanvas" aria-label="Close">
+                        <i class="ri-close-line"></i>
+                    </button>
+                </div>
+            </div>
+            <overlay-scrollbars class="mail-info-body p-3" id="mail-info-body">
+
+                <div class="d-sm-flex d-block align-items-center justify-content-between mb-3">
+                    <div>
+                        <p class="fs-20 fw-medium mb-0">Strategic Insights Webinar: Navigating Future Trends.</p>
+                    </div>
+                    <div class="float-end">
+                        <span class="fs-12 text-muted">Oct-22-2024,03:05PM</span>
+                    </div>
+                </div>
+                <div class="main-mail-content mb-3">
+                    <p class="fs-14 fw-medium mb-3">Greetings Mr Jack 🖐,</p>
+                    <p class="mb-2 text-muted">We're excited to invite you to our upcoming webinar, "Navigating Future
+                        Trends," where industry experts will share strategic insights to help you stay ahead in an
+                        ever-evolving landscape. Join us on [Date] at [Time] for an engaging session that promises to
+                        provide actionable knowledge and valuable perspectives.</p>
+                    <span class="d-block text-muted fw-meidum">Key Highlights :</span>
+                    <ul class="text-muted my-3">
+                        <li class="mb-2">Expert analysis of emerging trends</li>
+                        <li class="mb-2">Practical strategies for staying competitive</li>
+                        <li class="mb-2">Q&A session for personalized insights</li>
+                    </ul>
+                    <p class="mb-2 text-muted">Earth has a diameter of roughly 8,000 miles (13,000 kilometers) and is
+                        mostly round because gravity generally pulls matter into a ball. But the spin of our home planet
+                        causes it to be squashed at its poles and swollen at the equator, making the true shape of the
+                        Earth an "oblate spheroid.".</p>
+                    <p class="mb-0 mt-4">
+                        <span class="d-block">Best Regards,</span>
+                        <span class="d-block">Raiden stevie</span>
+                    </p>
+                </div>
+                <div class="mail-attachments mb-3">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="mb-2">
+                            <span class="fs-14 fw-medium"><i class="ri-attachment-2 me-1 align-middle"></i>Attachments
+                                (5.8KB):</span>
+                        </div>
+                        <div class="btn-list">
+                            <button class="btn btn-sm btn-primary-light">Download All</button>
+                        </div>
+                    </div>
+                    <div class="mt-2 d-flex flex-wrap gap-3">
+                        <div class="d-flex align-items-center flex-wrap gap-3 border p-2 rounded-2">
+                            <div class="me-1 lh-1">
+                                <span class="avatar avatar-md bg-primary">
+                                    <i class="ri-file-pdf-2-line fs-18"></i>
+                                </span>
+                            </div>
+                            <div class="flex-fill">
+                                <a href="javascript:void(0);">
+                                    <p class="mb-1 fs-12 fw-medium">
+                                        Instructions_file.pdf
+                                    </p>
+                                </a>
+                                <div class="fs-12 text-muted text-wrap">2.1KB</div>
+                            </div>
+                            <div class="ms-auto btn btn-sm btn-success-light rounded-circle btn-icon">
+                                <i class="ri-download-line"></i>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center flex-wrap gap-3 border p-2 rounded-2">
+                            <div class="me-1 lh-1">
+                                <span class="avatar avatar-md bg-primary">
+                                    <i class="ri-file-pdf-line fs-18"></i>
+                                </span>
+                            </div>
+                            <div class="flex-fill">
+                                <a href="javascript:void(0);">
+                                    <p class="mb-1 fs-12 fw-medium">
+                                        Complete_Folder.doc
+                                    </p>
+                                </a>
+                                <div class="fs-12 text-muted text-wrap">1.5KB</div>
+                            </div>
+                            <div class="ms-auto btn btn-sm btn-success-light rounded-circle btn-icon">
+                                <i class="ri-download-line"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mail-images mb-3">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="mb-2">
+                            <span class="fs-14 fw-medium"><i class="ri-image-line me-1 align-middle"></i>Images:</span>
+                        </div>
+                        <div class="btn-list">
+                            <button class="btn btn-sm btn-primary-light">Download All</button>
+                        </div>
+                    </div>
+                    <div class="mt-2 d-flex flex-wrap gap-3">
+                        <a href="javascript:void(0)">
+                            <span class="avatar avatar-lg shadow-sm">
+                                <img src="./assets/images/media/media-74.jpg" alt="">
+                            </span>
+                        </a>
+                        <a href="javascript:void(0)">
+                            <span class="avatar avatar-lg shadow-sm">
+                                <img src="./assets/images/media/media-75.jpg" alt="">
+                            </span>
+                        </a>
+                        <a href="javascript:void(0)">
+                            <span class="avatar avatar-lg shadow-sm">
+                                <img src="./assets/images/media/media-77.jpg" alt="">
+                            </span>
+                        </a>
+                        <a href="javascript:void(0)">
+                            <span class="avatar avatar-lg bg-primary-transparent">
+                                5+
+                            </span>
+                        </a>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <span class="fs-14 fw-medium"><i
+                            class="ri-reply-all-line me-1 align-middle d-inline-block"></i>Reply:</span>
+                </div>
+                <div class="mail-reply">
+                    <div id="mail-reply-editor">
+                        <form [formGroup]="form">
+                            <div class="NgxEditor__Wrapper">
+                                <ngx-editor-menu [editor]="editor" [toolbar]="toolbar">
+                                </ngx-editor-menu>
+                                <ngx-editor [editor]="editor">
+                                </ngx-editor>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </overlay-scrollbars>
+            <div class="mail-info-footer d-flex flex-wrap gap-2 align-items-center justify-content-between">
+                <div>
+                    <button class="btn btn-icon btn-primary-light" data-bs-toggle="tooltip" placement="top"
+                        ngbTooltip="Print">
+                        <i class="ri-printer-line"></i>
+                    </button>
+                    <button class="btn btn-icon btn-secondary-light ms-1" data-bs-toggle="tooltip" placement="top"
+                        ngbTooltip="Mark as read">
+                        <i class="ri-mail-open-line"></i>
+                    </button>
+                    <button class="btn btn-icon btn-success-light ms-1" data-bs-toggle="tooltip" placement="top"
+                        ngbTooltip="Reload">
+                        <i class="ri-refresh-line"></i>
+                    </button>
+                </div>
+                <div>
+                    <button class="btn btn-secondary">
+                        <i class="ri-share-forward-line me-1 d-inline-block align-middle"></i>Forward
+                    </button>
+                    <button class="btn btn-danger ms-1">
+                        <i class="ri-reply-all-line me-1 d-inline-block align-middle"></i>Reply
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>

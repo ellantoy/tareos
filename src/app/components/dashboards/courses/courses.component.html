@@ -1,0 +1,408 @@
+<app-page-header title="Courses" title1="Dashboards" activeTitle="Courses" ></app-page-header>
+                <!-- Start::Row-1 -->
+                <div class="row">
+                    <div class="col-xxl-8">
+                        <div class="row">
+                            <div class="col-xl-3">
+                                <div class="row">
+                                    <spk-courses
+                                    *ngFor="let stat of stats"
+                                    [title]="stat.title"
+                                    [value]="stat.value"
+                                    [changePercent]="stat.changePercent"
+                                    [icon]="stat.icon"
+                                    [bgColor]="stat.bgColor"
+                                    [isNegativeChange]="stat.isNegativeChange">
+                                  </spk-courses>
+                                </div>
+                            </div>
+                            <div class="col-xl-9">
+                                <div class="card custom-card">
+                                    <div class="card-header justify-content-between">
+                                        <div class="card-title flex-grow-1 me-3">Courses Completed</div>
+                                        <div class="btn-list">
+                                            <button class="btn btn-sm btn-outline-light border">All</button>
+                                            <button class="btn btn-sm btn-outline-light border">Completed</button>
+                                            <button class="btn btn-sm btn-outline-light border">In Progress</button>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="d-sm-flex align-items-center mb-3">
+                                            <div class="d-flex align-items-center me-5">
+                                                <span class="fs-8 text-primary">
+                                                    <i class="mdi mdi-circle"></i>
+                                                </span>
+                                                <div class="ms-2">
+                                                    <p class="mb-0 fs-15">742</p>
+                                                    <div class="d-flex align-items-center">
+                                                        <p class="mb-0 me-2 fs-13 text-muted">Year</p>
+                                                        <span class="fs-12 text-success d-inline-flex align-items-center"><i class="ti ti-trending-up me-1"></i>2.5%</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex align-items-center me-5">
+                                                <span class="fs-8 text-secondary">
+                                                    <i class="mdi mdi-circle"></i>
+                                                </span>
+                                                <div class="ms-2">
+                                                    <p class="mb-0 fs-15">125</p>
+                                                    <div class="d-flex align-items-center">
+                                                        <p class="mb-0 me-2 fs-13 text-muted">Week</p>
+                                                        <span class="fs-12 text-danger d-inline-flex align-items-center"><i class="ti ti-trending-down me-1"></i>0.2%</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex align-items-center me-5">
+                                                <span class="fs-8 text-success">
+                                                    <i class="mdi mdi-circle"></i>
+                                                </span>
+                                                <div class="ms-2">
+                                                    <p class="mb-0 fs-15">369</p>
+                                                    <div class="d-flex align-items-center">
+                                                        <p class="mb-0 me-2 fs-13 text-muted">Month</p>
+                                                        <span class="fs-12 text-success d-inline-flex align-items-center"><i class="ti ti-trending-up me-1"></i>1.7%</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="courses-completed">
+                                            <spk-apexcharts [chartOptions]="chartOptions"></spk-apexcharts>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-5">
+                                <div class="card custom-card overflow-hidden">
+                                    <div class="card-header justify-content-between">
+                                        <div class="card-title">Top Instructors</div>
+                                        <a href="javascript:void(0);" class="btn btn-sm btn-primary-light">View All</a>
+                                    </div>
+                                    <div class="card-body p-0">
+                                        <div class="table-responsive">
+                                            <spk-reusable-tables [columns]="InstructorsHeader"  tableClass="table table-hover card-table mb-0"  [showCheckbox]="false">
+                                                    @for (person of people; track $index) {
+                                                    <tr>
+                                                      <td class="ps-3">
+                                                        <div class="d-flex align-items-center position-relative">
+                                                          <a href="javascript:void(0);" class="stretched-link" title="recruiter"></a>
+                                                          <span class="me-2">
+                                                            @if (!person.avatar) {
+                                                            <span [ngClass]="person.icon" class="avatar avatar-sm rounded-circle">
+                                                              {{ person.initials }}
+                                                              @if (person.flasShow) {
+                                                                <i class="bi bi-{{person.flasShow}}"></i>
+                                                            }
+                                                            </span>
+                                                        } 
+                                                        @if (person.avatar) {
+                                                            <img [src]="person.avatar" alt="logo" class="avatar avatar-sm rounded-circle" />
+                                                        }
+                                                          </span>
+                                                          <div class="flex-grow-1">
+                                                            <p class="mb-0">{{ person.name }}</p>
+                                                          </div>
+                                                        </div>
+                                                      </td>
+                                                      <td>
+                                                        <span>{{ person.course }}</span>
+                                                      </td>
+                                                      <td ngbDropdown class="pe-3 position-relative">
+                                                        <a ngbDropdownToggle href="javascript:void(0);" class="ms-3 pe-4 text-primary no-caret" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                                                        <ul ngbDropdownMenu class="dropdown-menu">
+                                                          <li><a href="javascript:void(0);" class="dropdown-item">Follow</a></li>
+                                                          <li><a href="javascript:void(0);" class="dropdown-item">Like</a></li>
+                                                          <li><a href="javascript:void(0);" class="dropdown-item">Share</a></li>
+                                                        </ul>
+                                                      </td>
+                                                    </tr>
+                                                }
+                                            </spk-reusable-tables>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-7">
+                                <div class="card custom-card overflow-hidden">
+                                    <div class="card-header justify-content-between">
+                                        <div class="card-title flex-grow-1 me-3">Top Courses</div>
+                                        <spk-dropdowns [Customclass]="'dropdown my-1'" [Icon]="true" [title]="'Sort By'" [IconClass]="'ri-arrow-down-s-line align-middle ms-1'"
+                                    [class]="'btn btn-sm btn-outline-light border btn-wave no-caret'" [Menuclass]="'dropdown-menu'">
+                                                <li><a class="dropdown-item" href="javascript:void(0);">This Week</a></li>
+                                                <li><a class="dropdown-item" href="javascript:void(0);">This Month</a></li>
+                                                <li><a class="dropdown-item" href="javascript:void(0);">This Year</a></li>
+                                        </spk-dropdowns>
+                                    </div>
+                                    <div class="card-body p-0">
+                                        <div class="table-responsive">
+                                            <spk-reusable-tables [columns]="CoursesHeader"  tableClass="table table-hover card-table mb-0"  [showCheckbox]="false">
+                                                @for (row of tableData; track $index) { 
+                                                <tr>
+                                                      <td class="ps-3">
+                                                        <div class="d-flex align-items-center position-relative">
+                                                          <a href="javascript:void(0);" class="stretched-link" title="recruiter"></a>
+                                                          <span class="me-2">
+                                                            <img [src]="row.image" alt="applicant" class="rounded-circle avatar avatar-sm">
+                                                          </span>
+                                                          <div class="flex-grow-1">
+                                                            <p class="mb-0">{{ row.name }}</p>
+                                                          </div>
+                                                        </div>
+                                                      </td>
+                                                      <td>
+                                                        <a href="javascript:void(0);">{{ row.course }}</a>
+                                                      </td>
+                                                      <td>
+                                                        <span>{{ row.stat1 }}</span>
+                                                      </td>
+                                                      <td>
+                                                        <span>{{ row.stat2 }}</span>
+                                                      </td>
+                                                      <td class="pe-3">
+                                                        @if(row.badge){
+                                                        <span [ngClass]="{'badge': true, 'rounded-pill': true, 'bg-primary': row.badge === 'Starter', 'bg-info': row.badge === 'Pro', 'bg-danger': row.badge === 'Premium'}">
+                                                          {{ row.badge }}
+                                                        </span>
+                                                    }
+                                                        @if (!row.badge) {
+                                                        <span >-</span>
+                                                        }
+                                                      </td>
+                                                    </tr>
+                                                }
+                                            </spk-reusable-tables>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xxl-4">
+                        <div class="row">
+                            <div class="col-xl-12">
+                                <div class="card custom-card card-bg-primary border-0 shadow-none overflow-hidden courses-banner-card">
+                                    <div class="card-body p-4">
+                                        <h4 class="text-fixed-white mb-2">Empower Learning Management</h4>
+                                        <p class="mb-4 op-8 lh-base">Manage courses, track progress, and enhance learning seamlessly with the Courses Admin Dashboard.</p>
+                                        <button class="btn btn-secondary btn-wave waves-effect waves-light">Learn More</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-12">
+                                <div class="card custom-card">
+                                    <div class="card-header justify-content-between">
+                                        <div class="card-title">Top Course Categories</div>
+                                        <spk-dropdowns [Customclass]="'dropdown my-1'" [Icon]="true" [title]="'Sort By'" [IconClass]="'ri-arrow-down-s-line align-middle ms-1'"
+                                    [class]="'btn btn-sm btn-outline-light border btn-wave no-caret'" [Menuclass]="'dropdown-menu'">
+                                                <li><a class="dropdown-item" href="javascript:void(0);">By Industry</a></li>
+                                                <li><a class="dropdown-item" href="javascript:void(0);">By Size</a></li>
+                                        </spk-dropdowns>
+                                    </div>
+                                    <div class="card-body p-4">
+                                        <div class="row align-items-center">
+                                            <div class="col-auto mx-auto">
+                                                <div id="course-categories"> 
+                                                    <spk-apexcharts [chartOptions]="chartOptions1"></spk-apexcharts>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="row justify-content-between flex-nowrap mb-3">
+                                                    <div class="col-auto">
+                                                        <span><i class="bi bi-circle-fill me-2 fs-8 text-primary"></i>Sales</span>
+                                                    </div>
+                                                    <div class="col text-end">
+                                                        <span class="text-primary">31%</span>
+                                                    </div>
+                                                </div>
+                                                <div class="row justify-content-between flex-nowrap mb-3">
+                                                    <div class="col-auto">
+                                                        <span><i class="bi bi-circle-fill me-2 fs-8 text-info"></i>Marketing</span>
+                                                    </div>
+                                                    <div class="col text-end">
+                                                        <span class="text-info">21%</span>
+                                                    </div>
+                                                </div>
+                                                <div class="row justify-content-between flex-nowrap mb-3">
+                                                    <div class="col-auto">
+                                                        <span><i class="bi bi-circle-fill me-2 fs-8 text-success"></i>IT</span>
+                                                    </div>
+                                                    <div class="col text-end">
+                                                        <span class="text-success">15%</span>
+                                                    </div>
+                                                </div>
+                                                <div class="row justify-content-between flex-nowrap mb-3">
+                                                    <div class="col-auto">
+                                                        <span><i class="bi bi-circle-fill me-2 fs-8 text-secondary"></i>Consultancy</span>
+                                                    </div>
+                                                    <div class="col text-end">
+                                                        <span class="text-secondary">10%</span>
+                                                    </div>
+                                                </div>
+                                                <div class="row justify-content-between flex-nowrap">
+                                                    <div class="col-auto">
+                                                        <span><i class="bi bi-circle-fill me-2 fs-8 text-warning"></i>Finance</span>
+                                                    </div>
+                                                    <div class="col text-end">
+                                                        <span class="text-warning">23%</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-12">
+                                <div class="card custom-card overflow-hidden">
+                                    <div class="card-header justify-content-between">
+                                        <div class="card-title">Your Courses</div>
+                                        <a href="javascript:void(0);" class="btn btn-primary-light ms-2">View All</a>
+                                    </div>
+                                    <div class="card-body p-0">
+                                        <div class="border-bottom mb-3">
+                                            <div class="row g-0">
+                                                <div class="col-xl-6">
+                                                    <div class="d-flex align-items-center p-3 position-relative border-end">
+                                                        <div class="flex-grow-1">
+                                                            <span class="fs-5">11</span>
+                                                            <p class="mb-0 text-muted fs-14">Total</p>
+                                                        </div>
+                                                        <div class="flex-shrink-0">
+                                                            <span class="avatar avatar-md avatar-rounded bg-primary">
+                                                                <i class="bi bi-megaphone fs-5"></i>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-6">
+                                                    <div class="d-flex align-items-center p-3 position-relative">
+                                                        <div class="flex-grow-1">
+                                                            <span class="fs-5">4.56 hrs</span>
+                                                            <p class="mb-0 text-muted fs-14 text-truncate w-75">Avg Time Spent</p>
+                                                        </div>
+                                                        <div class="flex-shrink-0">
+                                                            <span class="avatar avatar-md avatar-rounded bg-info">
+                                                                <i class="bi bi-eye fs-5"></i>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h6 class="mt-4 mb-3 px-3">Recent Courses</h6>
+                                        <ul class="list-group list-group-flush">
+                                            @for (post of recentPosts; track $index) {
+                                            <li class="list-group-item">
+                                              <a href="javascript:void(0);" class="stretched-link" title="recent-post"></a>
+                                              <div class="d-flex align-items-center gap-2">
+                                                <div>
+                                                  <span class="avatar avatar-sm" [ngClass]="post.bgColor + ' fw-semibold'">{{ post.initial }}</span>
+                                                </div>
+                                                <p class="mb-0 flex-fill overflow-hidden text-truncate">{{ post.title }}</p>
+                                                <span class="text-muted text-end ms-2">{{ post.date }}</span>
+                                              </div>
+                                            </li>
+                                           }
+                                          </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End::Row-1 -->
+
+                <!-- Start::Row-1 -->
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="card custom-card">
+                            <div class="card-header justify-content-between">
+                                <div class="card-title">
+                                    Courses List
+                                </div>
+                                <div class="d-flex flex-wrap">
+                                    <div class="me-3 my-1">
+                                        <input class="form-control form-control-sm" type="text" placeholder="Search Here" aria-label=".form-control-sm example">
+                                    </div>
+                                    <spk-dropdowns [Customclass]="'dropdown m-1'" [Icon]="true" [title]="'Sort By'" [IconClass]="'ri-arrow-down-s-line align-middle ms-1 d-inline-block'"
+                                    [class]="'btn btn-primary btn-sm btn-wave waves-effect waves-light no-caret'" [Menuclass]="'dropdown-menu'">
+                                            <li><a class="dropdown-item" href="javascript:void(0);">New</a></li>
+                                            <li><a class="dropdown-item" href="javascript:void(0);">Popular</a></li>
+                                            <li><a class="dropdown-item" href="javascript:void(0);">Relevant</a></li>
+                                    </spk-dropdowns>
+                                </div>
+                            </div>
+                            <div class="card-body p-0">
+                                <div class="table-responsive">
+                                    <spk-reusable-tables [columns]="CourseslistHeader"  tableClass="table text-nowrap"  [showCheckbox]="false">
+                                        @for (course of courses; track $index) {
+                                        <tr>
+                                            <td>{{ course.id }}</td>
+                                            <td>
+                                              <div class="d-flex align-items-center lh-1">
+                                                <div class="me-2">
+                                                  <span class="avatar avatar-xs">
+                                                    <img [src]="course.image" alt="">
+                                                  </span>
+                                                </div>
+                                                <div>{{ course.title }}</div>
+                                              </div>
+                                            </td>
+                                            <td>
+                                              <span class="badge" [ngClass]="{'bg-primary-transparent': course.category === 'Science', 
+                                                                             'bg-warning-transparent': course.category === 'Mathematics',
+                                                                             'bg-success-transparent': course.category === 'Stocks & Trading',
+                                                                             'bg-info-transparent': course.category === 'Marketing',
+                                                                             'bg-danger-transparent': course.category === 'Programming',
+                                                                             'bg-teal-transparent': course.category === 'UI/UX'}">
+                                                {{ course.category }}
+                                              </span>
+                                            </td>
+                                            <td>{{ course.students }}</td>
+                                            <td>{{ course.date }}</td>
+                                            <td>{{ course.instructor }}</td>
+                                            <td>{{ course.revenue | number }}</td>
+                                            <td>
+                                              <div class="hstack gap-2 fs-1">
+                                                <a href="javascript:void(0);" class="btn btn-icon btn-sm btn-info-light btn-wave waves-effect waves-light" 
+                                                   data-bs-toggle="tooltip" data-bs-placement="top" ngbTooltip="Edit">
+                                                  <i class="ri-edit-line"></i>
+                                                </a>
+                                                <a href="javascript:void(0);" class="btn btn-icon btn-sm btn-danger-light btn-wave waves-effect waves-light" 
+                                                   data-bs-toggle="tooltip" data-bs-placement="top" ngbTooltip="Delete">
+                                                  <i class="ri-delete-bin-line"></i>
+                                                </a>
+                                              </div>
+                                            </td>
+                                          </tr>
+                                        }
+                                    </spk-reusable-tables>
+                                </div>
+                            </div>
+                            <div class="card-footer border-top-0">
+                                <div class="d-flex flex-wrap align-items-center">
+                                    <div>
+                                        Showing 6 Entries <i class="bi bi-arrow-right ms-2 fw-medium"></i>
+                                    </div>
+                                    <div class="ms-auto">
+                                        <nav aria-label="Page navigation" class="pagination-style-4">
+                                            <ul class="pagination mb-0">
+                                                <li class="page-item disabled">
+                                                    <a class="page-link" href="javascript:void(0);">
+                                                        Prev
+                                                    </a>
+                                                </li>
+                                                <li class="page-item active"><a class="page-link" href="javascript:void(0);">1</a></li>
+                                                <li class="page-item"><a class="page-link" href="javascript:void(0);">2</a></li>
+                                                <li class="page-item">
+                                                    <a class="page-link text-primary" href="javascript:void(0);">
+                                                        next
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End::Row-1 -->
